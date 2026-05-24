@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -8,14 +8,9 @@ const inter = Inter({
   variable: "--font-inter"
 });
 
-const playfair = Playfair_Display({ 
-  subsets: ["latin"],
-  variable: "--font-playfair"
-});
-
 export const metadata: Metadata = {
-  title: 'LUXPACK | 高端包装设计制造商',
-  description: '专注高端包装袋定制设计与生产，为全球品牌提供创新包装解决方案',
+  title: 'Mewepak | Premium Packaging Solutions Provider',
+  description: 'Premium flexible packaging and bags, customized for your brand unique needs, protecting your products with modern technology.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -42,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="zh-CN" className={`${inter.variable} ${playfair.variable} bg-background`}>
+    <html lang="en" className={`${inter.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
