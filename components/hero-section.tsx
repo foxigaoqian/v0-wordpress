@@ -1,146 +1,96 @@
-"use client"
+"use client";
 
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function HeroSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  })
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2])
-
   return (
-    <section ref={containerRef} className="relative h-screen overflow-hidden">
-      {/* Background with parallax */}
-      <motion.div
-        style={{ y, scale }}
-        className="absolute inset-0 bg-gradient-to-b from-background via-card to-background"
-      >
-        {/* Animated grid pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-border" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
+    <section className="relative min-h-[70vh] flex items-center bg-white overflow-hidden">
+      <div className="absolute top-0 right-0 w-1/2 h-full pointer-events-none">
+        <div className="absolute top-20 right-20 w-96 h-96 bg-[#00cfca]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-40 w-64 h-64 bg-[#00cfca]/10 rounded-full blur-2xl" />
+      </div>
 
-        {/* Floating elements */}
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 5, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-1/4 right-1/4 w-64 h-64 border border-primary/20 rounded-full blur-sm"
-        />
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-            rotate: [0, -5, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-1/4 left-1/4 w-96 h-96 border border-primary/10 rounded-full blur-sm"
-        />
-      </motion.div>
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full py-16 lg:py-24">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
+                <span className="text-gray-900">MEWEPAK</span>
+                <br />
+                <span className="text-[#00cfca]">PACKAGING</span>
+                <br />
+                <span className="text-gray-900">SOLUTION</span>
+              </h1>
+            </motion.div>
 
-      {/* Content */}
-      <motion.div
-        style={{ opacity }}
-        className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="mb-6"
-        >
-          <span className="inline-block px-4 py-2 border border-border text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            高端包装设计制造商
-          </span>
-        </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mt-8 text-lg text-gray-600 max-w-md leading-relaxed"
+            >
+              Premium flexible packaging and bags, customized for your brand&apos;s unique needs, protecting your products with modern technology.
+            </motion.p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="max-w-5xl"
-        >
-          <span className="block text-5xl md:text-7xl lg:text-[120px] font-bold tracking-tighter leading-none text-foreground">
-            包装
-          </span>
-          <span className="block text-5xl md:text-7xl lg:text-[120px] font-bold tracking-tighter leading-none text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-primary">
-            即品牌
-          </span>
-        </motion.h1>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mt-10"
+            >
+              <Link href="#process" className="group inline-flex items-center gap-4 text-gray-900 hover:text-[#00cfca] transition-colors">
+                <span className="w-14 h-14 rounded-full border-2 border-gray-200 flex items-center justify-center group-hover:border-[#00cfca] group-hover:bg-[#00cfca] transition-all">
+                  <ArrowRight className="w-5 h-5 group-hover:text-white transition-colors" />
+                </span>
+                <span className="text-sm font-semibold uppercase tracking-widest">Explore The Process</span>
+              </Link>
+            </motion.div>
+          </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="mt-8 max-w-xl text-lg md:text-xl text-muted-foreground leading-relaxed"
-        >
-          我们将创意设计与精湛工艺完美融合，为全球顶级品牌打造令人难忘的包装体验
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-12 flex flex-col sm:flex-row gap-4"
-        >
-          <a
-            href="#work"
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground text-sm uppercase tracking-widest hover:bg-primary/90 transition-all"
-          >
-            探索作品
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="transition-transform group-hover:translate-x-1">
-              <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
-          <a
-            href="#about"
-            className="group inline-flex items-center gap-3 px-8 py-4 border border-border text-foreground text-sm uppercase tracking-widest hover:bg-card transition-all"
-          >
-            了解更多
-          </a>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        >
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center gap-2"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="relative hidden lg:block"
           >
-            <span className="text-xs uppercase tracking-widest text-muted-foreground">滚动探索</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-muted-foreground">
-              <path d="M12 5V19M12 19L6 13M12 19L18 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <div className="relative w-full aspect-square max-w-lg mx-auto">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div animate={{ rotate: 360 }} transition={{ duration: 60, repeat: Infinity, ease: "linear" }} className="w-80 h-80 rounded-full border border-[#00cfca]/20" />
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div animate={{ rotate: -360 }} transition={{ duration: 45, repeat: Infinity, ease: "linear" }} className="w-64 h-64 rounded-full border border-[#00cfca]/30" />
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-48 h-48 rounded-full bg-gradient-to-br from-[#00cfca]/20 to-[#00cfca]/5" />
+              </div>
+              
+              <motion.div animate={{ y: [0, -15, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-8 right-8 w-20 h-28 bg-white rounded-xl shadow-2xl border border-gray-100 flex items-center justify-center overflow-hidden">
+                <div className="w-full h-full bg-gradient-to-br from-[#00cfca]/10 to-transparent flex items-center justify-center">
+                  <div className="w-10 h-14 border-2 border-[#00cfca]/30 rounded-lg" />
+                </div>
+              </motion.div>
+              
+              <motion.div animate={{ y: [0, 12, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-16 left-4 w-24 h-32 bg-white rounded-xl shadow-2xl border border-gray-100 flex items-center justify-center overflow-hidden">
+                <div className="w-full h-full bg-gradient-to-br from-[#00cfca]/15 to-transparent flex items-center justify-center">
+                  <div className="w-12 h-18 border-2 border-[#00cfca]/40 rounded-lg" />
+                </div>
+              </motion.div>
+              
+              <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-1/2 -translate-y-1/2 right-0 w-16 h-24 bg-white rounded-xl shadow-2xl border border-gray-100 flex items-center justify-center overflow-hidden">
+                <div className="w-full h-full bg-gradient-to-br from-[#00cfca]/10 to-transparent flex items-center justify-center">
+                  <div className="w-8 h-12 border-2 border-[#00cfca]/25 rounded-lg" />
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
-  )
+  );
 }

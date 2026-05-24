@@ -1,26 +1,28 @@
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
-import { MarqueeSection } from "@/components/marquee-section"
-import { WorkSection } from "@/components/work-section"
-import { ServicesSection } from "@/components/services-section"
-import { AboutSection } from "@/components/about-section"
-import { ClientsSection } from "@/components/clients-section"
-import { ProcessSection } from "@/components/process-section"
-import { ContactSection } from "@/components/contact-section"
+import { ExploreSection } from "@/components/explore-section"
+import { ProductShowcase } from "@/components/product-showcase"
+import { VisualizeSection } from "@/components/visualize-section"
+import { IndustrialSection } from "@/components/industrial-section"
+import { SustainabilitySection } from "@/components/sustainability-section"
+import { BlogSection } from "@/components/blog-section"
+import { TestimonialSection } from "@/components/testimonial-section"
+import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-white">
       <Header />
       <HeroSection />
-      <MarqueeSection />
-      <WorkSection />
-      <ServicesSection />
-      <AboutSection />
-      <ClientsSection />
-      <ProcessSection />
-      <ContactSection />
+      <ExploreSection />
+      <ProductShowcase />
+      <VisualizeSection />
+      <IndustrialSection />
+      <SustainabilitySection />
+      <BlogSection />
+      <TestimonialSection />
+      <CTASection />
       <Footer />
     </main>
   )
