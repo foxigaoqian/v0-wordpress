@@ -97,7 +97,7 @@ export function VisualizeSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            className="flex flex-col gap-8"
           >
             {/* 3D Viewer mockup */}
             <div className="bg-white rounded-[32px] shadow-2xl border border-gray-100 overflow-hidden">
@@ -120,21 +120,18 @@ export function VisualizeSection() {
               </div>
             </div>
 
-            {/* Process card - Redesigned */}
+            {/* Process card - Below the 3D viewer */}
             <motion.div
               initial={{ opacity: 0, y: 30, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="absolute -bottom-12 -right-8 bg-white rounded-3xl shadow-2xl p-8 border border-gray-100 max-w-sm"
+              className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100"
             >
               {/* Title section with proper spacing */}
               <div className="mb-8">
                 <h4 className="text-3xl font-black text-gray-900 tracking-tight leading-tight">
-                  DESIGN, DIELINE,
-                </h4>
-                <h4 className="text-3xl font-black text-gray-900 tracking-tight leading-tight">
-                  PRINT
+                  DESIGN, DIELINE, PRINT
                 </h4>
                 <p className="text-sm font-semibold text-[#00cfca] tracking-widest mt-3 uppercase">
                   Transforming Vision Into Reality!
