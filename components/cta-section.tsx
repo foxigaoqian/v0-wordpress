@@ -2,135 +2,164 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, ArrowUp, Mail, MessageSquare } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 export function CTASection() {
   return (
-    <section id="contact" className="relative overflow-hidden">
-      {/* Main CTA area with gradient background */}
-      <div className="bg-gradient-to-br from-gray-50 via-white to-gray-50 py-32 lg:py-40">
-        {/* Decorative elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#00cfca]/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#00cfca]/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2" />
-        </div>
+    <section id="contact" className="relative overflow-hidden bg-gradient-to-b from-gray-100 to-gray-50">
+      {/* Floating product images - Left side */}
+      <div className="absolute left-0 top-0 bottom-0 w-64 lg:w-80 overflow-hidden pointer-events-none hidden md:block">
+        <motion.div
+          animate={{ y: [0, -15, 0], rotate: [-8, -5, -8] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-12 -left-8 w-40 h-52 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform -rotate-6"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1568702846914-96b305d2uj38?w=300&h=400&fit=crop"
+            alt="Package 1"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, 12, 0], rotate: [5, 8, 5] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          className="absolute top-48 left-16 w-36 h-44 rounded-2xl overflow-hidden shadow-xl border-4 border-white transform rotate-6"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=300&h=400&fit=crop"
+            alt="Package 2"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -10, 0], rotate: [-3, 2, -3] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-24 -left-4 w-32 h-40 rounded-xl overflow-hidden shadow-lg border-4 border-white transform -rotate-3"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1560393464-5c69a73c5770?w=300&h=400&fit=crop"
+            alt="Package 3"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+      </div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+      {/* Floating product images - Right side */}
+      <div className="absolute right-0 top-0 bottom-0 w-64 lg:w-80 overflow-hidden pointer-events-none hidden md:block">
+        <motion.div
+          animate={{ y: [0, 15, 0], rotate: [8, 5, 8] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-16 -right-8 w-44 h-56 rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-6"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1566454725481-e288ef2c1f23?w=300&h=400&fit=crop"
+            alt="Package 4"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -12, 0], rotate: [-5, -8, -5] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+          className="absolute top-56 right-12 w-36 h-48 rounded-2xl overflow-hidden shadow-xl border-4 border-white transform -rotate-6"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=300&h=400&fit=crop"
+            alt="Package 5"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, 10, 0], rotate: [3, -2, 3] }}
+          transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
+          className="absolute bottom-20 -right-4 w-32 h-40 rounded-xl overflow-hidden shadow-lg border-4 border-white transform rotate-3"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=300&h=400&fit=crop"
+            alt="Package 6"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+      </div>
+
+      {/* Curved divider in center */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <svg className="h-full w-32 text-gray-200/50" viewBox="0 0 100 400" preserveAspectRatio="none">
+          <path d="M50,0 Q80,100 50,200 Q20,300 50,400" fill="none" stroke="currentColor" strokeWidth="1" />
+        </svg>
+      </div>
+
+      {/* Main content */}
+      <div className="relative z-10 py-24 lg:py-32">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
             {/* Left - Stay Connected */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
+              transition={{ duration: 0.7 }}
+              className="text-center"
             >
-              {/* Content container with proper spacing */}
-              <div className="relative z-10">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: 60 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className="h-1 bg-[#00cfca] mb-8"
-                />
-                
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-2xl bg-[#00cfca]/10 flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-[#00cfca]" />
-                  </div>
-                </div>
-
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-[1.1] tracking-tight">
-                  Stay
-                </h2>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00cfca] leading-[1.1] tracking-tight">
-                  Connected
-                </h2>
-                
-                <p className="mt-6 lg:mt-8 text-gray-500 text-base lg:text-lg leading-relaxed max-w-md">
-                  Join our subscription list and you will be the first to hear about sustainable product options, packaging trends, and other Printpack news.
-                </p>
-                
-                {/* Email input */}
-                <div className="mt-8 lg:mt-10 max-w-md">
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="flex-1 h-14 px-6 rounded-full border-2 border-gray-200 focus:border-[#00cfca] focus:outline-none transition-colors text-gray-900 min-w-0"
-                    />
-                    <button className="h-14 px-8 bg-[#00cfca] text-white font-semibold rounded-full hover:bg-[#00b8b3] transition-all shadow-lg shadow-[#00cfca]/30 hover:shadow-xl hover:shadow-[#00cfca]/40 flex items-center justify-center gap-2 whitespace-nowrap shrink-0">
-                      Subscribe
-                      <ArrowRight className="w-5 h-5" />
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-[#1a3a5c] leading-tight">
+                Stay
+              </h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-[#1a3a5c] leading-tight">
+                Connected
+              </h2>
+              
+              <p className="mt-6 text-gray-500 text-base leading-relaxed max-w-sm mx-auto">
+                Join our subscription list and you will be the first to hear about sustainable product options, packaging trends, and other Printpack news.
+              </p>
+              
+              <button className="mt-8 h-14 px-10 bg-[#1a3a5c] text-white font-semibold rounded-full hover:bg-[#0d2840] transition-all shadow-lg">
+                Subscribe
+              </button>
             </motion.div>
 
             {/* Right - Let's Talk Packaging */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-center lg:text-left"
             >
-              {/* Card background */}
-              <div className="bg-gradient-to-br from-[#0a1628] to-[#0d1d35] rounded-[32px] lg:rounded-[40px] p-8 lg:p-12 relative overflow-hidden min-h-[450px] lg:min-h-[500px]">
-                {/* Decorative elements */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#00cfca]/10 rounded-full blur-[80px]" />
-                <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-[#00cfca]/5 rounded-full blur-[60px]" />
-                
-                <div className="relative z-10">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-14 h-14 rounded-2xl bg-[#00cfca]/20 flex items-center justify-center">
-                      <MessageSquare className="w-6 h-6 text-[#00cfca]" />
-                    </div>
-                  </div>
-
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight">
-                    Let&apos;s Talk
-                  </h2>
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00cfca] leading-[1.1] tracking-tight">
-                    Packaging
-                  </h2>
-                  
-                  <p className="mt-6 lg:mt-8 text-gray-400 text-base lg:text-lg leading-relaxed max-w-sm">
-                    We pride ourselves on designing the right package for your brand&apos;s needs. Collaborate with us. Take your brand to the next level and win at the shelf.
-                  </p>
-                  
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-3 h-14 lg:h-16 px-8 lg:px-10 mt-8 lg:mt-10 bg-[#00cfca] text-white text-base lg:text-lg font-semibold rounded-full hover:bg-[#00e5df] transition-all shadow-xl shadow-[#00cfca]/30 hover:shadow-2xl"
-                  >
-                    Contact Us
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </div>
-              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-[#1a3a5c] leading-tight">
+                Let&apos;s Talk
+              </h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-[#1a3a5c] leading-tight">
+                Packaging
+              </h2>
+              
+              <p className="mt-6 text-gray-500 text-base leading-relaxed max-w-sm mx-auto lg:mx-0">
+                We pride ourselves on designing the right package for your brand&apos;s needs. Collaborate with us. Take your brand to the next level and win at the shelf.
+              </p>
+              
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center mt-8 h-14 px-10 bg-[#00cfca] text-white font-semibold rounded-full hover:bg-[#00b8b3] transition-all shadow-lg"
+              >
+                Contact Us
+              </Link>
             </motion.div>
           </div>
-
-          {/* Scroll to top */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex justify-center mt-20 lg:mt-24"
-          >
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="group flex items-center gap-4 px-8 py-4 bg-white border-2 border-gray-200 rounded-full hover:border-[#00cfca] hover:bg-[#00cfca] transition-all shadow-lg"
-            >
-              <span className="text-gray-600 group-hover:text-white font-semibold transition-colors">Scroll to Top</span>
-              <div className="w-10 h-10 rounded-full bg-gray-100 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-                <ArrowUp className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors" />
-              </div>
-            </button>
-          </motion.div>
         </div>
+
+        {/* Scroll to top */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex justify-end px-6 lg:px-12 mt-16"
+        >
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="group flex items-center gap-3 px-6 py-3 bg-[#00cfca] text-white font-semibold rounded-full hover:bg-[#00b8b3] transition-all shadow-lg"
+          >
+            Scroll to Top
+            <ArrowUp className="w-4 h-4" />
+          </button>
+        </motion.div>
       </div>
     </section>
   );
