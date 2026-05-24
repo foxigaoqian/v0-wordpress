@@ -16,42 +16,17 @@ export function CTASection() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
             {/* Left - Stay Connected */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative flex flex-col"
+              className="relative"
             >
-              {/* Floating images - positioned within the card area */}
-              <div className="relative mb-8 lg:mb-0 lg:absolute lg:-left-4 lg:-top-8 lg:w-64 lg:h-80">
-                <motion.div
-                  animate={{ y: [0, -15, 0], rotate: [-3, 3, -3] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-44 h-56 lg:w-48 lg:h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-white mx-auto lg:mx-0"
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop"
-                    alt="Packaging"
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-                <motion.div
-                  animate={{ y: [0, 10, 0], rotate: [5, -2, 5] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  className="absolute -bottom-8 right-4 lg:-bottom-12 lg:-right-8 w-32 h-40 lg:w-36 lg:h-48 rounded-2xl overflow-hidden shadow-xl border-4 border-white"
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=300&h=400&fit=crop"
-                    alt="Package"
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-              </div>
-
-              <div className="lg:pl-56 xl:pl-64 flex-1 flex flex-col justify-center pt-8 lg:pt-0">
+              {/* Content container with proper spacing */}
+              <div className="relative z-10">
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: 60 }}
@@ -77,7 +52,7 @@ export function CTASection() {
                   Join our subscription list and you will be the first to hear about sustainable product options, packaging trends, and other Printpack news.
                 </p>
                 
-                {/* Email input - Fixed layout */}
+                {/* Email input */}
                 <div className="mt-8 lg:mt-10 max-w-md">
                   <div className="flex flex-col sm:flex-row gap-3">
                     <input
@@ -102,8 +77,8 @@ export function CTASection() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              {/* Card background - Fixed to contain product image */}
-              <div className="bg-gradient-to-br from-[#0a1628] to-[#0d1d35] rounded-[32px] lg:rounded-[40px] p-8 lg:p-12 relative overflow-hidden min-h-[500px] lg:min-h-[550px]">
+              {/* Card background */}
+              <div className="bg-gradient-to-br from-[#0a1628] to-[#0d1d35] rounded-[32px] lg:rounded-[40px] p-8 lg:p-12 relative overflow-hidden min-h-[450px] lg:min-h-[500px]">
                 {/* Decorative elements */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#00cfca]/10 rounded-full blur-[80px]" />
                 <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-[#00cfca]/5 rounded-full blur-[60px]" />
@@ -134,19 +109,6 @@ export function CTASection() {
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </div>
-
-                {/* Floating product image - Positioned inside the card */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute right-6 bottom-6 lg:right-8 lg:bottom-8 w-36 h-48 lg:w-44 lg:h-56 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20"
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=300&h=400&fit=crop"
-                    alt="Product"
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
               </div>
             </motion.div>
           </div>
