@@ -9,22 +9,31 @@ const navItems = [
   { label: "Home", href: "/" },
   {
     label: "Products",
-    href: "#products",
+    href: "/products",
     megaMenu: {
       categories: [
         {
-          title: "Products",
+          title: "Pouch Formats",
           items: [
-            { label: "Pouch Formats", href: "#" },
-            { label: "Roll Stock Film", href: "#" },
-            { label: "Labels & Stickers", href: "#" },
+            { label: "Stand Up Pouch", href: "#" },
+            { label: "Flat Bottom Pouch", href: "#" },
+            { label: "Retort Pouch", href: "#" },
+            { label: "Spout Pouch", href: "#" },
+            { label: "Roll Stock & Lidding Films", href: "#" },
+            { label: "Stand Up Pouch with Tap", href: "#" },
+            { label: "Bag-In-Box", href: "#" },
           ],
         },
         {
-          title: "",
+          title: "Specialty Packaging",
           items: [
-            { label: "Stock/Blank Bags", href: "#" },
-            { label: "Child-Resistant Packaging", href: "#" },
+            { label: "Quad Seal Bag", href: "#" },
+            { label: "Flat Pouch", href: "#" },
+            { label: "Shaped Pouch", href: "#" },
+            { label: "Shrink Sleeves Label", href: "#" },
+            { label: "Thermoforming", href: "#" },
+            { label: "Vacuum", href: "#" },
+            { label: "Flow Pack", href: "#" },
           ],
         },
       ],
@@ -32,31 +41,49 @@ const navItems = [
         tag: "FEATURED",
         title: "Explore Our Premium Products",
         description: "Discover high-quality, customized packaging solutions tailored for your business needs.",
-        link: { label: "Learn More", href: "#products" },
+        link: { label: "View All Products", href: "/products" },
       },
     },
   },
   {
     label: "Markets",
-    href: "#markets",
+    href: "/markets",
     megaMenu: {
       categories: [
         {
-          title: "Markets",
+          title: "Foods",
           items: [
             { label: "Coffee & Tea", href: "#" },
+            { label: "Snacks & Sweets", href: "#" },
             { label: "Supplement", href: "#" },
-            { label: "Snack", href: "#" },
             { label: "Pet Food", href: "#" },
+            { label: "Sauce & Soup", href: "#" },
+            { label: "Baby Food", href: "#" },
+            { label: "Beverage", href: "#" },
+            { label: "Frozen Food", href: "#" },
           ],
         },
         {
           title: "",
           items: [
-            { label: "Baby Food", href: "#" },
-            { label: "Beverage", href: "#" },
-            { label: "Frozen Food", href: "#" },
             { label: "Home Care", href: "#" },
+            { label: "Meat & Poultry", href: "#" },
+            { label: "Beauty Care & Personal Care", href: "#" },
+            { label: "Sea Food", href: "#" },
+            { label: "Fruits & Veggies", href: "#" },
+          ],
+        },
+        {
+          title: "Nonfoods",
+          items: [
+            { label: "CBD", href: "#" },
+            { label: "Cosmetics", href: "#" },
+            { label: "Powder & Spices", href: "#" },
+            { label: "Fashion", href: "#" },
+            { label: "Tobacco & Filters", href: "#" },
+            { label: "CBD & THC", href: "#" },
+            { label: "Cannabis", href: "#" },
+            { label: "Accessories", href: "#" },
           ],
         },
       ],
@@ -64,30 +91,23 @@ const navItems = [
         tag: "INDUSTRIES",
         title: "Solutions for Every Market",
         description: "Tailored packaging solutions designed to meet the unique demands of your industry.",
-        link: { label: "View All Markets", href: "#markets" },
+        link: { label: "View All Markets", href: "/markets" },
       },
     },
   },
   {
     label: "Solutions",
-    href: "#solutions",
+    href: "/solutions",
     megaMenu: {
       categories: [
         {
-          title: "By Format",
+          title: "Our Solutions",
           items: [
-            { label: "Stand Up Pouch", href: "#" },
-            { label: "Flat Bottom Pouch", href: "#" },
-            { label: "Spout Pouch", href: "#" },
-            { label: "Retort Pouch", href: "#" },
-          ],
-        },
-        {
-          title: "",
-          items: [
-            { label: "Roll Stock", href: "#" },
-            { label: "Quad Seal Bag", href: "#" },
-            { label: "Shaped Pouch", href: "#" },
+            { label: "Prepress", href: "#" },
+            { label: "Printing", href: "#" },
+            { label: "Technical", href: "#" },
+            { label: "Recycling", href: "#" },
+            { label: "Retort", href: "#" },
           ],
         },
       ],
@@ -95,16 +115,83 @@ const navItems = [
         tag: "CUSTOM SOLUTIONS",
         title: "Tailored for Your Brand",
         description: "Work with our experts to create packaging that perfectly represents your brand.",
-        link: { label: "Get Started", href: "#contact" },
+        link: { label: "Get Started", href: "/contact" },
       },
     },
   },
   {
-    label: "Added Value Sustainability",
-    href: "#sustainability",
+    label: "Added Value",
+    href: "/added-value",
+    megaMenu: {
+      categories: [
+        {
+          title: "Resources",
+          items: [
+            { label: "Pouch Patrol", href: "#" },
+            { label: "On The Road", href: "#" },
+            { label: "Keepin'it Green", href: "#" },
+            { label: "FAQ", href: "#" },
+            { label: "Help Center", href: "#" },
+            { label: "Careers", href: "#" },
+          ],
+        },
+      ],
+      featured: {
+        tag: "SUPPORT",
+        title: "We're Here to Help",
+        description: "Access our resources, get answers to common questions, and explore career opportunities.",
+        link: { label: "Learn More", href: "/added-value" },
+      },
+    },
   },
-  { label: "Blog", href: "#blog" },
-  { label: "Contact", href: "#contact" },
+  {
+    label: "Sustainability",
+    href: "/sustainability",
+    megaMenu: {
+      categories: [
+        {
+          title: "Our Commitment",
+          items: [
+            { label: "Sustainable Packaging", href: "#" },
+            { label: "Operations Sustainability", href: "#" },
+            { label: "Social Sustainability", href: "#" },
+            { label: "ProAmpac Impact Report", href: "#" },
+            { label: "Life Cycle Analysis Tool - ProActive CHART", href: "#" },
+          ],
+        },
+      ],
+      featured: {
+        tag: "ECO-FRIENDLY",
+        title: "Building a Sustainable Future",
+        description: "Discover our commitment to environmental responsibility and sustainable practices.",
+        link: { label: "View Report", href: "/sustainability" },
+      },
+    },
+  },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+  {
+    label: "About Us",
+    href: "/about",
+    megaMenu: {
+      categories: [
+        {
+          title: "Company",
+          items: [
+            { label: "Global Reach", href: "#" },
+            { label: "roAmpac Impact Report", href: "#" },
+            { label: "Quality Certifications", href: "#" },
+          ],
+        },
+      ],
+      featured: {
+        tag: "ABOUT US",
+        title: "Who We Are",
+        description: "Learn about our global presence, quality standards, and commitment to excellence.",
+        link: { label: "Learn More", href: "/about" },
+      },
+    },
+  },
 ];
 
 export function Header() {
@@ -112,6 +199,7 @@ export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -171,7 +259,7 @@ export function Header() {
                 <ChevronDown className="w-3 h-3" />
               </button>
               <Link 
-                href="#contact" 
+                href="/contact" 
                 className="hidden lg:flex items-center gap-2 h-11 px-6 bg-[#00cfca] text-white text-sm font-medium rounded-full hover:bg-[#00b8b3] transition-colors shadow-lg shadow-[#00cfca]/25"
               >
                 Request a Quote
@@ -193,7 +281,7 @@ export function Header() {
               >
                 <Link 
                   href={item.href} 
-                  className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors ${
                     activeMenu === item.label ? "text-[#00cfca]" : "text-gray-700 hover:text-[#00cfca]"
                   }`}
                 >
@@ -220,8 +308,8 @@ export function Header() {
               <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
                 <div className="grid grid-cols-12 gap-8">
                   {/* Categories */}
-                  <div className="col-span-8">
-                    <div className="grid grid-cols-2 gap-8">
+                  <div className={`${navItems.find(item => item.label === activeMenu)?.megaMenu?.categories.length === 1 ? 'col-span-6' : 'col-span-8'}`}>
+                    <div className={`grid ${navItems.find(item => item.label === activeMenu)?.megaMenu?.categories.length === 3 ? 'grid-cols-3' : navItems.find(item => item.label === activeMenu)?.megaMenu?.categories.length === 1 ? 'grid-cols-1' : 'grid-cols-2'} gap-8`}>
                       {navItems.find(item => item.label === activeMenu)?.megaMenu?.categories.map((category, idx) => (
                         <div key={idx}>
                           {category.title && (
@@ -229,7 +317,7 @@ export function Header() {
                               {category.title}
                             </h3>
                           )}
-                          <ul className="space-y-3">
+                          <ul className="space-y-2">
                             {category.items.map((subItem) => (
                               <li key={subItem.label}>
                                 <Link 
@@ -247,7 +335,7 @@ export function Header() {
                   </div>
 
                   {/* Featured section */}
-                  <div className="col-span-4">
+                  <div className={`${navItems.find(item => item.label === activeMenu)?.megaMenu?.categories.length === 1 ? 'col-span-6' : 'col-span-4'}`}>
                     <div className="bg-gradient-to-br from-[#e6faf9] to-[#f0fffe] rounded-2xl p-6 h-full relative overflow-hidden">
                       {/* Decorative element */}
                       <div className="absolute -right-8 -bottom-8 w-32 h-32 opacity-20">
@@ -302,33 +390,65 @@ export function Header() {
               <nav className="space-y-1">
                 {navItems.map((item) => (
                   <div key={item.label}>
-                    <Link 
-                      href={item.href} 
-                      className="flex items-center justify-between px-4 py-3 text-gray-700 hover:text-[#00cfca] hover:bg-[#00cfca]/5 rounded-lg transition-colors" 
-                      onClick={() => !item.megaMenu && setMobileOpen(false)}
+                    <button 
+                      className="flex items-center justify-between w-full px-4 py-3 text-gray-700 hover:text-[#00cfca] hover:bg-[#00cfca]/5 rounded-lg transition-colors text-left" 
+                      onClick={() => {
+                        if (item.megaMenu) {
+                          setExpandedMobile(expandedMobile === item.label ? null : item.label);
+                        } else {
+                          setMobileOpen(false);
+                        }
+                      }}
                     >
-                      {item.label}
-                      {item.megaMenu && <ChevronDown className="w-4 h-4" />}
-                    </Link>
-                    {item.megaMenu && (
-                      <div className="pl-4 mt-1 space-y-1">
-                        {item.megaMenu.categories.flatMap(cat => cat.items).map((subItem) => (
-                          <Link 
-                            key={subItem.label} 
-                            href={subItem.href} 
-                            className="block px-4 py-2 text-sm text-gray-500 hover:text-[#00cfca] hover:bg-[#00cfca]/5 rounded-lg transition-colors"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            {subItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
+                      {item.megaMenu ? (
+                        <>
+                          {item.label}
+                          <ChevronDown className={`w-4 h-4 transition-transform ${expandedMobile === item.label ? 'rotate-180' : ''}`} />
+                        </>
+                      ) : (
+                        <Link href={item.href} onClick={() => setMobileOpen(false)} className="w-full">
+                          {item.label}
+                        </Link>
+                      )}
+                    </button>
+                    <AnimatePresence>
+                      {item.megaMenu && expandedMobile === item.label && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pl-4 py-2 space-y-1">
+                            {item.megaMenu.categories.map((cat, idx) => (
+                              <div key={idx}>
+                                {cat.title && (
+                                  <div className="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                                    {cat.title}
+                                  </div>
+                                )}
+                                {cat.items.map((subItem) => (
+                                  <Link 
+                                    key={subItem.label} 
+                                    href={subItem.href} 
+                                    className="block px-4 py-2 text-sm text-gray-500 hover:text-[#00cfca] hover:bg-[#00cfca]/5 rounded-lg transition-colors"
+                                    onClick={() => setMobileOpen(false)}
+                                  >
+                                    {subItem.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 ))}
               </nav>
               <Link 
-                href="#contact" 
+                href="/contact" 
                 onClick={() => setMobileOpen(false)} 
                 className="flex items-center justify-center gap-2 w-full h-12 mt-8 bg-[#00cfca] text-white font-medium rounded-full"
               >
