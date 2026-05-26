@@ -1,32 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Coffee, Pill, Cookie, Utensils, Dog, Baby, Wine, Snowflake, Home, Apple } from "lucide-react";
+import Link from "next/link";
 
 const markets = [
-  { icon: Coffee, label: "Coffee & Tea" },
-  { icon: Pill, label: "Supplement" },
-  { icon: Cookie, label: "Snack" },
-  { icon: Utensils, label: "Sauce & Soup" },
-  { icon: Dog, label: "Pet Food" },
-  { icon: Baby, label: "Baby Food" },
-  { icon: Wine, label: "Beverage" },
-  { icon: Snowflake, label: "Frozen Food" },
-  { icon: Home, label: "Home Care" },
-  { icon: Apple, label: "Produce" },
+  { label: "Coffee & Tea", image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=200&h=200&fit=crop", slug: "coffee-tea" },
+  { label: "Supplement", image: "https://images.unsplash.com/photo-1550572017-edd951b55104?w=200&h=200&fit=crop", slug: "supplement" },
+  { label: "Snack", image: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=200&h=200&fit=crop", slug: "snacks-sweets" },
+  { label: "Sauce & Soup", image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=200&h=200&fit=crop", slug: "sauce-soup" },
+  { label: "Pet Food", image: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=200&h=200&fit=crop", slug: "pet-food" },
+  { label: "Baby Food", image: "https://images.unsplash.com/photo-1544961371-516024f8e267?w=200&h=200&fit=crop", slug: "baby-food" },
+  { label: "Beverage", image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=200&h=200&fit=crop", slug: "beverage" },
+  { label: "Frozen Food", image: "https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=200&h=200&fit=crop", slug: "frozen-food" },
+  { label: "Home Care", image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=200&h=200&fit=crop", slug: "home-care" },
+  { label: "Produce", image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=200&h=200&fit=crop", slug: "fruits-veggies" },
 ];
 
 const formats = [
-  { label: "Spout Pouch" },
-  { label: "Stand Up Pouch" },
-  { label: "Flat Bottom Pouch" },
-  { label: "Retort Pouch" },
-  { label: "Roll Stock" },
-  { label: "Stand Up Pouch With Tap" },
-  { label: "Bag In Box" },
-  { label: "Quad Seal Bag" },
-  { label: "Flat Pouch" },
-  { label: "Shaped Pouch" },
+  { label: "Spout Pouch", image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=200&h=200&fit=crop", slug: "spout-pouch" },
+  { label: "Stand Up Pouch", image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=200&h=200&fit=crop", slug: "stand-up-pouch" },
+  { label: "Flat Bottom Pouch", image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=200&h=200&fit=crop", slug: "flat-bottom-pouch" },
+  { label: "Retort Pouch", image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=200&h=200&fit=crop", slug: "retort-pouch" },
+  { label: "Roll Stock", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=200&h=200&fit=crop", slug: "roll-stock-films" },
+  { label: "Stand Up Pouch With Tap", image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=200&h=200&fit=crop", slug: "stand-up-pouch-tap" },
+  { label: "Bag In Box", image: "https://images.unsplash.com/photo-1474722883778-792e7990302f?w=200&h=200&fit=crop", slug: "bag-in-box" },
+  { label: "Quad Seal Bag", image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=200&h=200&fit=crop", slug: "quad-seal-bag" },
+  { label: "Flat Pouch", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=200&h=200&fit=crop", slug: "flat-pouch" },
+  { label: "Shaped Pouch", image: "https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=200&h=200&fit=crop", slug: "shaped-pouch" },
 ];
 
 export function ExploreSection() {
@@ -91,17 +91,23 @@ export function ExploreSection() {
                   boxShadow: "0 25px 50px -12px rgba(0,207,202,0.25)",
                   borderColor: "#00cfca"
                 }}
-                className="group bg-white rounded-2xl p-5 border-2 border-gray-100 hover:border-[#00cfca] transition-all cursor-pointer relative overflow-hidden"
+                className="group bg-white rounded-2xl p-4 border-2 border-gray-100 hover:border-[#00cfca] transition-all cursor-pointer relative overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#00cfca]/0 to-[#00cfca]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative">
-                  <div className="w-16 h-16 rounded-2xl bg-gray-50 group-hover:bg-[#00cfca]/10 flex items-center justify-center mb-4 transition-colors">
-                    <market.icon className="w-7 h-7 text-gray-400 group-hover:text-[#00cfca] transition-colors" />
+                <Link href={`/markets/${market.slug}`}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#00cfca]/0 to-[#00cfca]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative">
+                    <div className="w-16 h-16 rounded-xl overflow-hidden mb-4 mx-auto">
+                      <img 
+                        src={market.image} 
+                        alt={market.label}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <span className="text-sm font-semibold text-gray-700 group-hover:text-[#00cfca] transition-colors block text-center">
+                      {market.label}
+                    </span>
                   </div>
-                  <span className="text-sm font-semibold text-gray-700 group-hover:text-[#00cfca] transition-colors block">
-                    {market.label}
-                  </span>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
@@ -158,21 +164,23 @@ export function ExploreSection() {
                   boxShadow: "0 25px 50px -12px rgba(0,207,202,0.25)",
                   borderColor: "#00cfca"
                 }}
-                className="group bg-white rounded-2xl p-5 border-2 border-gray-100 hover:border-[#00cfca] transition-all cursor-pointer relative overflow-hidden"
+                className="group bg-white rounded-2xl p-4 border-2 border-gray-100 hover:border-[#00cfca] transition-all cursor-pointer relative overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#00cfca]/0 to-[#00cfca]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative">
-                  <div className="w-16 h-16 rounded-2xl bg-gray-50 group-hover:bg-[#00cfca]/10 flex items-center justify-center mb-4 transition-colors border border-gray-100">
-                    <svg className="w-10 h-10 text-gray-300 group-hover:text-[#00cfca]/60 transition-colors" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <rect x="8" y="4" width="24" height="32" rx="4" />
-                      <path d="M8 12h24" />
-                      <circle cx="20" cy="22" r="4" />
-                    </svg>
+                <Link href={`/products/${format.slug}`}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#00cfca]/0 to-[#00cfca]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative">
+                    <div className="w-16 h-16 rounded-xl overflow-hidden mb-4 mx-auto">
+                      <img 
+                        src={format.image} 
+                        alt={format.label}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <span className="text-sm font-semibold text-gray-700 group-hover:text-[#00cfca] transition-colors block text-center">
+                      {format.label}
+                    </span>
                   </div>
-                  <span className="text-sm font-semibold text-gray-700 group-hover:text-[#00cfca] transition-colors block">
-                    {format.label}
-                  </span>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>

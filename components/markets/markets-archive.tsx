@@ -5,30 +5,30 @@ import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 const foodMarkets = [
-  { name: "Coffee & Tea", slug: "coffee-tea", icon: "☕" },
-  { name: "Snacks & Sweets", slug: "snacks-sweets", icon: "🍿" },
-  { name: "Supplement", slug: "supplement", icon: "💊" },
-  { name: "Pet Food", slug: "pet-food", icon: "🐕" },
-  { name: "Sauce & Soup", slug: "sauce-soup", icon: "🥣" },
-  { name: "Baby Food", slug: "baby-food", icon: "🍼" },
-  { name: "Beverage", slug: "beverage", icon: "🥤" },
-  { name: "Frozen Food", slug: "frozen-food", icon: "❄️" },
-  { name: "Home Care", slug: "home-care", icon: "🧴" },
-  { name: "Meat & Poultry", slug: "meat-poultry", icon: "🥩" },
-  { name: "Beauty Care & Personal Care", slug: "beauty-care", icon: "💆" },
-  { name: "Sea Food", slug: "sea-food", icon: "🦐" },
-  { name: "Fruits & Veggies", slug: "fruits-veggies", icon: "🥗" },
+  { name: "Coffee & Tea", slug: "coffee-tea", image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=200&h=200&fit=crop" },
+  { name: "Snacks & Sweets", slug: "snacks-sweets", image: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=200&h=200&fit=crop" },
+  { name: "Supplement", slug: "supplement", image: "https://images.unsplash.com/photo-1550572017-edd951b55104?w=200&h=200&fit=crop" },
+  { name: "Pet Food", slug: "pet-food", image: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=200&h=200&fit=crop" },
+  { name: "Sauce & Soup", slug: "sauce-soup", image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=200&h=200&fit=crop" },
+  { name: "Baby Food", slug: "baby-food", image: "https://images.unsplash.com/photo-1544961371-516024f8e267?w=200&h=200&fit=crop" },
+  { name: "Beverage", slug: "beverage", image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=200&h=200&fit=crop" },
+  { name: "Frozen Food", slug: "frozen-food", image: "https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=200&h=200&fit=crop" },
+  { name: "Home Care", slug: "home-care", image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=200&h=200&fit=crop" },
+  { name: "Meat & Poultry", slug: "meat-poultry", image: "https://images.unsplash.com/photo-1603048297172-c92544798d5a?w=200&h=200&fit=crop" },
+  { name: "Beauty & Personal Care", slug: "beauty-care", image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=200&h=200&fit=crop" },
+  { name: "Sea Food", slug: "sea-food", image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=200&h=200&fit=crop" },
+  { name: "Fruits & Veggies", slug: "fruits-veggies", image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=200&h=200&fit=crop" },
 ]
 
 const nonfoodMarkets = [
-  { name: "CBD", slug: "cbd", icon: "🌿" },
-  { name: "Cosmetics", slug: "cosmetics", icon: "💄" },
-  { name: "Powder & Spices", slug: "powder-spices", icon: "🧂" },
-  { name: "Fashion", slug: "fashion", icon: "👗" },
-  { name: "Tobacco & Filters", slug: "tobacco-filters", icon: "🚬" },
-  { name: "CBD & THC", slug: "cbd-thc", icon: "🍃" },
-  { name: "Cannabis", slug: "cannabis", icon: "🌱" },
-  { name: "Accessories", slug: "accessories", icon: "👜" },
+  { name: "CBD", slug: "cbd", image: "https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?w=200&h=200&fit=crop" },
+  { name: "Cosmetics", slug: "cosmetics", image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200&h=200&fit=crop" },
+  { name: "Powder & Spices", slug: "powder-spices", image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=200&h=200&fit=crop" },
+  { name: "Fashion", slug: "fashion", image: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=200&h=200&fit=crop" },
+  { name: "Tobacco & Filters", slug: "tobacco-filters", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop" },
+  { name: "CBD & THC", slug: "cbd-thc", image: "https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=200&h=200&fit=crop" },
+  { name: "Cannabis", slug: "cannabis", image: "https://images.unsplash.com/photo-1585467435373-0d44de2283de?w=200&h=200&fit=crop" },
+  { name: "Accessories", slug: "accessories", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=200&h=200&fit=crop" },
 ]
 
 export function MarketsArchive() {
@@ -93,9 +93,15 @@ export function MarketsArchive() {
               >
                 <Link
                   href={`/markets/${market.slug}`}
-                  className="block p-6 bg-gray-50 rounded-2xl text-center hover:bg-[#00cfca]/5 hover:shadow-lg transition-all group"
+                  className="block p-4 bg-gray-50 rounded-2xl text-center hover:bg-[#00cfca]/5 hover:shadow-lg transition-all group overflow-hidden"
                 >
-                  <span className="text-4xl block mb-3">{market.icon}</span>
+                  <div className="w-16 h-16 mx-auto rounded-xl overflow-hidden mb-3">
+                    <img 
+                      src={market.image} 
+                      alt={market.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
                   <p className="font-medium text-gray-700 group-hover:text-[#00cfca] transition-colors text-sm">
                     {market.name}
                   </p>
@@ -134,9 +140,15 @@ export function MarketsArchive() {
               >
                 <Link
                   href={`/markets/${market.slug}`}
-                  className="block p-6 bg-white rounded-2xl text-center hover:bg-[#00cfca]/5 hover:shadow-lg transition-all group"
+                  className="block p-4 bg-white rounded-2xl text-center hover:bg-[#00cfca]/5 hover:shadow-lg transition-all group overflow-hidden"
                 >
-                  <span className="text-4xl block mb-3">{market.icon}</span>
+                  <div className="w-16 h-16 mx-auto rounded-xl overflow-hidden mb-3">
+                    <img 
+                      src={market.image} 
+                      alt={market.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
                   <p className="font-medium text-gray-700 group-hover:text-[#00cfca] transition-colors text-sm">
                     {market.name}
                   </p>
@@ -165,7 +177,11 @@ export function MarketsArchive() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
+            {[
+              { image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&h=400&fit=crop", industry: "Coffee Industry", title: "Premium Coffee Brand Packaging", desc: "How we helped a specialty coffee brand elevate their shelf presence." },
+              { image: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=600&h=400&fit=crop", industry: "Snack Industry", title: "Sustainable Snack Packaging", desc: "Developing eco-friendly packaging for a leading snack manufacturer." },
+              { image: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=600&h=400&fit=crop", industry: "Pet Food Industry", title: "Pet Food Stand-Up Pouches", desc: "Creating durable, convenient packaging for premium pet food." },
+            ].map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -174,14 +190,20 @@ export function MarketsArchive() {
                 transition={{ delay: i * 0.1 }}
                 className="bg-gray-50 rounded-2xl overflow-hidden group cursor-pointer"
               >
-                <div className="aspect-video bg-gradient-to-br from-[#00cfca]/10 to-[#00cfca]/5" />
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
                 <div className="p-6">
-                  <p className="text-sm text-[#00cfca] font-medium mb-2">Coffee Industry</p>
+                  <p className="text-sm text-[#00cfca] font-medium mb-2">{item.industry}</p>
                   <h3 className="font-semibold text-gray-900 group-hover:text-[#00cfca] transition-colors">
-                    Premium Coffee Brand Packaging
+                    {item.title}
                   </h3>
                   <p className="mt-2 text-sm text-gray-600">
-                    How we helped a specialty coffee brand elevate their shelf presence.
+                    {item.desc}
                   </p>
                 </div>
               </motion.div>

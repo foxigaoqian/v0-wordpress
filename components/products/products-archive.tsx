@@ -10,146 +10,96 @@ const productCategories = [
     id: "stand-up-pouch",
     name: "Stand Up Pouch",
     description: "Versatile pouches that stand upright on shelves, perfect for food, snacks, and retail products.",
-    image: "/images/products/stand-up-pouch.jpg",
     products: [
-      { name: "Classic Stand Up Pouch", image: "/images/products/sup-classic.jpg" },
-      { name: "Zipper Stand Up Pouch", image: "/images/products/sup-zipper.jpg" },
-      { name: "Spout Stand Up Pouch", image: "/images/products/sup-spout.jpg" },
-      { name: "Window Stand Up Pouch", image: "/images/products/sup-window.jpg" },
+      { name: "Classic Stand Up Pouch", image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=400&h=400&fit=crop" },
+      { name: "Zipper Stand Up Pouch", image: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=400&h=400&fit=crop" },
+      { name: "Spout Stand Up Pouch", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop" },
+      { name: "Window Stand Up Pouch", image: "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=400&h=400&fit=crop" },
     ]
   },
   {
     id: "flat-bottom-pouch",
     name: "Flat Bottom Pouch",
     description: "Box-style pouches with a flat base for superior shelf stability and premium presentation.",
-    image: "/images/products/flat-bottom-pouch.jpg",
     products: [
-      { name: "Coffee Flat Bottom Bag", image: "/images/products/fb-coffee.jpg" },
-      { name: "Pet Food Flat Bottom", image: "/images/products/fb-petfood.jpg" },
-      { name: "Snack Flat Bottom Bag", image: "/images/products/fb-snack.jpg" },
+      { name: "Coffee Flat Bottom Bag", image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=400&fit=crop" },
+      { name: "Pet Food Flat Bottom", image: "https://images.unsplash.com/photo-1585846416120-3a7354ed7d39?w=400&h=400&fit=crop" },
+      { name: "Snack Flat Bottom Bag", image: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400&h=400&fit=crop" },
     ]
   },
   {
     id: "retort-pouch",
     name: "Retort Pouch",
     description: "High-temperature resistant pouches for sterilized food products with extended shelf life.",
-    image: "/images/products/retort-pouch.jpg",
     products: [
-      { name: "Standard Retort Pouch", image: "/images/products/retort-standard.jpg" },
-      { name: "Shaped Retort Pouch", image: "/images/products/retort-shaped.jpg" },
-      { name: "Spout Retort Pouch", image: "/images/products/retort-spout.jpg" },
+      { name: "Standard Retort Pouch", image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&h=400&fit=crop" },
+      { name: "Shaped Retort Pouch", image: "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400&h=400&fit=crop" },
+      { name: "Spout Retort Pouch", image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=400&fit=crop" },
     ]
   },
   {
     id: "spout-pouch",
     name: "Spout Pouch",
     description: "Convenient pouches with integrated spouts for liquid and semi-liquid products.",
-    image: "/images/products/spout-pouch.jpg",
     products: [
-      { name: "Beverage Spout Pouch", image: "/images/products/spout-beverage.jpg" },
-      { name: "Baby Food Spout Pouch", image: "/images/products/spout-baby.jpg" },
-      { name: "Sauce Spout Pouch", image: "/images/products/spout-sauce.jpg" },
+      { name: "Beverage Spout Pouch", image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&h=400&fit=crop" },
+      { name: "Baby Food Spout Pouch", image: "https://images.unsplash.com/photo-1544961371-516024f8e267?w=400&h=400&fit=crop" },
+      { name: "Sauce Spout Pouch", image: "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=400&h=400&fit=crop" },
     ]
   },
   {
     id: "roll-stock-films",
     name: "Roll Stock & Lidding Films",
     description: "High-quality laminated films for automatic packaging machines and lidding applications.",
-    image: "/images/products/roll-stock.jpg",
     products: [
-      { name: "Printed Roll Stock", image: "/images/products/roll-printed.jpg" },
-      { name: "Lidding Film", image: "/images/products/roll-lidding.jpg" },
-      { name: "Form Fill Seal Film", image: "/images/products/roll-ffs.jpg" },
+      { name: "Printed Roll Stock", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=400&fit=crop" },
+      { name: "Lidding Film", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" },
+      { name: "Form Fill Seal Film", image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=400&fit=crop" },
     ]
   },
   {
     id: "stand-up-pouch-tap",
     name: "Stand Up Pouch with Tap",
     description: "Large format pouches with dispensing taps, ideal for bag-in-box applications.",
-    image: "/images/products/sup-tap.jpg",
     products: [
-      { name: "Wine Bag with Tap", image: "/images/products/tap-wine.jpg" },
-      { name: "Juice Bag with Tap", image: "/images/products/tap-juice.jpg" },
+      { name: "Wine Bag with Tap", image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&h=400&fit=crop" },
+      { name: "Juice Bag with Tap", image: "https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&h=400&fit=crop" },
     ]
   },
   {
     id: "bag-in-box",
     name: "Bag-In-Box",
     description: "Inner bags designed for box packaging, perfect for beverages and liquid products.",
-    image: "/images/products/bag-in-box.jpg",
     products: [
-      { name: "BIB with Valve", image: "/images/products/bib-valve.jpg" },
-      { name: "BIB with Tap", image: "/images/products/bib-tap.jpg" },
+      { name: "BIB with Valve", image: "https://images.unsplash.com/photo-1474722883778-792e7990302f?w=400&h=400&fit=crop" },
+      { name: "BIB with Tap", image: "https://images.unsplash.com/photo-1568702846914-96b305d2uj68?w=400&h=400&fit=crop" },
     ]
   },
   {
     id: "quad-seal-bag",
     name: "Quad Seal Bag",
     description: "Four-corner sealed bags offering maximum shelf impact and filling capacity.",
-    image: "/images/products/quad-seal.jpg",
     products: [
-      { name: "Coffee Quad Seal", image: "/images/products/quad-coffee.jpg" },
-      { name: "Pet Food Quad Seal", image: "/images/products/quad-petfood.jpg" },
+      { name: "Coffee Quad Seal", image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=400&fit=crop" },
+      { name: "Pet Food Quad Seal", image: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=400&h=400&fit=crop" },
     ]
   },
   {
     id: "flat-pouch",
     name: "Flat Pouch",
     description: "Simple three-side sealed pouches for sachets, samples, and lightweight products.",
-    image: "/images/products/flat-pouch.jpg",
     products: [
-      { name: "Sachet Pouch", image: "/images/products/flat-sachet.jpg" },
-      { name: "Sample Pouch", image: "/images/products/flat-sample.jpg" },
+      { name: "Sachet Pouch", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop" },
+      { name: "Sample Pouch", image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&h=400&fit=crop" },
     ]
   },
   {
     id: "shaped-pouch",
     name: "Shaped Pouch",
     description: "Custom die-cut pouches in unique shapes for standout shelf presence.",
-    image: "/images/products/shaped-pouch.jpg",
     products: [
-      { name: "Bottle Shaped Pouch", image: "/images/products/shaped-bottle.jpg" },
-      { name: "Custom Shape Pouch", image: "/images/products/shaped-custom.jpg" },
-    ]
-  },
-  {
-    id: "shrink-sleeves",
-    name: "Shrink Sleeves Label",
-    description: "360-degree printable shrink labels for bottles, jars, and containers.",
-    image: "/images/products/shrink-sleeve.jpg",
-    products: [
-      { name: "Bottle Shrink Sleeve", image: "/images/products/sleeve-bottle.jpg" },
-      { name: "Jar Shrink Sleeve", image: "/images/products/sleeve-jar.jpg" },
-    ]
-  },
-  {
-    id: "thermoforming",
-    name: "Thermoforming",
-    description: "Formed plastic packaging for precise product fit and protection.",
-    image: "/images/products/thermoforming.jpg",
-    products: [
-      { name: "Meat Tray", image: "/images/products/thermo-meat.jpg" },
-      { name: "Cheese Pack", image: "/images/products/thermo-cheese.jpg" },
-    ]
-  },
-  {
-    id: "vacuum",
-    name: "Vacuum",
-    description: "Vacuum-sealed packaging for extended freshness and shelf life.",
-    image: "/images/products/vacuum.jpg",
-    products: [
-      { name: "Vacuum Bag", image: "/images/products/vacuum-bag.jpg" },
-      { name: "Vacuum Pouch", image: "/images/products/vacuum-pouch.jpg" },
-    ]
-  },
-  {
-    id: "flow-pack",
-    name: "Flow Pack",
-    description: "Horizontal form-fill-seal packaging for bars, biscuits, and single-serve products.",
-    image: "/images/products/flow-pack.jpg",
-    products: [
-      { name: "Bar Wrapper", image: "/images/products/flow-bar.jpg" },
-      { name: "Biscuit Pack", image: "/images/products/flow-biscuit.jpg" },
+      { name: "Bottle Shaped Pouch", image: "https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=400&h=400&fit=crop" },
+      { name: "Custom Shape Pouch", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&h=400&fit=crop" },
     ]
   },
 ]
@@ -213,10 +163,12 @@ function ProductCarousel({ products }: { products: { name: string; image: string
             transition={{ delay: index * 0.1 }}
             className="flex-shrink-0 w-64"
           >
-            <div className="bg-gray-100 rounded-2xl aspect-square flex items-center justify-center overflow-hidden group cursor-pointer">
-              <div className="w-32 h-40 bg-gradient-to-b from-[#00cfca]/20 to-[#00cfca]/5 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
-                <span className="text-[#00cfca]/50 text-sm">Product Image</span>
-              </div>
+            <div className="bg-white rounded-2xl aspect-square flex items-center justify-center overflow-hidden group cursor-pointer shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
+              <img 
+                src={product.image} 
+                alt={product.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
             <p className="mt-3 text-sm font-medium text-gray-700 text-center">{product.name}</p>
           </motion.div>

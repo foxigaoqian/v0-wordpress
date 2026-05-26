@@ -15,6 +15,7 @@ const featuredPost = {
   author: "Mewepak Team",
   date: "Jan 15, 2024",
   readTime: "8 min read",
+  image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop",
 }
 
 const posts = [
@@ -26,6 +27,7 @@ const posts = [
     author: "Mewepak Team",
     date: "Jan 12, 2024",
     readTime: "5 min read",
+    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop",
   },
   {
     slug: "coffee-packaging-guide",
@@ -35,6 +37,7 @@ const posts = [
     author: "Mewepak Team",
     date: "Jan 10, 2024",
     readTime: "6 min read",
+    image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&h=400&fit=crop",
   },
   {
     slug: "pet-food-packaging",
@@ -44,6 +47,7 @@ const posts = [
     author: "Mewepak Team",
     date: "Jan 8, 2024",
     readTime: "4 min read",
+    image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=400&fit=crop",
   },
   {
     slug: "barrier-materials-explained",
@@ -53,6 +57,7 @@ const posts = [
     author: "Mewepak Team",
     date: "Jan 5, 2024",
     readTime: "7 min read",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
   },
   {
     slug: "design-tips-shelf-impact",
@@ -62,6 +67,7 @@ const posts = [
     author: "Mewepak Team",
     date: "Jan 3, 2024",
     readTime: "5 min read",
+    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop",
   },
   {
     slug: "recyclable-mono-materials",
@@ -71,6 +77,7 @@ const posts = [
     author: "Mewepak Team",
     date: "Dec 28, 2023",
     readTime: "6 min read",
+    image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&h=400&fit=crop",
   },
 ]
 
@@ -124,7 +131,13 @@ export function BlogArchive() {
           >
             <Link href={`/blog/${featuredPost.slug}`} className="block group">
               <div className="grid lg:grid-cols-2 gap-8 bg-gray-50 rounded-3xl overflow-hidden">
-                <div className="aspect-video lg:aspect-auto bg-gradient-to-br from-[#00cfca]/10 to-[#00cfca]/5" />
+                <div className="aspect-video lg:aspect-auto overflow-hidden">
+                  <img 
+                    src={featuredPost.image} 
+                    alt={featuredPost.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
                 <div className="p-8 flex flex-col justify-center">
                   <span className="text-sm font-semibold text-[#00cfca] mb-2">{featuredPost.category}</span>
                   <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-[#00cfca] transition-colors">
@@ -182,7 +195,13 @@ export function BlogArchive() {
                 transition={{ delay: index * 0.05 }}
               >
                 <Link href={`/blog/${post.slug}`} className="block group">
-                  <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-50 rounded-2xl mb-4" />
+                  <div className="aspect-video rounded-2xl mb-4 overflow-hidden">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
                   <span className="text-xs font-semibold text-[#00cfca]">{post.category}</span>
                   <h3 className="mt-2 font-semibold text-gray-900 group-hover:text-[#00cfca] transition-colors line-clamp-2">
                     {post.title}

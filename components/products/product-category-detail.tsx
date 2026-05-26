@@ -13,14 +13,14 @@ interface ProductCategoryDetailProps {
 }
 
 const products = [
-  { name: "Classic Design", features: ["Zipper closure", "Matte finish"] },
-  { name: "Premium Finish", features: ["Metallic effect", "Spot UV"] },
-  { name: "Eco-Friendly", features: ["Recyclable", "Bio-based"] },
-  { name: "Window Design", features: ["Clear window", "Product visibility"] },
-  { name: "Kraft Paper", features: ["Natural look", "Sustainable"] },
-  { name: "High Barrier", features: ["Oxygen barrier", "Extended shelf life"] },
-  { name: "Child-Resistant", features: ["Safety lock", "Compliance"] },
-  { name: "Shaped Design", features: ["Custom shape", "Brand impact"] },
+  { name: "Classic Design", features: ["Zipper closure", "Matte finish"], image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=400&h=400&fit=crop" },
+  { name: "Premium Finish", features: ["Metallic effect", "Spot UV"], image: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=400&h=400&fit=crop" },
+  { name: "Eco-Friendly", features: ["Recyclable", "Bio-based"], image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=400&fit=crop" },
+  { name: "Window Design", features: ["Clear window", "Product visibility"], image: "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=400&h=400&fit=crop" },
+  { name: "Kraft Paper", features: ["Natural look", "Sustainable"], image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=400&fit=crop" },
+  { name: "High Barrier", features: ["Oxygen barrier", "Extended shelf life"], image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=400&fit=crop" },
+  { name: "Child-Resistant", features: ["Safety lock", "Compliance"], image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" },
+  { name: "Shaped Design", features: ["Custom shape", "Brand impact"], image: "https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=400&h=400&fit=crop" },
 ]
 
 const valueProps = [
@@ -129,8 +129,12 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              <div className="aspect-square bg-gradient-to-br from-[#00cfca]/10 to-[#00cfca]/5 rounded-3xl flex items-center justify-center">
-                <div className="w-48 h-64 bg-gradient-to-b from-[#00cfca]/30 to-[#00cfca]/10 rounded-t-3xl rounded-b-lg shadow-2xl" />
+              <div className="aspect-square bg-gradient-to-br from-[#00cfca]/10 to-[#00cfca]/5 rounded-3xl flex items-center justify-center overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=600&h=600&fit=crop" 
+                  alt={category.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </motion.div>
           </div>
@@ -164,10 +168,14 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
                 transition={{ delay: index * 0.05 }}
                 className="group cursor-pointer"
               >
-                <div className="aspect-square bg-gray-100 rounded-2xl flex items-center justify-center overflow-hidden relative">
-                  <div className="w-24 h-32 bg-gradient-to-b from-[#00cfca]/20 to-[#00cfca]/5 rounded-xl group-hover:scale-105 transition-transform" />
+                <div className="aspect-square bg-gray-100 rounded-2xl flex items-center justify-center overflow-hidden relative group-hover:shadow-lg transition-shadow">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                   <div className="absolute inset-0 bg-[#00cfca]/0 group-hover:bg-[#00cfca]/10 transition-colors flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 text-[#00cfca] font-semibold transition-opacity">
+                    <span className="opacity-0 group-hover:opacity-100 text-white font-semibold bg-[#00cfca] px-4 py-2 rounded-full transition-opacity shadow-lg">
                       View Details
                     </span>
                   </div>
