@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import { ChevronRight, Check, Zap, Shield, Leaf, ArrowRight, Plus, Minus, Package, Palette, Settings, Award, Truck, HeadphonesIcon } from "lucide-react";
+import { ChevronRight, Check, Leaf, ArrowRight, Plus, Package, Palette, Settings, Award, Truck, HeadphonesIcon, Shield } from "lucide-react";
 
 interface SingleProductProps {
   categorySlug: string;
@@ -112,30 +112,34 @@ export default function SingleProduct({ categorySlug, productSlug }: SingleProdu
         </div>
       </div>
 
-      {/* Product Top Section */}
-      <section className="py-16">
+      {/* Product Section - Combined Image Gallery & Configurator */}
+      <section className="py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Product Images */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Left Column - Product Images */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="aspect-square rounded-3xl overflow-hidden bg-gray-50 mb-4 border border-gray-100">
+              <div className="aspect-square rounded-2xl overflow-hidden bg-gray-50 mb-4 border border-gray-100 relative group">
                 <img
                   src={product.images[selectedImage]}
                   alt={product.name}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover"
                 />
+                <button className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-gray-900/70 text-white text-sm px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Plus className="w-4 h-4" />
+                  Click to expand
+                </button>
               </div>
               <div className="grid grid-cols-4 gap-3">
                 {product.images.map((img: string, idx: number) => (
                   <button
                     key={idx}
                     onClick={() => setSelectedImage(idx)}
-                    className={`aspect-square rounded-xl overflow-hidden border-2 transition-all hover:opacity-100 ${
-                      selectedImage === idx ? "border-[#00cfca] opacity-100" : "border-gray-100 opacity-70"
+                    className={`aspect-square rounded-xl overflow-hidden border-2 transition-all ${
+                      selectedImage === idx ? "border-[#00cfca]" : "border-gray-200 hover:border-gray-300"
                     }`}
                   >
                     <img src={img} alt="" className="w-full h-full object-cover" />
@@ -144,193 +148,162 @@ export default function SingleProduct({ categorySlug, productSlug }: SingleProdu
               </div>
             </motion.div>
 
-            {/* Product Info */}
+            {/* Right Column - Product Info & Configurator */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-6"
             >
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">{product.name}</h1>
-              <p className="text-lg text-gray-600 mb-8">{product.description}</p>
-
-              {/* Features */}
-              <div className="mb-8">
-                <h3 className="font-semibold text-gray-900 mb-4">Key Features</h3>
-                <ul className="space-y-3">
-                  {product.features.map((feature: string, idx: number) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-[#00cfca] mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+              {/* Product Code & Name */}
+              <div>
+                <p className="text-sm text-gray-500 mb-1">SKU-{productSlug.toUpperCase()}</p>
+                <h1 className="text-3xl lg:text-4xl font-bold text-gray-900">{product.name}</h1>
               </div>
 
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-[#00cfca] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#00b8b4] transition-colors"
-              >
-                Request a Quote
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+              {/* Description */}
+              <p className="text-gray-600 leading-relaxed">{product.description}</p>
 
-      {/* Product Configurator */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-3xl p-8 lg:p-12 shadow-lg"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Configure Your Product</h2>
-            
-            <div className="grid lg:grid-cols-2 gap-12">
-              {/* Left Column */}
-              <div className="space-y-8">
-                {/* Dimensions */}
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-4">Dimensions (mm)</h3>
-                  <div className="grid grid-cols-3 gap-4">
-                    <div>
-                      <label className="block text-sm text-gray-500 mb-2">Width</label>
-                      <input
-                        type="number"
-                        defaultValue={150}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#00cfca]"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm text-gray-500 mb-2">Height</label>
-                      <input
-                        type="number"
-                        defaultValue={200}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#00cfca]"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm text-gray-500 mb-2">Gusset</label>
-                      <input
-                        type="number"
-                        defaultValue={50}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#00cfca]"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Material */}
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-4">Material Structure</h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {product.materials.map((material: string) => (
-                      <button
-                        key={material}
-                        onClick={() => setSelectedMaterial(material)}
-                        className={`px-4 py-3 rounded-xl border-2 text-sm font-medium transition-all ${
-                          selectedMaterial === material
-                            ? "border-[#00cfca] bg-[#00cfca]/10 text-[#00cfca]"
-                            : "border-gray-200 text-gray-600 hover:border-gray-300"
-                        }`}
-                      >
-                        {material}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Finish */}
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-4">Finish</h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {product.finishes.map((finish: string) => (
-                      <button
-                        key={finish}
-                        onClick={() => setSelectedFinish(finish)}
-                        className={`px-4 py-3 rounded-xl border-2 text-sm font-medium transition-all ${
-                          selectedFinish === finish
-                            ? "border-[#00cfca] bg-[#00cfca]/10 text-[#00cfca]"
-                            : "border-gray-200 text-gray-600 hover:border-gray-300"
-                        }`}
-                      >
-                        {finish}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column */}
-              <div className="space-y-8">
-                {/* Quantity */}
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-4">Quantity</h3>
-                  <div className="flex items-center gap-4">
-                    <button
-                      onClick={() => setQuantity(Math.max(1000, quantity - 1000))}
-                      className="w-12 h-12 rounded-xl border border-gray-200 flex items-center justify-center hover:bg-gray-50"
-                    >
-                      <Minus className="w-5 h-5" />
-                    </button>
+              {/* Dimensions */}
+              <div>
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-sm text-gray-700 mb-2">Length (inch) <span className="text-red-500">*</span></label>
                     <input
                       type="number"
-                      value={quantity}
-                      onChange={(e) => setQuantity(parseInt(e.target.value) || 1000)}
-                      className="w-32 px-4 py-3 border border-gray-200 rounded-xl text-center focus:outline-none focus:border-[#00cfca]"
+                      placeholder=""
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] focus:ring-1 focus:ring-[#00cfca]"
                     />
-                    <button
-                      onClick={() => setQuantity(quantity + 1000)}
-                      className="w-12 h-12 rounded-xl border border-gray-200 flex items-center justify-center hover:bg-gray-50"
-                    >
-                      <Plus className="w-5 h-5" />
-                    </button>
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">Minimum order: 1,000 pcs</p>
-                </div>
-
-                {/* Add-ons */}
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-4">Add-ons</h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {product.addons.map((addon: string) => (
-                      <button
-                        key={addon}
-                        onClick={() => toggleAddon(addon)}
-                        className={`flex items-center gap-3 px-4 py-3 rounded-xl border-2 text-sm text-left transition-all ${
-                          selectedAddons.includes(addon)
-                            ? "border-[#00cfca] bg-[#00cfca]/10"
-                            : "border-gray-200 hover:border-gray-300"
-                        }`}
-                      >
-                        <div className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 ${
-                          selectedAddons.includes(addon)
-                            ? "border-[#00cfca] bg-[#00cfca]"
-                            : "border-gray-300"
-                        }`}>
-                          {selectedAddons.includes(addon) && <Check className="w-3 h-3 text-white" />}
-                        </div>
-                        <span className="text-gray-700">{addon}</span>
-                      </button>
-                    ))}
+                  <div>
+                    <label className="block text-sm text-gray-700 mb-2">Width (inch) <span className="text-red-500">*</span></label>
+                    <input
+                      type="number"
+                      placeholder=""
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] focus:ring-1 focus:ring-[#00cfca]"
+                    />
                   </div>
-                </div>
-
-                {/* CTA */}
-                <div className="pt-4">
-                  <button className="w-full bg-[#00cfca] text-white py-4 rounded-xl font-semibold hover:bg-[#00b8b4] transition-colors">
-                    Add to Quote Request
-                  </button>
-                  <p className="text-center text-sm text-gray-500 mt-3">
-                    Our team will respond within 24 hours
-                  </p>
+                  <div>
+                    <label className="block text-sm text-gray-700 mb-2">Depth (inch) <span className="text-red-500">*</span></label>
+                    <input
+                      type="number"
+                      placeholder=""
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] focus:ring-1 focus:ring-[#00cfca]"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+
+              {/* Dropdowns Row */}
+              <div className="grid grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-sm text-gray-700 mb-2">Material <span className="text-red-500">*</span></label>
+                  <select 
+                    value={selectedMaterial}
+                    onChange={(e) => setSelectedMaterial(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] focus:ring-1 focus:ring-[#00cfca] bg-white text-gray-700 appearance-none cursor-pointer"
+                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px' }}
+                  >
+                    <option value="">Need Consultation</option>
+                    {product.materials.map((material: string) => (
+                      <option key={material} value={material}>{material}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-700 mb-2">Print <span className="text-red-500">*</span></label>
+                  <select 
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] focus:ring-1 focus:ring-[#00cfca] bg-white text-gray-700 appearance-none cursor-pointer"
+                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px' }}
+                  >
+                    <option value="">Need Consultation</option>
+                    {product.printingMethods.map((method: string) => (
+                      <option key={method} value={method}>{method}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-700 mb-2">Finishing <span className="text-red-500">*</span></label>
+                  <select 
+                    value={selectedFinish}
+                    onChange={(e) => setSelectedFinish(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] focus:ring-1 focus:ring-[#00cfca] bg-white text-gray-700 appearance-none cursor-pointer"
+                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px' }}
+                  >
+                    <option value="">Need Consultation</option>
+                    {product.finishes.map((finish: string) => (
+                      <option key={finish} value={finish}>{finish}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Additional Options */}
+              <div>
+                <label className="block text-sm text-gray-700 mb-3">Additional Options</label>
+                <div className="flex flex-wrap gap-2">
+                  {["Foil Stamping", "Embossing", "Debossing", "Window Patching"].map((option) => (
+                    <button
+                      key={option}
+                      onClick={() => toggleAddon(option)}
+                      className={`px-4 py-2 rounded-lg border text-sm transition-all ${
+                        selectedAddons.includes(option)
+                          ? "border-[#00cfca] bg-[#00cfca]/10 text-[#00cfca]"
+                          : "border-gray-200 text-gray-600 hover:border-gray-300"
+                      }`}
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Add-on */}
+              <div>
+                <label className="block text-sm text-gray-700 mb-3">Add-on</label>
+                <div className="flex flex-wrap gap-2">
+                  {product.addons.slice(0, 4).map((addon: string) => (
+                    <button
+                      key={addon}
+                      onClick={() => toggleAddon(addon)}
+                      className={`px-4 py-2 rounded-lg border text-sm transition-all ${
+                        selectedAddons.includes(addon)
+                          ? "border-[#00cfca] bg-[#00cfca]/10 text-[#00cfca]"
+                          : "border-gray-200 text-gray-600 hover:border-gray-300"
+                      }`}
+                    >
+                      {addon}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Price */}
+              <div className="pt-2">
+                <p className="text-[#00cfca] font-bold text-lg uppercase tracking-wide">Price on Request</p>
+              </div>
+
+              {/* Quantity & CTA */}
+              <div className="flex items-center gap-4 pt-2">
+                <select 
+                  value={quantity}
+                  onChange={(e) => setQuantity(parseInt(e.target.value))}
+                  className="px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] bg-white text-gray-700 appearance-none cursor-pointer"
+                  style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px', paddingRight: '40px' }}
+                >
+                  <option value={1000}>1000</option>
+                  <option value={5000}>5000</option>
+                  <option value={10000}>10000</option>
+                  <option value={25000}>25000</option>
+                  <option value={50000}>50000</option>
+                </select>
+                <button className="flex-1 flex items-center justify-center gap-2 bg-[#00cfca] text-white py-3.5 px-6 rounded-full font-semibold hover:bg-[#00b8b4] transition-colors">
+                  <Plus className="w-5 h-5" />
+                  ADD TO QUOTE
+                </button>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
