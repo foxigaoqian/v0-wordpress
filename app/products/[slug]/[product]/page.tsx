@@ -1,8 +1,8 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import SingleProduct from "@/components/products/single-product";
 
 export default function ProductDetailPage() {
