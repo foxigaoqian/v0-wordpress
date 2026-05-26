@@ -13,14 +13,14 @@ interface ProductCategoryDetailProps {
 }
 
 const products = [
-  { name: "Classic Design", features: ["Zipper closure", "Matte finish"], image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=400&h=400&fit=crop" },
-  { name: "Premium Finish", features: ["Metallic effect", "Spot UV"], image: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=400&h=400&fit=crop" },
-  { name: "Eco-Friendly", features: ["Recyclable", "Bio-based"], image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=400&fit=crop" },
-  { name: "Window Design", features: ["Clear window", "Product visibility"], image: "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=400&h=400&fit=crop" },
-  { name: "Kraft Paper", features: ["Natural look", "Sustainable"], image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=400&fit=crop" },
-  { name: "High Barrier", features: ["Oxygen barrier", "Extended shelf life"], image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=400&fit=crop" },
-  { name: "Child-Resistant", features: ["Safety lock", "Compliance"], image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" },
-  { name: "Shaped Design", features: ["Custom shape", "Brand impact"], image: "https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=400&h=400&fit=crop" },
+  { name: "Classic Design", slug: "classic", features: ["Zipper closure", "Matte finish"], image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=400&h=400&fit=crop" },
+  { name: "Premium Finish", slug: "premium", features: ["Metallic effect", "Spot UV"], image: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=400&h=400&fit=crop" },
+  { name: "Eco-Friendly", slug: "eco-friendly", features: ["Recyclable", "Bio-based"], image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=400&fit=crop" },
+  { name: "Window Design", slug: "window", features: ["Clear window", "Product visibility"], image: "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=400&h=400&fit=crop" },
+  { name: "Kraft Paper", slug: "kraft", features: ["Natural look", "Sustainable"], image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=400&fit=crop" },
+  { name: "High Barrier", slug: "high-barrier", features: ["Oxygen barrier", "Extended shelf life"], image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=400&fit=crop" },
+  { name: "Child-Resistant", slug: "child-resistant", features: ["Safety lock", "Compliance"], image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" },
+  { name: "Shaped Design", slug: "shaped", features: ["Custom shape", "Brand impact"], image: "https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=400&h=400&fit=crop" },
 ]
 
 const valueProps = [
@@ -166,30 +166,31 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="group cursor-pointer"
               >
-                <div className="aspect-square bg-gray-100 rounded-2xl flex items-center justify-center overflow-hidden relative group-hover:shadow-lg transition-shadow">
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-[#00cfca]/0 group-hover:bg-[#00cfca]/10 transition-colors flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 text-white font-semibold bg-[#00cfca] px-4 py-2 rounded-full transition-opacity shadow-lg">
-                      View Details
-                    </span>
+                <Link href={`/products/${slug}/${product.slug}`} className="group block">
+                  <div className="aspect-square bg-gray-100 rounded-2xl flex items-center justify-center overflow-hidden relative group-hover:shadow-lg transition-shadow">
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-[#00cfca]/0 group-hover:bg-[#00cfca]/10 transition-colors flex items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 text-white font-semibold bg-[#00cfca] px-4 py-2 rounded-full transition-opacity shadow-lg">
+                        View Details
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <h3 className="mt-4 font-semibold text-gray-900 group-hover:text-[#00cfca] transition-colors">
-                  {product.name}
-                </h3>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {product.features.map((feature) => (
-                    <span key={feature} className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
-                      {feature}
-                    </span>
-                  ))}
-                </div>
+                  <h3 className="mt-4 font-semibold text-gray-900 group-hover:text-[#00cfca] transition-colors">
+                    {product.name}
+                  </h3>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {product.features.map((feature) => (
+                      <span key={feature} className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
