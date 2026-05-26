@@ -1,5 +1,5 @@
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import SustainablePackaging from "@/components/sustainability/sustainable-packaging";
 
 export const metadata = {

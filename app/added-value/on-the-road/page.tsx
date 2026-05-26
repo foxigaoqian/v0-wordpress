@@ -1,5 +1,5 @@
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import OnTheRoad from "@/components/added-value/on-the-road";
 
 export const metadata = {
