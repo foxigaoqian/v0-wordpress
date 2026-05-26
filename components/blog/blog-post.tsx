@@ -61,7 +61,13 @@ export function BlogPost({ slug, post }: BlogPostProps) {
 
       {/* Featured Image */}
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
-        <div className="aspect-video bg-gradient-to-br from-[#00cfca]/10 to-[#00cfca]/5 rounded-2xl" />
+        <div className="aspect-video bg-gradient-to-br from-[#00cfca]/20 to-[#00cfca]/10 rounded-2xl overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop" 
+            alt={post.title}
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
 
       {/* Article Content */}
@@ -70,23 +76,23 @@ export function BlogPost({ slug, post }: BlogPostProps) {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-2">
-              <div className="prose prose-lg max-w-none">
-                <p className="text-xl text-gray-600 leading-relaxed">
+              <div className="max-w-none">
+                <p className="text-xl text-gray-600 leading-relaxed mb-8">
                   {post.excerpt}
                 </p>
 
-                <h2>Introduction</h2>
-                <p>
+                <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Introduction</h2>
+                <p className="text-gray-700 leading-relaxed mb-6">
                   Stand up pouches have revolutionized the packaging industry, offering brands a versatile, cost-effective, and visually appealing solution for a wide range of products. In this comprehensive guide, we will explore everything you need to know about stand up pouches.
                 </p>
 
-                <h2>What is a Stand Up Pouch?</h2>
-                <p>
+                <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">What is a Stand Up Pouch?</h2>
+                <p className="text-gray-700 leading-relaxed mb-6">
                   A stand up pouch (SUP) is a flexible packaging format that features a bottom gusset, allowing it to stand upright on store shelves. This design offers excellent shelf presence and maximizes printable surface area for branding.
                 </p>
 
-                <h3>Key Benefits</h3>
-                <ul>
+                <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Key Benefits</h3>
+                <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
                   <li>Superior shelf presence and brand visibility</li>
                   <li>Lightweight, reducing shipping costs</li>
                   <li>Excellent barrier properties for product protection</li>
@@ -94,22 +100,22 @@ export function BlogPost({ slug, post }: BlogPostProps) {
                   <li>Cost-effective compared to rigid packaging</li>
                 </ul>
 
-                <h2>Materials and Structures</h2>
-                <p>
+                <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Materials and Structures</h2>
+                <p className="text-gray-700 leading-relaxed mb-4">
                   Stand up pouches can be constructed from various material combinations depending on your product requirements. Common structures include:
                 </p>
-                <ul>
-                  <li><strong>PET/PE:</strong> Clear, good barrier, recyclable</li>
-                  <li><strong>PET/AL/PE:</strong> Excellent barrier, metallic appearance</li>
-                  <li><strong>Kraft/PE:</strong> Natural look, sustainable appeal</li>
-                  <li><strong>BOPP/CPP:</strong> Cost-effective, good clarity</li>
+                <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
+                  <li><strong className="text-gray-900">PET/PE:</strong> Clear, good barrier, recyclable</li>
+                  <li><strong className="text-gray-900">PET/AL/PE:</strong> Excellent barrier, metallic appearance</li>
+                  <li><strong className="text-gray-900">Kraft/PE:</strong> Natural look, sustainable appeal</li>
+                  <li><strong className="text-gray-900">BOPP/CPP:</strong> Cost-effective, good clarity</li>
                 </ul>
 
-                <h2>Choosing the Right Features</h2>
-                <p>
+                <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Choosing the Right Features</h2>
+                <p className="text-gray-700 leading-relaxed mb-4">
                   Consider adding these features to enhance functionality:
                 </p>
-                <ul>
+                <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
                   <li>Zipper closures for resealability</li>
                   <li>Tear notches for easy opening</li>
                   <li>Hang holes for retail display</li>
@@ -117,8 +123,8 @@ export function BlogPost({ slug, post }: BlogPostProps) {
                   <li>Degassing valves for coffee packaging</li>
                 </ul>
 
-                <h2>Conclusion</h2>
-                <p>
+                <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Conclusion</h2>
+                <p className="text-gray-700 leading-relaxed mb-6">
                   Stand up pouches continue to grow in popularity across industries. By understanding your product needs and available options, you can select the perfect packaging solution that protects your products and elevates your brand.
                 </p>
               </div>
