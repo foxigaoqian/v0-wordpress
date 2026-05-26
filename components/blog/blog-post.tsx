@@ -35,40 +35,42 @@ export function BlogPost({ slug, post }: BlogPostProps) {
         </div>
       </div>
 
-      {/* Article Header */}
-      <section className="py-12 lg:py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Link href="/blog" className="inline-flex items-center gap-2 text-gray-500 hover:text-[#00cfca] mb-6">
-              <ArrowLeft className="w-4 h-4" /> Back to Blog
-            </Link>
-            <span className="text-sm font-semibold text-[#00cfca] block mb-4">{post.category}</span>
-            <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
-              {post.title}
-            </h1>
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-gray-500">
-              <span className="flex items-center gap-1"><User className="w-4 h-4" /> Mewepak Team</span>
-              <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> Jan 15, 2024</span>
-              <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> 8 min read</span>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Featured Image */}
-      <div className="max-w-4xl mx-auto px-6 lg:px-8">
-        <div className="aspect-video bg-gradient-to-br from-[#00cfca]/20 to-[#00cfca]/10 rounded-2xl overflow-hidden">
+      {/* Hero Section with Full-Width Featured Image */}
+      <section className="relative">
+        {/* Featured Image - Full Width */}
+        <div className="relative h-[400px] lg:h-[500px] overflow-hidden">
           <img 
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop" 
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=800&fit=crop" 
             alt={post.title}
             className="w-full h-full object-cover"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+          
+          {/* Overlay Content */}
+          <div className="absolute inset-0 flex items-end">
+            <div className="max-w-4xl mx-auto px-6 lg:px-8 pb-12 lg:pb-16 w-full">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <Link href="/blog" className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-4 transition-colors">
+                  <ArrowLeft className="w-4 h-4" /> Back to Blog
+                </Link>
+                <span className="inline-block px-3 py-1 bg-[#00cfca] text-white text-sm font-semibold rounded-full mb-4">{post.category}</span>
+                <h1 className="text-3xl lg:text-5xl font-bold text-white leading-tight mb-4">
+                  {post.title}
+                </h1>
+                <div className="flex flex-wrap items-center gap-4 text-sm text-white/80">
+                  <span className="flex items-center gap-1"><User className="w-4 h-4" /> Mewepak Team</span>
+                  <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> Jan 15, 2024</span>
+                  <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> 8 min read</span>
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Article Content */}
       <section className="py-12 lg:py-16 bg-white">

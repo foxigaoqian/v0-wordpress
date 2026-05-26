@@ -228,11 +228,11 @@ export function BlogArchive() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#00cfca] focus:border-transparent"
+                className="flex-1 px-4 py-3 bg-white border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#00cfca] focus:border-transparent shadow-sm"
               />
               <button
                 type="submit"
-                className="px-6 py-3 bg-[#00cfca] text-white font-semibold rounded-full hover:bg-[#00b8b3] transition-colors"
+                className="px-6 py-3 bg-[#00cfca] text-white font-semibold rounded-full hover:bg-[#00b8b3] transition-colors shadow-sm"
               >
                 Subscribe
               </button>

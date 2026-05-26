@@ -51,9 +51,9 @@ const reportSections = [
 
 export function ImpactReportPage() {
   return (
-    <main className="min-h-screen bg-white pt-32 lg:pt-36">
+    <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden pt-8 lg:pt-12">
         <div className="absolute inset-0 bg-gradient-to-br from-[#00cfca]/5 to-transparent" />
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
           <motion.div
