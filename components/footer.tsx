@@ -6,43 +6,53 @@ import { MapPin, Phone, Mail } from "lucide-react";
 
 const footerLinks = {
   products: [
-    "Custom Cardboard Boxes",
-    "Custom Cosmetic Display Boxes",
-    "Custom Kraft Boxes",
-    "Custom Packaging Boxes",
-    "Custom Printed Boxes",
-    "Customized Boxes",
-    "Magnetic Closure Boxes",
-    "Mailer Boxes",
-    "Pizza Boxes",
-    "Tuck End Auto Bottom",
+    { name: "Stand Up Pouch", href: "/products/stand-up-pouch" },
+    { name: "Flat Bottom Pouch", href: "/products/flat-bottom-pouch" },
+    { name: "Retort Pouch", href: "/products/retort-pouch" },
+    { name: "Spout Pouch", href: "/products/spout-pouch" },
+    { name: "Roll Stock & Lidding Films", href: "/products/roll-stock-lidding-films" },
+    { name: "Stand Up Pouch with Tap", href: "/products/stand-up-pouch-with-tap" },
+    { name: "Bag-In-Box", href: "/products/bag-in-box" },
+    { name: "Quad Seal Bag", href: "/products/quad-seal-bag" },
+    { name: "Flat Pouch", href: "/products/flat-pouch" },
+    { name: "Shaped Pouch", href: "/products/shaped-pouch" },
   ],
-  industries: [
-    "Bottles & Jars",
-    "Cardboard Packaging",
-    "Cosmetic Boxes",
-    "Display Packaging",
-    "Eco Friendly Boxes",
-    "Food And Beverage",
-    "Gift Boxes",
-    "Mylar Bags & Pouches",
-    "Retail Boxes",
-    "Rigid Boxes",
+  markets: [
+    { name: "Coffee & Tea", href: "/markets/coffee-tea" },
+    { name: "Snacks & Sweets", href: "/markets/snacks-sweets" },
+    { name: "Supplement", href: "/markets/supplement" },
+    { name: "Pet Food", href: "/markets/pet-food" },
+    { name: "Sauce & Soup", href: "/markets/sauce-soup" },
+    { name: "Baby Food", href: "/markets/baby-food" },
+    { name: "Beverage", href: "/markets/beverage" },
+    { name: "Frozen Food", href: "/markets/frozen-food" },
+    { name: "Home Care", href: "/markets/home-care" },
+    { name: "Cosmetics", href: "/markets/cosmetics" },
   ],
   company: [
-    "Home",
-    "Store",
-    "About",
-    "Artwork Guidelines",
-    "Why TCB",
-    "How It Works",
-    "Customer Stories",
-    "Testimonials",
-    "FAQS",
-    "Custom Packaging Blog",
-    "Get Quote",
-    "Contact Us",
-    "Sitemap",
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about-us" },
+    { name: "Global Reach", href: "/about-us/global-reach" },
+    { name: "Quality Certifications", href: "/about-us/quality-certifications" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" },
+    { name: "FAQ", href: "/added-value/faq" },
+    { name: "Help Center", href: "/added-value/help-center" },
+    { name: "Careers", href: "/added-value/careers" },
+  ],
+  solutions: [
+    { name: "Prepress", href: "/solutions/prepress" },
+    { name: "Printing", href: "/solutions/printing" },
+    { name: "Technical", href: "/solutions/technical" },
+    { name: "Recycling", href: "/solutions/recycling" },
+    { name: "Retort", href: "/solutions/retort" },
+  ],
+  sustainability: [
+    { name: "Sustainable Packaging", href: "/sustainability/sustainable-packaging" },
+    { name: "Operations Sustainability", href: "/sustainability/operations-sustainability" },
+    { name: "Social Sustainability", href: "/sustainability/social-sustainability" },
+    { name: "ProAmpac Impact Report", href: "/sustainability/proampac-impact-report" },
+    { name: "Life Cycle Analysis Tool", href: "/sustainability/life-cycle-analysis-tool" },
   ],
 };
 
@@ -56,7 +66,7 @@ export function Footer() {
   return (
     <footer className="bg-[#00cfca] pt-20 pb-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 pb-16">
           {/* Logo & About */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
@@ -74,7 +84,7 @@ export function Footer() {
             <div className="mb-6">
               <h4 className="font-bold text-white mb-2">Disclaimer</h4>
               <p className="text-sm text-white/80 leading-relaxed">
-                The Mewepak Is A Top-Rated Packaging Company Known For Its Many Benefits. Our Aim Is To Streamline Printing And Packaging For A Profitable And Satisfying Client Experience. Customer Satisfaction And Opinions Are Our Priorities.
+                The Mewepak Is A Top-Rated Packaging Company Known For Its Many Benefits. Our Aim Is To Streamline Printing And Packaging For A Profitable And Satisfying Client Experience.
               </p>
             </div>
 
@@ -98,23 +108,48 @@ export function Footer() {
             <h4 className="font-bold text-white mb-4">Products</h4>
             <ul className="space-y-2">
               {footerLinks.products.map((link) => (
-                <li key={link}>
-                  <Link href="#" className="text-sm text-white/80 hover:text-white transition-colors">
-                    {link}
+                <li key={link.name}>
+                  <Link href={link.href} className="text-sm text-white/80 hover:text-white transition-colors">
+                    {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Industries */}
+          {/* Markets */}
           <div>
-            <h4 className="font-bold text-white mb-4">Industries</h4>
+            <h4 className="font-bold text-white mb-4">Markets</h4>
             <ul className="space-y-2">
-              {footerLinks.industries.map((link) => (
-                <li key={link}>
-                  <Link href="#" className="text-sm text-white/80 hover:text-white transition-colors">
-                    {link}
+              {footerLinks.markets.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-sm text-white/80 hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Solutions & Sustainability */}
+          <div>
+            <h4 className="font-bold text-white mb-4">Solutions</h4>
+            <ul className="space-y-2 mb-6">
+              {footerLinks.solutions.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-sm text-white/80 hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            
+            <h4 className="font-bold text-white mb-4">Sustainability</h4>
+            <ul className="space-y-2">
+              {footerLinks.sustainability.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-sm text-white/80 hover:text-white transition-colors">
+                    {link.name}
                   </Link>
                 </li>
               ))}
@@ -126,9 +161,9 @@ export function Footer() {
             <h4 className="font-bold text-white mb-4">Company</h4>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
-                <li key={link}>
-                  <Link href="#" className="text-sm text-white/80 hover:text-white transition-colors">
-                    {link}
+                <li key={link.name}>
+                  <Link href={link.href} className="text-sm text-white/80 hover:text-white transition-colors">
+                    {link.name}
                   </Link>
                 </li>
               ))}
