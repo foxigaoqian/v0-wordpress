@@ -40,20 +40,6 @@ const footerLinks = {
     { name: "Help Center", href: "/added-value/help-center" },
     { name: "Careers", href: "/added-value/careers" },
   ],
-  solutions: [
-    { name: "Prepress", href: "/solutions/prepress" },
-    { name: "Printing", href: "/solutions/printing" },
-    { name: "Technical", href: "/solutions/technical" },
-    { name: "Recycling", href: "/solutions/recycling" },
-    { name: "Retort", href: "/solutions/retort" },
-  ],
-  sustainability: [
-    { name: "Sustainable Packaging", href: "/sustainability/sustainable-packaging" },
-    { name: "Operations Sustainability", href: "/sustainability/operations-sustainability" },
-    { name: "Social Sustainability", href: "/sustainability/social-sustainability" },
-    { name: "ProAmpac Impact Report", href: "/sustainability/proampac-impact-report" },
-    { name: "Life Cycle Analysis Tool", href: "/sustainability/life-cycle-analysis-tool" },
-  ],
 };
 
 const locations = [
@@ -66,7 +52,7 @@ export function Footer() {
   return (
     <footer className="bg-[#00cfca] pt-20 pb-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16">
           {/* Logo & About */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
@@ -131,30 +117,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Solutions & Sustainability */}
-          <div>
-            <h4 className="font-bold text-white mb-4">Solutions</h4>
-            <ul className="space-y-2 mb-6">
-              {footerLinks.solutions.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-white/80 hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            
-            <h4 className="font-bold text-white mb-4">Sustainability</h4>
-            <ul className="space-y-2">
-              {footerLinks.sustainability.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-white/80 hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+
 
           {/* Company */}
           <div>
