@@ -77,8 +77,11 @@ const materials = [
 ]
 
 export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailProps) {
-  const [currentIndex, setCurrentIndex] = useState(2)
+  const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStart, setDragStart] = useState(0)
+  const [dragOffset, setDragOffset] = useState(0)
   const carouselRef = useRef<HTMLDivElement>(null)
 
   // Auto-play carousel
@@ -100,13 +103,31 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
     setCurrentIndex((prev) => (prev + 1) % products.length)
   }
 
-  const getVisibleProducts = () => {
-    const visible = []
-    for (let i = -2; i <= 2; i++) {
-      const index = (currentIndex + i + products.length) % products.length
-      visible.push({ ...products[index], position: i, originalIndex: index })
+  // Drag handlers for smooth swiping
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsDragging(true)
+    setIsAutoPlaying(false)
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+    setDragStart(clientX)
+  }
+
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging) return
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+    setDragOffset(clientX - dragStart)
+  }
+
+  const handleDragEnd = () => {
+    if (!isDragging) return
+    setIsDragging(false)
+    
+    // Determine swipe direction based on drag distance
+    if (dragOffset > 80) {
+      goToPrev()
+    } else if (dragOffset < -80) {
+      goToNext()
     }
-    return visible
+    setDragOffset(0)
   }
 
   return (
@@ -232,46 +253,93 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
               <ChevronRight className="w-6 h-6 text-gray-600" />
             </button>
 
-            {/* Products Display */}
-            <div className="flex items-center justify-center gap-4 lg:gap-8 py-8 px-16">
-              {getVisibleProducts().map((product) => {
-                const isCenter = product.position === 0
-                const isAdjacent = Math.abs(product.position) === 1
-                const isOuter = Math.abs(product.position) === 2
+            {/* Products Display - Smooth Infinite Carousel */}
+            <div 
+              className="overflow-hidden py-8 px-16 cursor-grab active:cursor-grabbing"
+              onMouseDown={handleDragStart}
+              onMouseMove={handleDragMove}
+              onMouseUp={handleDragEnd}
+              onMouseLeave={handleDragEnd}
+              onTouchStart={handleDragStart}
+              onTouchMove={handleDragMove}
+              onTouchEnd={handleDragEnd}
+            >
+              <div className="flex items-center justify-center">
+                {products.map((product, index) => {
+                  // Calculate distance from current center
+                  let distance = index - currentIndex
+                  // Handle wrap-around for infinite effect
+                  if (distance > products.length / 2) distance -= products.length
+                  if (distance < -products.length / 2) distance += products.length
+                  
+                  const isCenter = distance === 0
+                  const isAdjacent = Math.abs(distance) === 1
+                  const isVisible = Math.abs(distance) <= 2
 
-                return (
-                  <motion.div
-                    key={`${product.slug}-${product.position}`}
-                    initial={false}
-                    animate={{
-                      scale: isCenter ? 1.2 : isAdjacent ? 0.9 : 0.7,
-                      opacity: isCenter ? 1 : isAdjacent ? 0.8 : 0.5,
-                      zIndex: isCenter ? 10 : isAdjacent ? 5 : 1,
-                    }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    className={`flex-shrink-0 ${isOuter ? 'hidden lg:block' : ''}`}
-                  >
-                    <Link href={`/products/${slug}/${product.slug}`} className="block group">
-                      <div 
-                        className={`bg-white rounded-2xl overflow-hidden shadow-xl transition-shadow ${
-                          isCenter ? 'w-56 h-72 lg:w-72 lg:h-96 group-hover:shadow-2xl' : 'w-40 h-52 lg:w-48 lg:h-64'
-                        }`}
+                  if (!isVisible) return null
+
+                  // Calculate position offset for smooth sliding
+                  const baseOffset = distance * 200
+
+                  return (
+                    <motion.div
+                      key={product.slug}
+                      className="absolute flex-shrink-0"
+                      animate={{
+                        x: baseOffset + dragOffset,
+                        scale: isCenter ? 1.15 : isAdjacent ? 0.9 : 0.7,
+                        opacity: isCenter ? 1 : isAdjacent ? 0.7 : 0.4,
+                        zIndex: isCenter ? 10 : isAdjacent ? 5 : 1,
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                        mass: 0.8,
+                      }}
+                    >
+                      <Link 
+                        href={`/products/${slug}/${product.slug}`} 
+                        className="block group"
+                        onClick={(e) => {
+                          if (!isCenter) {
+                            e.preventDefault()
+                            setIsAutoPlaying(false)
+                            setCurrentIndex(index)
+                          }
+                        }}
                       >
-                        <div className="w-full h-full p-4 flex flex-col items-center justify-center">
-                          <img 
-                            src={product.image} 
-                            alt={product.name}
-                            className="w-full h-4/5 object-contain"
-                          />
-                          {isCenter && (
-                            <p className="mt-2 text-sm font-semibold text-gray-900 text-center">{product.name}</p>
-                          )}
+                        <div 
+                          className={`bg-white rounded-2xl overflow-hidden shadow-xl transition-shadow duration-300 ${
+                            isCenter ? 'w-48 h-64 lg:w-56 lg:h-72 group-hover:shadow-2xl' : 'w-36 h-48 lg:w-44 lg:h-56'
+                          }`}
+                        >
+                          <div className="w-full h-full p-3 flex flex-col items-center justify-center">
+                            <img 
+                              src={product.image} 
+                              alt={product.name}
+                              className="w-full h-4/5 object-contain pointer-events-none"
+                              draggable={false}
+                            />
+                            {isCenter && (
+                              <motion.p 
+                                initial={{ opacity: 0, y: 5 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.1 }}
+                                className="mt-2 text-sm font-semibold text-gray-900 text-center"
+                              >
+                                {product.name}
+                              </motion.p>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    </Link>
-                  </motion.div>
-                )
-              })}
+                      </Link>
+                    </motion.div>
+                  )
+                })}
+              </div>
+              {/* Spacer to maintain height */}
+              <div className="h-72 lg:h-80" />
             </div>
 
             {/* Dots Indicator */}
@@ -283,10 +351,10 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
                     setIsAutoPlaying(false)
                     setCurrentIndex(index)
                   }}
-                  className={`w-2.5 h-2.5 rounded-full transition-all ${
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
                     index === currentIndex 
-                      ? 'bg-[#00cfca] w-4' 
-                      : 'bg-white/40 hover:bg-white/60'
+                      ? 'bg-[#00cfca] w-6' 
+                      : 'bg-white/40 hover:bg-white/60 w-2.5'
                   }`}
                 />
               ))}
