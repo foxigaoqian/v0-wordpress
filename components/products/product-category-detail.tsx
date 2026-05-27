@@ -219,10 +219,39 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
       <section id="product-carousel" className="relative py-16 lg:py-24 overflow-hidden">
         {/* Wave Background */}
         <div className="absolute inset-0">
-          <svg className="absolute top-0 w-full h-32" viewBox="0 0 1440 120" preserveAspectRatio="none">
-            <path fill="#f3f4f6" d="M0,0 C480,120 960,120 1440,0 L1440,0 L0,0 Z" />
+          {/* Top wave transition - matching reference gray tones */}
+          <svg className="absolute top-0 w-full h-40" viewBox="0 0 1440 160" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#e5e7eb" />
+                <stop offset="100%" stopColor="#94a3b8" />
+              </linearGradient>
+            </defs>
+            <path fill="url(#waveGradient)" d="M0,0 C360,80 720,160 1080,120 C1260,100 1380,60 1440,40 L1440,0 L0,0 Z" />
           </svg>
-          <div className="absolute top-32 bottom-0 w-full bg-gradient-to-b from-[#0f4c5c] to-[#0a3a47]" />
+          {/* Deep navy blue background */}
+          <div className="absolute top-36 bottom-0 w-full bg-[#0a1628]" />
+          {/* Bottom gradient glow - stage floor reflection */}
+          <div 
+            className="absolute bottom-0 left-0 right-0 h-80 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to top, rgba(25, 50, 80, 0.9) 0%, rgba(15, 35, 60, 0.5) 30%, transparent 100%)',
+            }}
+          />
+          {/* Central spotlight glow */}
+          <div 
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-72 pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse 120% 100% at 50% 100%, rgba(40, 70, 110, 0.7) 0%, rgba(30, 55, 90, 0.4) 30%, transparent 60%)',
+            }}
+          />
+          {/* Bottom edge highlight line */}
+          <div 
+            className="absolute bottom-0 left-0 right-0 h-px pointer-events-none"
+            style={{
+              background: 'linear-gradient(to right, transparent, rgba(100, 140, 180, 0.3) 30%, rgba(100, 140, 180, 0.3) 70%, transparent)',
+            }}
+          />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
