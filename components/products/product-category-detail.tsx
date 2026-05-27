@@ -795,6 +795,157 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
         </div>
       </section>
 
+      {/* Custom Extras Section */}
+      <section className="relative py-20 lg:py-28 overflow-hidden">
+        {/* Green gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#a3c9a8] via-[#a3c9a8] to-white" />
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl lg:text-5xl font-bold text-gray-800 text-center mb-16 lg:mb-20 italic"
+          >
+            Custom extras for your packaging
+          </motion.h2>
+
+          {/* Product with feature callouts */}
+          <div className="relative flex items-center justify-center min-h-[500px] lg:min-h-[600px]">
+            {/* Central Product Image - Stand Up Pouch SVG */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative z-10"
+            >
+              <div className="w-48 lg:w-64 h-72 lg:h-96">
+                <svg viewBox="0 0 180 280" className="w-full h-full drop-shadow-2xl">
+                  <defs>
+                    <linearGradient id="pouchGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#d4d4d4" />
+                      <stop offset="25%" stopColor="#f0f0f0" />
+                      <stop offset="50%" stopColor="#fafafa" />
+                      <stop offset="75%" stopColor="#f0f0f0" />
+                      <stop offset="100%" stopColor="#c0c0c0" />
+                    </linearGradient>
+                    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feDropShadow dx="0" dy="10" stdDeviation="10" floodOpacity="0.15"/>
+                    </filter>
+                  </defs>
+                  {/* Pouch body */}
+                  <path 
+                    d="M30,25 L150,25 L150,30 L155,30 L155,42 L150,42 L150,250 Q150,270 90,275 Q30,270 30,250 L30,42 L25,42 L25,30 L30,30 Z" 
+                    fill="url(#pouchGrad)"
+                    filter="url(#shadow)"
+                  />
+                  {/* Top seal line */}
+                  <rect x="30" y="25" width="120" height="6" fill="#e8e8e8" />
+                  {/* Eurohole */}
+                  <ellipse cx="90" cy="15" rx="14" ry="7" fill="#a3c9a8" />
+                  {/* Zipper */}
+                  <rect x="35" y="48" width="110" height="4" fill="#d0d0d0" rx="2" />
+                  <line x1="35" y1="50" x2="145" y2="50" stroke="#bbb" strokeWidth="1" />
+                  {/* Logo */}
+                  <circle cx="90" cy="150" r="30" fill="none" stroke="#e5e5e5" strokeWidth="1" />
+                  <path d="M80,135 Q72,155 90,170 Q90,150 105,135 Q97,148 80,135" fill="#7cb083" />
+                  <path d="M90,170 Q108,163 115,175 Q102,168 90,170" fill="#2d5a3d" />
+                </svg>
+              </div>
+            </motion.div>
+
+            {/* Feature Callouts */}
+            {/* Eurohole - Top Center */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="absolute top-4 lg:top-8 left-1/2 -translate-x-1/2 flex flex-col items-center"
+            >
+              <span className="text-sm lg:text-base text-gray-700 font-medium mb-2">Eurohole</span>
+              <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-pink-300 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                +
+              </div>
+            </motion.div>
+
+            {/* Rounded corners - Top Right */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="absolute top-16 lg:top-20 right-2 lg:right-12 xl:right-24 flex items-center gap-2"
+            >
+              <div className="w-6 h-6 lg:w-7 lg:h-7 rounded-full border-2 border-gray-400 flex items-center justify-center bg-white">
+                <svg className="w-3 h-3 lg:w-4 lg:h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span className="text-sm lg:text-base text-gray-700 font-medium">Rounded corners</span>
+            </motion.div>
+
+            {/* Tear notch - Left */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="absolute top-28 lg:top-36 left-2 lg:left-12 xl:left-24 flex items-center gap-2"
+            >
+              <span className="text-sm lg:text-base text-gray-700 font-medium">Tear notch</span>
+              <div className="w-6 h-6 lg:w-7 lg:h-7 rounded-full border-2 border-gray-400 flex items-center justify-center bg-white">
+                <svg className="w-3 h-3 lg:w-4 lg:h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+            </motion.div>
+
+            {/* Aroma Valve - Center Left */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.25 }}
+              className="absolute top-40 lg:top-48 left-1/2 -translate-x-20 lg:-translate-x-24 flex flex-col items-center"
+            >
+              <span className="text-sm lg:text-base text-gray-700 font-medium mb-2">Aroma Valve</span>
+              <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-pink-300 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                +
+              </div>
+            </motion.div>
+
+            {/* Zipper - Right */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="absolute top-44 lg:top-52 right-0 lg:right-8 xl:right-16 flex items-center gap-2"
+            >
+              <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-pink-300 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                +
+              </div>
+              <span className="text-sm lg:text-base text-gray-700 font-medium">Zipper / Hook to hook Zipper</span>
+            </motion.div>
+
+            {/* Made for Recycling seal - Bottom Right */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.35 }}
+              className="absolute bottom-8 lg:bottom-16 right-4 lg:right-16 xl:right-28 flex items-center gap-2"
+            >
+              <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-pink-300 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                +
+              </div>
+              <span className="text-sm lg:text-base text-gray-700 font-medium">Made for Recycling seal</span>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Product Grid */}
       <section id="products" className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
