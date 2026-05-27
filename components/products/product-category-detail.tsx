@@ -756,6 +756,45 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
         </div>
       </section>
 
+      {/* Featured Products Showcase */}
+      <section className="py-20 lg:py-28 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap items-end justify-center gap-12 lg:gap-20"
+          >
+            {products.slice(0, 2).map((product, index) => (
+              <Link 
+                key={product.slug} 
+                href={`/products/${slug}/${product.slug}`}
+                className="group text-center"
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 }}
+                  className="relative"
+                >
+                  <div className={`${index === 0 ? 'h-64 w-48' : 'h-72 w-56'} lg:${index === 0 ? 'h-80 w-60' : 'h-96 w-72'} mx-auto mb-6 transition-transform duration-300 group-hover:scale-105`}>
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-full object-contain drop-shadow-lg"
+                    />
+                  </div>
+                  <p className="text-gray-700 text-sm lg:text-base font-medium group-hover:text-[#00cfca] transition-colors">
+                    {product.name}
+                  </p>
+                </motion.div>
+              </Link>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Product Grid */}
       <section id="products" className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
