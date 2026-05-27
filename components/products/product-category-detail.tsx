@@ -395,16 +395,45 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
       <section className="relative py-20 lg:py-28 overflow-hidden">
         {/* Background with wave transitions */}
         <div className="absolute inset-0">
-          {/* Top wave from dark blue to purple */}
-          <svg className="absolute top-0 w-full h-24" viewBox="0 0 1440 96" preserveAspectRatio="none">
-            <path fill="#0a1628" d="M0,0 L1440,0 L1440,20 C1200,80 720,96 0,40 Z" />
+          {/* Top wave - multi-layer effect like reference */}
+          <svg className="absolute top-0 w-full h-40" viewBox="0 0 1440 160" preserveAspectRatio="none">
+            {/* Back layer - lighter gray */}
+            <path 
+              fill="#c4c9d4" 
+              d="M0,0 L1440,0 L1440,60 Q1200,20 960,50 Q720,80 480,40 Q240,0 0,30 Z" 
+            />
+            {/* Middle layer - medium gray blue */}
+            <path 
+              fill="#8892a8" 
+              d="M0,0 L1440,0 L1440,80 Q1300,40 1100,70 Q900,100 700,60 Q500,20 300,50 Q100,80 0,50 Z" 
+            />
+            {/* Front layer - dark blue gray */}
+            <path 
+              fill="#4a5568" 
+              d="M0,0 L1440,0 L1440,100 Q1250,50 1000,90 Q750,130 500,80 Q250,30 0,70 Z" 
+            />
+            {/* Connection to purple */}
+            <path 
+              fill="#1a0a3e" 
+              d="M0,70 Q250,30 500,80 Q750,130 1000,90 Q1250,50 1440,100 L1440,160 L0,160 Z" 
+            />
           </svg>
+          
           {/* Deep purple background */}
-          <div className="absolute top-20 bottom-20 w-full bg-[#1a0a3e]" />
-          {/* Bottom wave transition */}
-          <svg className="absolute bottom-0 w-full h-24" viewBox="0 0 1440 96" preserveAspectRatio="none">
-            <path fill="#1a0a3e" d="M0,96 L1440,96 L1440,56 C1200,16 720,0 0,76 Z" />
-            <path fill="#ffffff" d="M0,96 L1440,96 L1440,76 C1200,36 720,20 0,96 Z" />
+          <div className="absolute top-36 bottom-24 w-full bg-[#1a0a3e]" />
+          
+          {/* Bottom wave transition to white */}
+          <svg className="absolute bottom-0 w-full h-32" viewBox="0 0 1440 128" preserveAspectRatio="none">
+            {/* Purple continuation */}
+            <path 
+              fill="#1a0a3e" 
+              d="M0,0 L1440,0 L1440,60 Q1200,100 960,70 Q720,40 480,80 Q240,120 0,90 Z" 
+            />
+            {/* White wave coming from bottom */}
+            <path 
+              fill="#f9fafb" 
+              d="M0,90 Q240,120 480,80 Q720,40 960,70 Q1200,100 1440,60 L1440,128 L0,128 Z" 
+            />
           </svg>
         </div>
 
