@@ -1,8 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight, Check, Leaf, Shield, Palette, Award } from "lucide-react"
+import { ArrowRight, Check, Leaf, Shield, Palette, Award, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react"
 import Link from "next/link"
+import { useState, useEffect, useRef } from "react"
 
 interface ProductCategoryDetailProps {
   slug: string
@@ -76,6 +77,38 @@ const materials = [
 ]
 
 export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailProps) {
+  const [currentIndex, setCurrentIndex] = useState(2)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const carouselRef = useRef<HTMLDivElement>(null)
+
+  // Auto-play carousel
+  useEffect(() => {
+    if (!isAutoPlaying) return
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % products.length)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [isAutoPlaying])
+
+  const goToPrev = () => {
+    setIsAutoPlaying(false)
+    setCurrentIndex((prev) => (prev - 1 + products.length) % products.length)
+  }
+
+  const goToNext = () => {
+    setIsAutoPlaying(false)
+    setCurrentIndex((prev) => (prev + 1) % products.length)
+  }
+
+  const getVisibleProducts = () => {
+    const visible = []
+    for (let i = -2; i <= 2; i++) {
+      const index = (currentIndex + i + products.length) % products.length
+      visible.push({ ...products[index], position: i, originalIndex: index })
+    }
+    return visible
+  }
+
   return (
     <>
       {/* Breadcrumb */}
@@ -91,52 +124,173 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
         </div>
       </div>
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-50 to-white py-16 lg:py-24 overflow-hidden">
+      {/* Hero Section - Three Column Layout */}
+      <section className="relative bg-white py-16 lg:py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-center">
+            {/* Left Column - Title & Description */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Custom <span className="text-[#00cfca]">{category.name}s</span>
+              <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-[#0f4c5c] leading-tight">
+                Packaging solutions for {category.name.toLowerCase()}
               </h1>
-              <p className="mt-6 text-lg text-gray-600 leading-relaxed">
-                {category.description} Perfect for brands looking for premium quality and exceptional shelf presence.
+              <div className="w-12 h-1 bg-[#00cfca] mt-4 mb-6" />
+              <p className="text-gray-600 leading-relaxed">
+                {category.description} Committed to innovative design and sustainability, our packaging not only stands out on the shelf but also meets today&apos;s consumer demands.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-3 bg-[#00cfca] text-white font-semibold rounded-full hover:bg-[#00b8b3] transition-colors shadow-lg shadow-[#00cfca]/25"
-                >
-                  Request a Quote
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="#products"
-                  className="inline-flex items-center gap-2 px-8 py-3 border-2 border-gray-200 text-gray-700 font-semibold rounded-full hover:border-[#00cfca] hover:text-[#00cfca] transition-colors"
-                >
-                  View All Styles
-                </Link>
-              </div>
             </motion.div>
 
+            {/* Center Column - Round Image */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
+              className="flex flex-col items-center"
             >
-              <div className="aspect-square bg-gradient-to-br from-[#00cfca]/10 to-[#00cfca]/5 rounded-3xl flex items-center justify-center overflow-hidden">
+              <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=600&h=600&fit=crop" 
+                  src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop" 
                   alt={category.name}
                   className="w-full h-full object-cover"
                 />
               </div>
+              <button 
+                onClick={() => document.getElementById('product-carousel')?.scrollIntoView({ behavior: 'smooth' })}
+                className="mt-6 w-12 h-12 rounded-full bg-[#00cfca] text-white flex items-center justify-center hover:bg-[#00b8b3] transition-colors shadow-lg"
+              >
+                <ChevronDown className="w-6 h-6" />
+              </button>
             </motion.div>
+
+            {/* Right Column - CTA */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-center lg:text-left"
+            >
+              <div className="flex items-center gap-2 justify-center lg:justify-start mb-2">
+                <span className="w-8 h-0.5 bg-[#00cfca]" />
+                <span className="w-2 h-0.5 bg-[#00cfca]" />
+              </div>
+              <h2 className="text-2xl lg:text-3xl font-bold text-[#0f4c5c] mb-4">
+                We offer<br />customized<br />solutions.
+              </h2>
+              <div className="flex items-center gap-2 justify-center lg:justify-start mb-6">
+                <span className="w-2 h-0.5 bg-[#00cfca]" />
+                <span className="w-8 h-0.5 bg-[#00cfca]" />
+              </div>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-[#0f4c5c] text-white font-semibold rounded-lg hover:bg-[#0a3a47] transition-colors"
+              >
+                Contact us
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Product Carousel Section */}
+      <section id="product-carousel" className="relative py-16 lg:py-24 overflow-hidden">
+        {/* Wave Background */}
+        <div className="absolute inset-0">
+          <svg className="absolute top-0 w-full h-32" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path fill="#f3f4f6" d="M0,0 C480,120 960,120 1440,0 L1440,0 L0,0 Z" />
+          </svg>
+          <div className="absolute top-32 bottom-0 w-full bg-gradient-to-b from-[#0f4c5c] to-[#0a3a47]" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 pt-16"
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-white">
+              Explore our {category.name.toLowerCase()} collection
+            </h2>
+          </motion.div>
+
+          {/* Carousel */}
+          <div className="relative" ref={carouselRef}>
+            {/* Navigation Arrows */}
+            <button
+              onClick={goToPrev}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+            >
+              <ChevronLeft className="w-6 h-6 text-gray-600" />
+            </button>
+            <button
+              onClick={goToNext}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+            >
+              <ChevronRight className="w-6 h-6 text-gray-600" />
+            </button>
+
+            {/* Products Display */}
+            <div className="flex items-center justify-center gap-4 lg:gap-8 py-8 px-16">
+              {getVisibleProducts().map((product) => {
+                const isCenter = product.position === 0
+                const isAdjacent = Math.abs(product.position) === 1
+                const isOuter = Math.abs(product.position) === 2
+
+                return (
+                  <motion.div
+                    key={`${product.slug}-${product.position}`}
+                    initial={false}
+                    animate={{
+                      scale: isCenter ? 1.2 : isAdjacent ? 0.9 : 0.7,
+                      opacity: isCenter ? 1 : isAdjacent ? 0.8 : 0.5,
+                      zIndex: isCenter ? 10 : isAdjacent ? 5 : 1,
+                    }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className={`flex-shrink-0 ${isOuter ? 'hidden lg:block' : ''}`}
+                  >
+                    <Link href={`/products/${slug}/${product.slug}`} className="block group">
+                      <div 
+                        className={`bg-white rounded-2xl overflow-hidden shadow-xl transition-shadow ${
+                          isCenter ? 'w-56 h-72 lg:w-72 lg:h-96 group-hover:shadow-2xl' : 'w-40 h-52 lg:w-48 lg:h-64'
+                        }`}
+                      >
+                        <div className="w-full h-full p-4 flex flex-col items-center justify-center">
+                          <img 
+                            src={product.image} 
+                            alt={product.name}
+                            className="w-full h-4/5 object-contain"
+                          />
+                          {isCenter && (
+                            <p className="mt-2 text-sm font-semibold text-gray-900 text-center">{product.name}</p>
+                          )}
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                )
+              })}
+            </div>
+
+            {/* Dots Indicator */}
+            <div className="flex items-center justify-center gap-2 mt-8">
+              {products.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setIsAutoPlaying(false)
+                    setCurrentIndex(index)
+                  }}
+                  className={`w-2.5 h-2.5 rounded-full transition-all ${
+                    index === currentIndex 
+                      ? 'bg-[#00cfca] w-4' 
+                      : 'bg-white/40 hover:bg-white/60'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
