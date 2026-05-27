@@ -561,6 +561,201 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
         </div>
       </section>
 
+      {/* Sustainability Values Section */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Green World */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0 }}
+              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="relative h-40 mb-4 flex items-center justify-center">
+                {/* Brush stroke background */}
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 120" preserveAspectRatio="none">
+                  <path 
+                    d="M20,60 Q40,20 80,40 T140,50 T180,40 Q190,60 170,80 T100,90 T30,80 Q10,70 20,60" 
+                    fill="rgba(134, 239, 172, 0.3)" 
+                  />
+                  <path 
+                    d="M30,50 Q60,30 100,45 T160,55 Q175,70 150,85 T80,80 T25,65 Q15,55 30,50" 
+                    fill="rgba(134, 239, 172, 0.2)" 
+                  />
+                </svg>
+                {/* Icon */}
+                <svg className="relative w-20 h-20 text-green-600" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <circle cx="32" cy="32" r="20" />
+                  <path d="M22,32 Q32,20 42,32 Q32,44 22,32" />
+                  <path d="M32,12 L32,8 M32,56 L32,52" />
+                  <path d="M52,32 L56,32 M8,32 L12,32" />
+                  <path d="M28,18 Q20,22 22,32" />
+                  <path d="M38,14 C42,18 44,24 42,32" />
+                  <path d="M26,46 C30,50 36,50 40,46" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 text-center mb-3">Green World</h3>
+              <p className="text-gray-600 text-center text-sm leading-relaxed">
+                We step into a clean world with our packaging. While we show environmental awareness with our recyclable design, we produce with sustainable materials. We offer environmentally friendly solutions with our goal of leaving a clean world for future generations.
+              </p>
+            </motion.div>
+
+            {/* Savings */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="relative h-40 mb-4 flex items-center justify-center">
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 120" preserveAspectRatio="none">
+                  <path 
+                    d="M40,30 Q70,10 100,30 T160,40 Q180,60 160,80 T100,85 T40,70 Q20,50 40,30" 
+                    fill="rgba(134, 239, 172, 0.3)" 
+                  />
+                </svg>
+                <svg className="relative w-20 h-20 text-green-600" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M32,8 L32,20 M32,44 L32,56" />
+                  <circle cx="32" cy="32" r="8" />
+                  <path d="M20,20 L44,44 M44,20 L20,44" strokeWidth="0.5" />
+                  <ellipse cx="32" cy="14" rx="6" ry="3" />
+                  <ellipse cx="32" cy="50" rx="6" ry="3" />
+                  <path d="M18,28 Q14,32 18,36" />
+                  <path d="M46,28 Q50,32 46,36" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 text-center mb-3">Savings</h3>
+              <p className="text-gray-600 text-center text-sm leading-relaxed">
+                Our packaging combines economy and environmental awareness. Our lightweight and efficient design saves energy and costs, contributing to a sustainable future.
+              </p>
+            </motion.div>
+
+            {/* Waste Of Natural Resources */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="relative h-40 mb-4 flex items-center justify-center">
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 120" preserveAspectRatio="none">
+                  <path 
+                    d="M30,40 Q50,15 90,30 T150,35 T180,50 Q185,70 160,85 T90,90 T30,75 Q15,60 30,40" 
+                    fill="rgba(134, 239, 172, 0.35)" 
+                  />
+                </svg>
+                <svg className="relative w-20 h-20 text-green-600" viewBox="0 0 64 64" fill="currentColor">
+                  <path d="M32,8 L40,20 L52,20 L44,32 L52,44 L40,44 L32,56 L24,44 L12,44 L20,32 L12,20 L24,20 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M32,18 C38,18 42,24 42,32 L36,32 L40,38 L44,32 L38,32 C38,26 35,22 32,22" fill="currentColor" />
+                  <path d="M32,46 C26,46 22,40 22,32 L28,32 L24,26 L20,32 L26,32 C26,38 29,42 32,42" fill="currentColor" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 text-center mb-3">Waste Of Natural Resources</h3>
+              <p className="text-gray-600 text-center text-sm leading-relaxed">
+                We protect natural resources with our packaging. We take responsibility to prevent waste of resources through sustainable production and recycling approaches.
+              </p>
+            </motion.div>
+
+            {/* Natural and Vibrant Design */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="relative h-40 mb-4 flex items-center justify-center">
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 120" preserveAspectRatio="none">
+                  <path 
+                    d="M25,50 Q45,20 85,35 T145,40 T175,55 Q185,75 155,90 T85,85 T25,70 Q10,60 25,50" 
+                    fill="rgba(134, 239, 172, 0.3)" 
+                  />
+                </svg>
+                <svg className="relative w-20 h-20 text-green-600" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M32,56 C32,56 20,48 16,36 C12,24 20,12 32,12 C44,12 52,24 48,36 C44,48 32,56 32,56" />
+                  <path d="M32,56 L32,48" />
+                  <path d="M32,44 C28,40 26,34 28,28" />
+                  <path d="M32,40 C36,36 38,30 36,24" />
+                  <circle cx="24" cy="32" r="2" fill="currentColor" />
+                  <circle cx="40" cy="28" r="2" fill="currentColor" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 text-center mb-3">Natural and Vibrant Design</h3>
+              <p className="text-gray-600 text-center text-sm leading-relaxed">
+                Our packaging meets recycling by respecting the richness of nature. Designed with sustainable materials, our packaging supports our goal of protecting the environment and leaving a clean world to future generations.
+              </p>
+            </motion.div>
+
+            {/* Freshness and Preservation */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="relative h-40 mb-4 flex items-center justify-center">
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 120" preserveAspectRatio="none">
+                  <path 
+                    d="M35,45 Q55,20 95,35 T155,40 Q175,60 155,80 T95,85 T35,70 Q15,55 35,45" 
+                    fill="rgba(134, 239, 172, 0.3)" 
+                  />
+                </svg>
+                <svg className="relative w-20 h-20 text-green-600" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M32,8 L32,16" />
+                  <path d="M24,56 C24,56 16,48 16,36 C16,24 24,16 32,16 C40,16 48,24 48,36 C48,48 40,56 40,56" />
+                  <path d="M24,56 L40,56" />
+                  <path d="M28,56 L28,60 L36,60 L36,56" />
+                  <path d="M32,24 L32,36 L40,36" />
+                  <circle cx="22" cy="12" r="3" />
+                  <circle cx="42" cy="14" r="2" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 text-center mb-3">Freshness and Preservation</h3>
+              <p className="text-gray-600 text-center text-sm leading-relaxed">
+                Our packaging protects the freshness and quality of your products against external factors with its carefully designed structure. With our eco-friendly materials and recyclable design, we both offer fresh products and contribute to environmental awareness.
+              </p>
+            </motion.div>
+
+            {/* Innovation */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="relative h-40 mb-4 flex items-center justify-center">
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 120" preserveAspectRatio="none">
+                  <path 
+                    d="M40,35 Q65,15 100,30 T160,40 Q180,60 160,80 T100,85 T40,70 Q20,55 40,35" 
+                    fill="rgba(134, 239, 172, 0.35)" 
+                  />
+                </svg>
+                <svg className="relative w-20 h-20 text-green-600" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M24,48 L24,52 L40,52 L40,48" />
+                  <path d="M26,52 L26,56 L38,56 L38,52" />
+                  <path d="M24,48 C20,44 18,38 18,32 C18,22 24,14 32,14 C40,14 46,22 46,32 C46,38 44,44 40,48" />
+                  <path d="M32,14 L32,8" />
+                  <path d="M20,18 L16,14" />
+                  <path d="M44,18 L48,14" />
+                  <path d="M32,24 C28,24 26,28 26,32" />
+                  <path d="M36,28 Q38,26 40,28" fill="currentColor" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 text-center mb-3">Innovation</h3>
+              <p className="text-gray-600 text-center text-sm leading-relaxed">
+                Our packaging reflects our innovative steps in sustainability. With innovative design and recycling technologies, we offer solutions for the future.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Product Grid */}
       <section id="products" className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
