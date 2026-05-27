@@ -264,7 +264,8 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
               onTouchMove={handleDragMove}
               onTouchEnd={handleDragEnd}
             >
-              <div className="flex items-center justify-center">
+              {/* Container with relative positioning and fixed height */}
+              <div className="relative h-80 lg:h-96 flex items-center justify-center">
                 {products.map((product, index) => {
                   // Calculate distance from current center
                   let distance = index - currentIndex
@@ -284,7 +285,7 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
                   return (
                     <motion.div
                       key={product.slug}
-                      className="absolute flex-shrink-0"
+                      className="absolute"
                       animate={{
                         x: baseOffset + dragOffset,
                         scale: isCenter ? 1.15 : isAdjacent ? 0.9 : 0.7,
@@ -338,8 +339,6 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
                   )
                 })}
               </div>
-              {/* Spacer to maintain height */}
-              <div className="h-72 lg:h-80" />
             </div>
 
             {/* Dots Indicator */}
