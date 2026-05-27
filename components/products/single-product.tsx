@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
-import { ChevronRight, ChevronLeft, Check, Leaf, ArrowRight, Plus, Package, Palette, Settings, Award, Truck, HeadphonesIcon, Shield, ChevronDown } from "lucide-react";
+import { ChevronRight, ChevronLeft, Check, Leaf, ArrowRight, Package, Palette, Shield, ChevronDown, Award, Truck, HeadphonesIcon } from "lucide-react";
 
 interface SingleProductProps {
   categorySlug: string;
@@ -60,10 +60,6 @@ const defaultProduct = {
 export default function SingleProduct({ categorySlug, productSlug }: SingleProductProps) {
   const product = productData[productSlug] || defaultProduct;
   const [selectedImage, setSelectedImage] = useState(0);
-  const [quantity, setQuantity] = useState(10000);
-  const [selectedMaterial, setSelectedMaterial] = useState(product.materials[0]);
-  const [selectedFinish, setSelectedFinish] = useState(product.finishes[0]);
-  const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
   const [expandedAccordion, setExpandedAccordion] = useState<string | null>("features");
   
   // Carousel state for New Solutions section
@@ -73,14 +69,6 @@ export default function SingleProduct({ categorySlug, productSlug }: SingleProdu
   const carouselRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
   const startX = useRef(0);
-
-  const toggleAddon = (addon: string) => {
-    setSelectedAddons(prev => 
-      prev.includes(addon) 
-        ? prev.filter(a => a !== addon) 
-        : [...prev, addon]
-    );
-  };
 
   const toggleAccordion = (section: string) => {
     setExpandedAccordion(prev => prev === section ? null : section);
@@ -166,231 +154,6 @@ export default function SingleProduct({ categorySlug, productSlug }: SingleProdu
           </nav>
         </div>
       </div>
-
-      {/* Product Section - Combined Image Gallery & Configurator */}
-      <section className="py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Left Column - Product Images */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="aspect-square rounded-2xl overflow-hidden bg-gray-50 mb-4 border border-gray-100 relative group">
-                <img
-                  src={product.images[selectedImage]}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-                <button className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-gray-900/70 text-white text-sm px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Plus className="w-4 h-4" />
-                  Click to expand
-                </button>
-              </div>
-              <div className="grid grid-cols-4 gap-3">
-                {product.images.map((img: string, idx: number) => (
-                  <button
-                    key={idx}
-                    onClick={() => setSelectedImage(idx)}
-                    className={`aspect-square rounded-xl overflow-hidden border-2 transition-all ${
-                      selectedImage === idx ? "border-[#00cfca]" : "border-gray-200 hover:border-gray-300"
-                    }`}
-                  >
-                    <img src={img} alt="" className="w-full h-full object-cover" />
-                  </button>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Right Column - Product Info & Configurator */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-6"
-            >
-              {/* Product Code & Name */}
-              <div>
-                <p className="text-sm text-gray-500 mb-1">SKU-{productSlug.toUpperCase()}</p>
-                <h1 className="text-3xl lg:text-4xl font-bold text-gray-900">{product.name}</h1>
-              </div>
-
-              {/* Description */}
-              <p className="text-gray-600 leading-relaxed">{product.description}</p>
-
-              {/* Dimensions */}
-              <div>
-                <div className="grid grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-sm text-gray-700 mb-2">Length (inch) <span className="text-red-500">*</span></label>
-                    <input
-                      type="number"
-                      placeholder=""
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] focus:ring-1 focus:ring-[#00cfca]"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm text-gray-700 mb-2">Width (inch) <span className="text-red-500">*</span></label>
-                    <input
-                      type="number"
-                      placeholder=""
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] focus:ring-1 focus:ring-[#00cfca]"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm text-gray-700 mb-2">Depth (inch) <span className="text-red-500">*</span></label>
-                    <input
-                      type="number"
-                      placeholder=""
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] focus:ring-1 focus:ring-[#00cfca]"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Dropdowns Row */}
-              <div className="grid grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-sm text-gray-700 mb-2">Material <span className="text-red-500">*</span></label>
-                  <select 
-                    value={selectedMaterial}
-                    onChange={(e) => setSelectedMaterial(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] focus:ring-1 focus:ring-[#00cfca] bg-white text-gray-700 appearance-none cursor-pointer"
-                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px' }}
-                  >
-                    <option value="">Need Consultation</option>
-                    {product.materials.map((material: string) => (
-                      <option key={material} value={material}>{material}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm text-gray-700 mb-2">Print <span className="text-red-500">*</span></label>
-                  <select 
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] focus:ring-1 focus:ring-[#00cfca] bg-white text-gray-700 appearance-none cursor-pointer"
-                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px' }}
-                  >
-                    <option value="">Need Consultation</option>
-                    {product.printingMethods.map((method: string) => (
-                      <option key={method} value={method}>{method}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm text-gray-700 mb-2">Finishing <span className="text-red-500">*</span></label>
-                  <select 
-                    value={selectedFinish}
-                    onChange={(e) => setSelectedFinish(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] focus:ring-1 focus:ring-[#00cfca] bg-white text-gray-700 appearance-none cursor-pointer"
-                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px' }}
-                  >
-                    <option value="">Need Consultation</option>
-                    {product.finishes.map((finish: string) => (
-                      <option key={finish} value={finish}>{finish}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Additional Options */}
-              <div>
-                <label className="block text-sm text-gray-700 mb-3">Additional Options</label>
-                <div className="flex flex-wrap gap-2">
-                  {["Foil Stamping", "Embossing", "Debossing", "Window Patching"].map((option) => (
-                    <button
-                      key={option}
-                      onClick={() => toggleAddon(option)}
-                      className={`px-4 py-2 rounded-lg border text-sm transition-all ${
-                        selectedAddons.includes(option)
-                          ? "border-[#00cfca] bg-[#00cfca]/10 text-[#00cfca]"
-                          : "border-gray-200 text-gray-600 hover:border-gray-300"
-                      }`}
-                    >
-                      {option}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Add-on */}
-              <div>
-                <label className="block text-sm text-gray-700 mb-3">Add-on</label>
-                <div className="flex flex-wrap gap-2">
-                  {product.addons.slice(0, 4).map((addon: string) => (
-                    <button
-                      key={addon}
-                      onClick={() => toggleAddon(addon)}
-                      className={`px-4 py-2 rounded-lg border text-sm transition-all ${
-                        selectedAddons.includes(addon)
-                          ? "border-[#00cfca] bg-[#00cfca]/10 text-[#00cfca]"
-                          : "border-gray-200 text-gray-600 hover:border-gray-300"
-                      }`}
-                    >
-                      {addon}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Price */}
-              <div className="pt-2">
-                <p className="text-[#00cfca] font-bold text-lg uppercase tracking-wide">Price on Request</p>
-              </div>
-
-              {/* Quantity & CTA */}
-              <div className="flex items-center gap-4 pt-2">
-                <select 
-                  value={quantity}
-                  onChange={(e) => setQuantity(parseInt(e.target.value))}
-                  className="px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00cfca] bg-white text-gray-700 appearance-none cursor-pointer"
-                  style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px', paddingRight: '40px' }}
-                >
-                  <option value={1000}>1000</option>
-                  <option value={5000}>5000</option>
-                  <option value={10000}>10000</option>
-                  <option value={25000}>25000</option>
-                  <option value={50000}>50000</option>
-                </select>
-                <button className="flex-1 flex items-center justify-center gap-2 bg-[#00cfca] text-white py-3.5 px-6 rounded-full font-semibold hover:bg-[#00b8b4] transition-colors">
-                  <Plus className="w-5 h-5" />
-                  ADD TO QUOTE
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Value Props */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: Palette, title: "Vibrant Colors", description: "High-quality rotogravure printing with up to 10 colors for stunning visual impact" },
-              { icon: Package, title: "Lightweight Design", description: "Reduce shipping costs while maintaining excellent product protection" },
-              { icon: Leaf, title: "Eco-Friendly Options", description: "Recyclable and bio-based materials available for sustainable packaging" },
-            ].map((prop, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="flex items-start gap-4 p-6 bg-gray-50 rounded-2xl"
-              >
-                <div className="w-14 h-14 bg-[#00cfca]/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <prop.icon className="w-7 h-7 text-[#00cfca]" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">{prop.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{prop.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Product Features Section with Accordion */}
       <section className="py-20 lg:py-28 bg-white">
