@@ -855,9 +855,9 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.25 }}
-              className="absolute top-40 lg:top-48 left-1/2 -translate-x-20 lg:-translate-x-24 flex flex-col items-center"
+              className="absolute top-40 lg:top-48 left-4 lg:left-16 xl:left-24 flex flex-col items-center"
             >
-              <span className="text-sm lg:text-base text-gray-700 font-medium mb-2">Aroma Valve</span>
+              <span className="text-sm lg:text-base text-gray-700 font-medium mb-2 whitespace-nowrap">Aroma Valve</span>
               <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-pink-300 flex items-center justify-center text-white font-bold text-lg shadow-md">
                 +
               </div>
@@ -1121,7 +1121,7 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
                   {Array.from({ length: 31 }, (_, i) => (
                     <button 
                       key={i} 
-                      className={`p-2 rounded-full ${i + 1 === 27 ? 'bg-gray-800 text-white' : 'hover:bg-gray-100'}`}
+                      className={`p-2 rounded-full ${i + 1 === 27 ? 'bg-gray-800 text-white' : 'text-gray-700 hover:bg-gray-100'}`}
                     >
                       {i + 1}
                     </button>
@@ -1198,15 +1198,33 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
         </div>
       </section>
 
-      {/* Samples Section */}
+      {/* 6a. Samples Section */}
       <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="bg-gray-50 rounded-3xl p-8 lg:p-12">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
-              {/* Left - Product Images */}
-              <div className="flex items-end justify-center gap-2">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <div key={i} className={`bg-gradient-to-b from-gray-100 to-gray-200 rounded-lg shadow-md ${i === 2 || i === 3 ? 'w-20 h-40' : 'w-14 h-32'}`} />
+              {/* Left - Product Images (SVG pouches) */}
+              <div className="flex items-end justify-center gap-3">
+                {[
+                  { h: 120, w: 50, color: '#4a9c6d', label: 'TEA' },
+                  { h: 150, w: 60, color: '#2d3436', label: 'DETOX' },
+                  { h: 160, w: 65, color: '#636e72', label: 'TRAINING' },
+                  { h: 140, w: 55, color: '#b2bec3', label: 'SOFT' },
+                  { h: 130, w: 50, color: '#dfe6e9', label: 'MISTER' },
+                ].map((pouch, i) => (
+                  <svg key={i} viewBox="0 0 60 140" className="drop-shadow-md" style={{ height: pouch.h, width: pouch.w }}>
+                    <defs>
+                      <linearGradient id={`sampleGrad${i}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor={pouch.color} stopOpacity="0.9" />
+                        <stop offset="50%" stopColor={pouch.color} />
+                        <stop offset="100%" stopColor={pouch.color} stopOpacity="0.8" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M8,10 L52,10 L52,15 L55,15 L55,22 L52,22 L52,125 Q52,135 30,138 Q8,135 8,125 L8,22 L5,22 L5,15 L8,15 Z" fill={`url(#sampleGrad${i})`} />
+                    <rect x="8" y="10" width="44" height="4" fill="rgba(255,255,255,0.3)" />
+                    <ellipse cx="30" cy="7" rx="8" ry="4" fill="#e8e8e8" />
+                    <text x="30" y="70" textAnchor="middle" fill="white" fontSize="6" fontWeight="bold" opacity="0.9">{pouch.label}</text>
+                  </svg>
                 ))}
               </div>
               {/* Right - Content */}
