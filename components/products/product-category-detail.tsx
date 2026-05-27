@@ -161,24 +161,29 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
             </motion.div>
           </div>
         </div>
+
+        {/* Wave transition to next section */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg className="w-full h-24 lg:h-32" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path 
+              fill="#e5e7eb" 
+              d="M0,120 L0,60 Q360,120 720,80 Q1080,40 1440,80 L1440,120 Z"
+            />
+          </svg>
+        </div>
       </section>
 
       {/* Product Carousel Section */}
       <section id="product-carousel" className="relative py-16 lg:py-24 overflow-hidden">
         {/* Wave Background */}
         <div className="absolute inset-0">
-          {/* Top wave transition - matching reference gray tones */}
-          <svg className="absolute top-0 w-full h-40" viewBox="0 0 1440 160" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#e5e7eb" />
-                <stop offset="100%" stopColor="#94a3b8" />
-              </linearGradient>
-            </defs>
-            <path fill="url(#waveGradient)" d="M0,0 C360,80 720,160 1080,120 C1260,100 1380,60 1440,40 L1440,0 L0,0 Z" />
+          {/* Top wave transition - smooth curve */}
+          <svg className="absolute top-0 w-full h-32 lg:h-40" viewBox="0 0 1440 160" preserveAspectRatio="none">
+            <path fill="#e5e7eb" d="M0,0 L1440,0 L1440,60 Q1080,120 720,80 Q360,40 0,80 Z" />
+            <path fill="#0a1628" d="M0,80 Q360,40 720,80 Q1080,120 1440,60 L1440,160 L0,160 Z" />
           </svg>
           {/* Deep navy blue background */}
-          <div className="absolute top-36 bottom-0 w-full bg-[#0a1628]" />
+          <div className="absolute top-32 lg:top-40 bottom-0 w-full bg-[#0a1628]" />
           {/* Bottom gradient glow - stage floor reflection */}
           <div 
             className="absolute bottom-0 left-0 right-0 h-80 pointer-events-none"
@@ -705,61 +710,71 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
       </section>
 
       {/* Featured Products Showcase */}
-      <section className="py-20 lg:py-28 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <section className="py-20 lg:py-28 bg-[#d5e5d5]/30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-wrap items-end justify-center gap-12 lg:gap-20"
+            className="flex flex-wrap items-end justify-center gap-8 lg:gap-12"
           >
-            {products.slice(0, 2).map((product, index) => (
-              <Link 
-                key={product.slug} 
-                href={`/products/${slug}/${product.slug}`}
-                className="group text-center"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.15 }}
-                  className="relative"
+            {products.slice(0, 5).map((product, index) => {
+              // Different sizes for visual interest
+              const sizes = [
+                'h-48 w-36 lg:h-64 lg:w-48',
+                'h-56 w-40 lg:h-72 lg:w-52',
+                'h-64 w-44 lg:h-80 lg:w-56', // Center - largest
+                'h-56 w-40 lg:h-72 lg:w-52',
+                'h-48 w-36 lg:h-64 lg:w-48',
+              ]
+              return (
+                <Link 
+                  key={product.slug} 
+                  href={`/products/${slug}/${product.slug}`}
+                  className="group text-center"
                 >
-                  <div className={`${index === 0 ? 'h-64 w-48' : 'h-72 w-56'} lg:${index === 0 ? 'h-80 w-60' : 'h-96 w-72'} mx-auto mb-6 transition-transform duration-300 group-hover:scale-105`}>
-                    <img 
-                      src={product.image} 
-                      alt={product.name}
-                      className="w-full h-full object-contain drop-shadow-lg"
-                    />
-                  </div>
-                  <p className="text-gray-700 text-sm lg:text-base font-medium group-hover:text-[#00cfca] transition-colors">
-                    {product.name}
-                  </p>
-                </motion.div>
-              </Link>
-            ))}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="relative"
+                  >
+                    <div className={`${sizes[index]} mx-auto mb-4 bg-[#d5e5d5] rounded-2xl p-4 flex items-center justify-center transition-all duration-300 group-hover:shadow-xl group-hover:scale-105`}>
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        className="w-full h-full object-contain drop-shadow-lg"
+                      />
+                    </div>
+                    <p className="text-gray-700 text-sm lg:text-base font-medium group-hover:text-[#00cfca] transition-colors">
+                      {product.name}
+                    </p>
+                  </motion.div>
+                </Link>
+              )
+            })}
           </motion.div>
         </div>
       </section>
 
       {/* Custom Extras Section */}
-      <section className="relative py-20 lg:py-28 overflow-hidden">
+      <section className="relative py-20 lg:py-32 overflow-hidden">
         {/* Green gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#a3c9a8] via-[#a3c9a8] to-white" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#b8d4ba] via-[#c5dbc7] to-[#d8e8da]" />
         
-        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl lg:text-5xl font-bold text-gray-800 text-center mb-16 lg:mb-20 italic"
+            className="text-3xl lg:text-5xl font-bold text-gray-800 text-center mb-20 lg:mb-28 italic"
           >
             Custom extras for your packaging
           </motion.h2>
 
-          {/* Product with feature callouts */}
-          <div className="relative flex items-center justify-center min-h-[500px] lg:min-h-[600px]">
+          {/* Product with feature callouts - radial layout */}
+          <div className="relative flex items-center justify-center" style={{ minHeight: '520px' }}>
             {/* Central Product Image - Stand Up Pouch SVG */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -767,7 +782,7 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
               viewport={{ once: true }}
               className="relative z-10"
             >
-              <div className="w-48 lg:w-64 h-72 lg:h-96">
+              <div className="w-40 lg:w-52 h-60 lg:h-80">
                 <svg viewBox="0 0 180 280" className="w-full h-full drop-shadow-2xl">
                   <defs>
                     <linearGradient id="pouchGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -781,20 +796,15 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
                       <feDropShadow dx="0" dy="10" stdDeviation="10" floodOpacity="0.15"/>
                     </filter>
                   </defs>
-                  {/* Pouch body */}
                   <path 
                     d="M30,25 L150,25 L150,30 L155,30 L155,42 L150,42 L150,250 Q150,270 90,275 Q30,270 30,250 L30,42 L25,42 L25,30 L30,30 Z" 
                     fill="url(#pouchGrad)"
                     filter="url(#shadow)"
                   />
-                  {/* Top seal line */}
                   <rect x="30" y="25" width="120" height="6" fill="#e8e8e8" />
-                  {/* Eurohole */}
-                  <ellipse cx="90" cy="15" rx="14" ry="7" fill="#a3c9a8" />
-                  {/* Zipper */}
+                  <ellipse cx="90" cy="15" rx="14" ry="7" fill="#b8d4ba" />
                   <rect x="35" y="48" width="110" height="4" fill="#d0d0d0" rx="2" />
                   <line x1="35" y1="50" x2="145" y2="50" stroke="#bbb" strokeWidth="1" />
-                  {/* Logo */}
                   <circle cx="90" cy="150" r="30" fill="none" stroke="#e5e5e5" strokeWidth="1" />
                   <path d="M80,135 Q72,155 90,170 Q90,150 105,135 Q97,148 80,135" fill="#7cb083" />
                   <path d="M90,170 Q108,163 115,175 Q102,168 90,170" fill="#2d5a3d" />
@@ -802,17 +812,17 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
               </div>
             </motion.div>
 
-            {/* Feature Callouts */}
+            {/* Feature Callouts - positioned around the pouch */}
             {/* Eurohole - Top Center */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="absolute top-4 lg:top-8 left-1/2 -translate-x-1/2 flex flex-col items-center"
+              className="absolute -top-4 lg:top-0 left-1/2 -translate-x-1/2 flex flex-col items-center"
             >
               <span className="text-sm lg:text-base text-gray-700 font-medium mb-2">Eurohole</span>
-              <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-pink-300 flex items-center justify-center text-white font-bold text-lg shadow-md">
+              <div className="w-8 h-8 rounded-full bg-pink-300 flex items-center justify-center text-white font-bold text-lg shadow-md">
                 +
               </div>
             </motion.div>
@@ -823,58 +833,58 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="absolute top-16 lg:top-20 right-2 lg:right-12 xl:right-24 flex items-center gap-2"
+              className="absolute top-8 lg:top-12 right-4 sm:right-8 lg:right-16 xl:right-24 flex items-center gap-3"
             >
-              <div className="w-6 h-6 lg:w-7 lg:h-7 rounded-full border-2 border-gray-400 flex items-center justify-center bg-white">
-                <svg className="w-3 h-3 lg:w-4 lg:h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-7 h-7 rounded-full border-2 border-gray-400 flex items-center justify-center bg-white shadow-sm">
+                <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
               <span className="text-sm lg:text-base text-gray-700 font-medium">Rounded corners</span>
             </motion.div>
 
-            {/* Tear notch - Left */}
+            {/* Tear notch - Upper Left */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="absolute top-28 lg:top-36 left-2 lg:left-12 xl:left-24 flex items-center gap-2"
+              className="absolute top-20 lg:top-24 left-4 sm:left-8 lg:left-16 xl:left-24 flex items-center gap-3"
             >
               <span className="text-sm lg:text-base text-gray-700 font-medium">Tear notch</span>
-              <div className="w-6 h-6 lg:w-7 lg:h-7 rounded-full border-2 border-gray-400 flex items-center justify-center bg-white">
-                <svg className="w-3 h-3 lg:w-4 lg:h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-7 h-7 rounded-full border-2 border-gray-400 flex items-center justify-center bg-white shadow-sm">
+                <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
             </motion.div>
 
-            {/* Aroma Valve - Center Left */}
+            {/* Aroma Valve - Left Middle */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.25 }}
-              className="absolute top-40 lg:top-48 left-4 lg:left-16 xl:left-24 flex flex-col items-center"
+              className="absolute top-40 lg:top-44 left-4 sm:left-8 lg:left-20 xl:left-28 flex items-center gap-3"
             >
-              <span className="text-sm lg:text-base text-gray-700 font-medium mb-2 whitespace-nowrap">Aroma Valve</span>
-              <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-pink-300 flex items-center justify-center text-white font-bold text-lg shadow-md">
+              <span className="text-sm lg:text-base text-gray-700 font-medium whitespace-nowrap">Aroma Valve</span>
+              <div className="w-8 h-8 rounded-full bg-pink-300 flex items-center justify-center text-white font-bold text-lg shadow-md">
                 +
               </div>
             </motion.div>
 
-            {/* Zipper - Right */}
+            {/* Zipper - Right Middle */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="absolute top-44 lg:top-52 right-0 lg:right-8 xl:right-16 flex items-center gap-2"
+              className="absolute top-36 lg:top-40 right-0 sm:right-4 lg:right-8 xl:right-12 flex items-center gap-3"
             >
-              <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-pink-300 flex items-center justify-center text-white font-bold text-lg shadow-md">
+              <div className="w-8 h-8 rounded-full bg-pink-300 flex items-center justify-center text-white font-bold text-lg shadow-md">
                 +
               </div>
-              <span className="text-sm lg:text-base text-gray-700 font-medium">Zipper / Hook to hook Zipper</span>
+              <span className="text-sm lg:text-base text-gray-700 font-medium whitespace-nowrap">Zipper / Hook to hook Zipper</span>
             </motion.div>
 
             {/* Made for Recycling seal - Bottom Right */}
@@ -883,12 +893,12 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.35 }}
-              className="absolute bottom-8 lg:bottom-16 right-4 lg:right-16 xl:right-28 flex items-center gap-2"
+              className="absolute bottom-4 lg:bottom-8 right-8 sm:right-12 lg:right-20 xl:right-28 flex items-center gap-3"
             >
-              <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-pink-300 flex items-center justify-center text-white font-bold text-lg shadow-md">
+              <div className="w-8 h-8 rounded-full bg-pink-300 flex items-center justify-center text-white font-bold text-lg shadow-md">
                 +
               </div>
-              <span className="text-sm lg:text-base text-gray-700 font-medium">Made for Recycling seal</span>
+              <span className="text-sm lg:text-base text-gray-700 font-medium whitespace-nowrap">Made for Recycling seal</span>
             </motion.div>
           </div>
         </div>
@@ -1134,97 +1144,118 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
       </section>
 
       {/* 5. Industries Carousel Section */}
-      <section className="py-20 lg:py-28 bg-gray-50">
+      <section className="py-24 lg:py-32 bg-[#f0f5f0]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <div className="text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl lg:text-5xl font-bold text-gray-800 italic"
+              className="text-4xl lg:text-6xl font-bold text-gray-800 mb-6"
             >
-              Packaging Solution<br />For Every Industry
+              Packaging Solution<br />
+              <span className="text-[#00cfca]">For Every Industry</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-gray-700 leading-relaxed lg:pt-4"
+              className="text-gray-600 leading-relaxed max-w-3xl mx-auto text-lg"
             >
-              Discover custom printed pouch solutions for every industry. Whether food, cosmetics, pet food or CBD and tobacco – at HongYi you will find the perfect packaging for your products. We focus on quality, sustainability and innovation.
+              Discover custom printed pouch solutions for every industry. Whether food, cosmetics, pet food or CBD and tobacco – at HongYi you will find the perfect packaging for your products.
             </motion.p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {[
-              { name: 'Accessories', letters: 'ACC\nESS\nOIR\nES' },
-              { name: 'Small Items', letters: 'SM\nALL\nPAR\nTS' },
-              { name: 'Food Supplements', letters: 'S\nU\nP' },
-              { name: 'Coffee', letters: 'CO\nFF\nEE' },
+              { name: 'Accessories', icon: '👜', color: '#8B7355' },
+              { name: 'Small Items', icon: '📦', color: '#6B8E23' },
+              { name: 'Food Supplements', icon: '💊', color: '#4682B4' },
+              { name: 'Coffee', icon: '☕', color: '#8B4513' },
             ].map((industry, index) => (
               <motion.div
                 key={industry.name}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group"
+                className="group cursor-pointer"
               >
-                <div className="bg-[#d5e5d5] rounded-2xl aspect-square flex items-center justify-center p-6 group-hover:shadow-lg transition-shadow">
-                  <div className="w-32 h-48 bg-white rounded-lg shadow-md flex items-center justify-center relative overflow-hidden">
-                    <span className="text-2xl font-bold text-green-600/20 whitespace-pre-line text-center leading-tight">{industry.letters}</span>
+                <div className="bg-white rounded-3xl aspect-[4/5] flex flex-col items-center justify-center p-8 shadow-lg group-hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2 border border-gray-100">
+                  <div className="w-24 h-32 lg:w-28 lg:h-40 bg-gradient-to-b from-gray-50 to-gray-100 rounded-xl shadow-inner flex items-center justify-center mb-6 relative overflow-hidden">
+                    <div className="text-5xl lg:text-6xl">{industry.icon}</div>
                   </div>
+                  <p className="text-lg lg:text-xl font-semibold text-gray-800 text-center">{industry.name}</p>
                 </div>
-                <p className="text-center mt-4 font-medium text-gray-800">{industry.name}</p>
               </motion.div>
             ))}
           </div>
 
-          <div className="flex items-center justify-center gap-4">
-            <button className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-6"
+          >
+            <button className="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:bg-white hover:border-gray-400 transition-all">
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <button className="bg-pink-200 hover:bg-pink-300 text-gray-800 px-6 py-3 rounded-full font-medium transition-colors">
+            <button className="bg-[#00cfca] hover:bg-[#00b8b3] text-white px-10 py-4 rounded-full font-semibold text-lg transition-colors shadow-lg hover:shadow-xl">
               See all industries
             </button>
-            <button className="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-700 transition-colors">
+            <button className="w-12 h-12 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-700 transition-colors shadow-lg">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* 6a. Samples Section */}
-      <section className="py-16 lg:py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="bg-gray-50 rounded-3xl p-8 lg:p-12">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
+      {/* 6. Samples + Environmental Section */}
+      <section className="py-20 lg:py-28 bg-gradient-to-b from-white to-[#f0f5f0]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Samples Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-[2rem] p-8 lg:p-16 shadow-xl mb-12"
+          >
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left - Product Images (SVG pouches) */}
-              <div className="flex items-end justify-center gap-3">
+              <div className="flex items-end justify-center gap-4 lg:gap-6">
                 {[
-                  { h: 120, w: 50, color: '#4a9c6d', label: 'TEA' },
-                  { h: 150, w: 60, color: '#2d3436', label: 'DETOX' },
-                  { h: 160, w: 65, color: '#636e72', label: 'TRAINING' },
-                  { h: 140, w: 55, color: '#b2bec3', label: 'SOFT' },
-                  { h: 130, w: 50, color: '#dfe6e9', label: 'MISTER' },
+                  { h: 140, w: 55, color: '#2d8659', label: 'TEA' },
+                  { h: 180, w: 70, color: '#1a1a2e', label: 'DETOX' },
+                  { h: 200, w: 80, color: '#4a5568', label: 'TRAINING' },
+                  { h: 170, w: 65, color: '#718096', label: 'SOFT' },
+                  { h: 150, w: 58, color: '#a0aec0', label: 'MISTER' },
                 ].map((pouch, i) => (
-                  <svg key={i} viewBox="0 0 60 140" className="drop-shadow-md" style={{ height: pouch.h, width: pouch.w }}>
-                    <defs>
-                      <linearGradient id={`sampleGrad${i}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor={pouch.color} stopOpacity="0.9" />
-                        <stop offset="50%" stopColor={pouch.color} />
-                        <stop offset="100%" stopColor={pouch.color} stopOpacity="0.8" />
-                      </linearGradient>
-                    </defs>
-                    <path d="M8,10 L52,10 L52,15 L55,15 L55,22 L52,22 L52,125 Q52,135 30,138 Q8,135 8,125 L8,22 L5,22 L5,15 L8,15 Z" fill={`url(#sampleGrad${i})`} />
-                    <rect x="8" y="10" width="44" height="4" fill="rgba(255,255,255,0.3)" />
-                    <ellipse cx="30" cy="7" rx="8" ry="4" fill="#e8e8e8" />
-                    <text x="30" y="70" textAnchor="middle" fill="white" fontSize="6" fontWeight="bold" opacity="0.9">{pouch.label}</text>
-                  </svg>
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="hover:-translate-y-2 transition-transform duration-300"
+                  >
+                    <svg viewBox="0 0 60 140" className="drop-shadow-xl" style={{ height: pouch.h, width: pouch.w }}>
+                      <defs>
+                        <linearGradient id={`sampleGradNew${i}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor={pouch.color} stopOpacity="0.95" />
+                          <stop offset="50%" stopColor={pouch.color} />
+                          <stop offset="100%" stopColor={pouch.color} stopOpacity="0.9" />
+                        </linearGradient>
+                      </defs>
+                      <path d="M8,10 L52,10 L52,15 L55,15 L55,22 L52,22 L52,125 Q52,135 30,138 Q8,135 8,125 L8,22 L5,22 L5,15 L8,15 Z" fill={`url(#sampleGradNew${i})`} />
+                      <rect x="8" y="10" width="44" height="4" fill="rgba(255,255,255,0.4)" />
+                      <ellipse cx="30" cy="7" rx="8" ry="4" fill="#e8e8e8" />
+                      <text x="30" y="75" textAnchor="middle" fill="white" fontSize="7" fontWeight="bold" opacity="0.95">{pouch.label}</text>
+                    </svg>
+                  </motion.div>
                 ))}
               </div>
               {/* Right - Content */}
@@ -1233,43 +1264,40 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                   Check out<br />our samples!
                 </h2>
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  Do you want to make sure that our pouches fit your food supplements perfectly? Order our sample pack now and receive a selection of high-quality stand-up pouches in various sizes and materials. Convince yourself of the quality and versatility of our packaging solutions.
+                <p className="text-gray-600 leading-relaxed mb-8 text-lg">
+                  Do you want to make sure that our pouches fit your food supplements perfectly? Order our sample pack now and receive a selection of high-quality stand-up pouches in various sizes and materials.
                 </p>
-                <button className="bg-pink-200 hover:bg-pink-300 text-gray-800 px-8 py-3 rounded-full font-medium transition-colors">
+                <button className="bg-[#00cfca] hover:bg-[#00b8b3] text-white px-10 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
                   Order Now
                 </button>
               </motion.div>
             </div>
-          </div>
-        </div>
-      </section>
+          </motion.div>
 
-      {/* Environmental Section */}
-      <section className="py-8 lg:py-12 bg-white">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="bg-[#a3c9a8] rounded-3xl p-10 lg:p-16 text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-3xl lg:text-4xl font-bold text-gray-800 italic mb-6 max-w-3xl mx-auto leading-tight"
-            >
-              Our environmental-friendly packaging solution for your food supplements
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-gray-700 leading-relaxed max-w-2xl mx-auto"
-            >
-              Sustainability is a decisive factor for the quality of our packaging for food supplements. With our packaging made from mono-material and the <span className="underline">&quot;Made for Recycling&quot;</span> seal, we are sending out a strong signal in favor of environmental protection and resource conservation.
-            </motion.p>
-          </div>
+          {/* Environmental Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-[#7cb083] to-[#5a9c64] rounded-[2rem] p-10 lg:p-16 text-center shadow-xl"
+          >
+            <div className="max-w-4xl mx-auto">
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-8">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+              </div>
+              <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                Our environmental-friendly packaging solution for your food supplements
+              </h2>
+              <p className="text-white/90 leading-relaxed text-lg max-w-3xl mx-auto">
+                Sustainability is a decisive factor for the quality of our packaging. With our packaging made from mono-material and the <span className="underline font-medium">&quot;Made for Recycling&quot;</span> seal, we are sending out a strong signal in favor of environmental protection.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
