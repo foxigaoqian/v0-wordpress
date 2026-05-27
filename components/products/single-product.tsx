@@ -251,13 +251,31 @@ export default function SingleProduct({ categorySlug, productSlug }: SingleProdu
                 {/* Navy circle background */}
                 <div className="absolute top-0 right-0 w-4/5 h-4/5 bg-[#0a1628] rounded-full" />
                 
-                {/* Main product image */}
-                <div className="relative z-10">
-                  <img
-                    src={product.images[selectedImage]}
-                    alt={product.name}
-                    className="w-80 h-80 lg:w-96 lg:h-96 object-contain drop-shadow-2xl"
-                  />
+                {/* Main product image with smooth sliding animation */}
+                <div className="relative z-10 w-80 h-80 lg:w-96 lg:h-96 overflow-hidden">
+                  <motion.div 
+                    className="flex h-full"
+                    animate={{ x: `-${selectedImage * 100}%` }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 30,
+                      mass: 0.8,
+                    }}
+                  >
+                    {product.images.map((img: string, idx: number) => (
+                      <div
+                        key={idx}
+                        className="w-full h-full flex-shrink-0 flex items-center justify-center"
+                      >
+                        <img
+                          src={img}
+                          alt={`${product.name} - ${idx + 1}`}
+                          className="w-full h-full object-contain drop-shadow-2xl"
+                        />
+                      </div>
+                    ))}
+                  </motion.div>
                 </div>
 
                 {/* Navigation arrows */}
@@ -279,11 +297,47 @@ export default function SingleProduct({ categorySlug, productSlug }: SingleProdu
         </div>
       </section>
 
+      {/* Related Products */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">Related Products</h2>
+            <Link href={`/products/${categorySlug}`} className="text-[#00cfca] font-semibold hover:underline">
+              View All
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-4 gap-6">
+            {relatedProducts.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+              >
+                <Link href={item.href} className="group block">
+                  <div className="aspect-square rounded-2xl overflow-hidden bg-white mb-4 border border-gray-100 group-hover:shadow-lg transition-shadow">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 group-hover:text-[#00cfca] transition-colors">
+                    {item.name}
+                  </h3>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* New Solutions Carousel Section */}
       <section className="relative py-16 lg:py-24 overflow-hidden">
         {/* Wave Background */}
         <div className="absolute inset-0">
-          {/* Top wave transition */}
+          {/* Top wave transition - from gray-50 to navy */}
           <svg className="absolute top-0 w-full h-32 lg:h-40" viewBox="0 0 1440 160" preserveAspectRatio="none">
             <path fill="#f9fafb" d="M0,0 L1440,0 L1440,60 Q1080,120 720,80 Q360,40 0,80 Z" />
             <path fill="#0a1628" d="M0,80 Q360,40 720,80 Q1080,120 1440,60 L1440,160 L0,160 Z" />
@@ -435,42 +489,6 @@ export default function SingleProduct({ categorySlug, productSlug }: SingleProdu
                 />
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Products */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-gray-900">Related Products</h2>
-            <Link href={`/products/${categorySlug}`} className="text-[#00cfca] font-semibold hover:underline">
-              View All
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-4 gap-6">
-            {relatedProducts.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-              >
-                <Link href={item.href} className="group block">
-                  <div className="aspect-square rounded-2xl overflow-hidden bg-white mb-4 border border-gray-100 group-hover:shadow-lg transition-shadow">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-gray-900 group-hover:text-[#00cfca] transition-colors">
-                    {item.name}
-                  </h3>
-                </Link>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
