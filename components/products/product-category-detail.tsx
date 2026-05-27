@@ -946,6 +946,424 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
         </div>
       </section>
 
+      {/* Film Types Grid Section */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { name: 'White PP film', desc: 'Our PP white film sets new standards in packaging. Its pure white finish ensures vibrant colors and uniform color coverage. With a white print carrier, this film creates a clean...' },
+              { name: 'Metallic PP film', desc: 'Our PP metallic film combines striking metallic effects with practical features, turning any packaging into a highlight. Perfect for products that...' },
+              { name: 'Transparent PP film', desc: 'Our PP transparent film offers the perfect combination of functional protection and optical clarity. The transparent structure allows...' },
+              { name: 'Pearl white PP film', desc: 'Our PP pearl white film offers not only an elegant pearlescent appearance but also combines aesthetics with outstanding functional properties. Its multilayer...' },
+              { name: 'PET/PE transparent', desc: 'Our PET/PE transparent film combines robust functionality with a window-like appearance. This packaging solution is ideal for products that need to be visually...' },
+              { name: 'PET/PE metallic', desc: 'Our PET/PE metallic film has long proven itself as a reliable packaging solution. With its stunning metallic appearance and exceptional durability, it offers...' },
+            ].map((film, index) => (
+              <motion.div
+                key={film.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="relative h-52 mb-4 flex items-center justify-center">
+                  {/* Recycling badge */}
+                  <div className="absolute top-0 right-8 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center z-10">
+                    <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                    <span className="absolute text-white text-xs font-bold mt-1">100%</span>
+                  </div>
+                  {/* Pouch illustration */}
+                  <svg viewBox="0 0 120 180" className="h-full w-auto drop-shadow-lg">
+                    <defs>
+                      <linearGradient id={`filmGrad${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#c0c0c0" />
+                        <stop offset="30%" stopColor="#e8e8e8" />
+                        <stop offset="50%" stopColor="#f5f5f5" />
+                        <stop offset="70%" stopColor="#e0e0e0" />
+                        <stop offset="100%" stopColor="#b0b0b0" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M20,15 L100,15 L100,20 L105,20 L105,30 L100,30 L100,165 Q100,175 60,178 Q20,175 20,165 L20,30 L15,30 L15,20 L20,20 Z" fill={`url(#filmGrad${index})`} />
+                    <rect x="20" y="15" width="80" height="5" fill="#d0d0d0" />
+                    <ellipse cx="60" cy="10" rx="10" ry="5" fill="#e8e8e8" stroke="#ccc" />
+                    <line x1="25" y1="35" x2="95" y2="35" stroke="#bbb" strokeWidth="2" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">{film.name}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4 px-2">{film.desc}</p>
+                <button className="bg-pink-200 hover:bg-pink-300 text-gray-800 px-6 py-2 rounded-full text-sm font-medium transition-colors">
+                  Learn More
+                </button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Optimum Packaging Steps Section */}
+      <section className="py-20 lg:py-28 bg-[#d5e5d5]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+            {/* Left - Title */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl lg:text-5xl font-bold text-gray-800 italic leading-tight">
+                Optimum packaging solution for your food supplements
+              </h2>
+              <p className="mt-6 text-gray-700 leading-relaxed">
+                Our stand-up pouches offer you the flexibility to show off your product design to its best advantage. With our customized solutions, you can ensure that your food supplements always appear in the best light and are optimally protected.
+              </p>
+            </motion.div>
+
+            {/* Right - Steps */}
+            <div className="space-y-10">
+              {[
+                { num: '1', title: 'Choose your materials and sizes', desc: 'Whether white, transparent or metallic – we have the right material for your requirements. Our pouches are available in different sizes so that you get exactly what you need.', icon: 'layers' },
+                { num: '2', title: 'Create your unique design', desc: 'Use our Pouch Configurator to build your packaging. You can upload and customize your design with just a few clicks. This ensures that your brand and product information are presented clearly and attractively.', icon: 'pen' },
+                { num: '3', title: 'Sustainable and efficient', desc: 'Our packaging is not only practical, but also environmental-friendly. With recyclable materials they help to reduce resource consumption and emissions.', icon: 'recycle' },
+              ].map((step, index) => (
+                <motion.div
+                  key={step.num}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 }}
+                  className="flex gap-6"
+                >
+                  <div className="flex-shrink-0 flex items-start gap-2">
+                    <span className="text-5xl lg:text-6xl font-bold text-green-600/30">{step.num}</span>
+                    <div className="w-10 h-10 mt-2">
+                      <svg className="w-full h-full text-green-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        {step.icon === 'layers' && <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />}
+                        {step.icon === 'pen' && <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />}
+                        {step.icon === 'recycle' && <path d="M7 19H4.815a1.83 1.83 0 01-1.57-.881 1.785 1.785 0 01-.004-1.784L7.196 9.5M14.5 15.5l3.955 6.835a1.83 1.83 0 001.57.881H20M10.5 4.5l-3.955 6.835M14 19l3-3M7 19l3 3M21 12l-3-3M21 12l-3 3M12 2l3 3M12 2l-3 3" />}
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
+                    <p className="text-gray-700 leading-relaxed">{step.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Book Expert Section */}
+      <section className="py-20 lg:py-28 bg-[#8fb98f]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="mb-6">
+                <svg className="w-20 h-20 text-gray-800" viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="40" cy="35" r="8" strokeDasharray="4 2" />
+                  <path d="M25,35 L35,35" strokeDasharray="4 2" />
+                  <path d="M45,35 L55,35" strokeDasharray="4 2" />
+                  <polygon points="40,45 55,65 40,60 25,65" fill="currentColor" />
+                </svg>
+              </div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                Book a Pouch Expert
+              </h2>
+              <p className="text-gray-800 text-lg">
+                Do you need personal advice, help or guidance from one of our experts?
+              </p>
+            </motion.div>
+
+            {/* Right - Calendar Widget Mock */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl shadow-xl overflow-hidden"
+            >
+              <div className="bg-gray-100 p-4 border-b">
+                <div className="flex items-center justify-center gap-8">
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full border-2 border-red-400" />
+                    <span className="text-sm text-gray-600">Select Time</span>
+                  </div>
+                  <div className="w-24 h-0.5 bg-gray-300" />
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full border-2 border-gray-300" />
+                    <span className="text-sm text-gray-600">Your Info</span>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-16 h-16 bg-gray-200 rounded-full" />
+                  <div>
+                    <p className="font-semibold text-gray-900">Meet with Expert</p>
+                    <p className="text-gray-500">May 2026</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-7 gap-2 text-center text-sm mb-4">
+                  {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(day => (
+                    <span key={day} className="text-gray-500 font-medium">{day}</span>
+                  ))}
+                  {Array.from({ length: 31 }, (_, i) => (
+                    <button 
+                      key={i} 
+                      className={`p-2 rounded-full ${i + 1 === 27 ? 'bg-gray-800 text-white' : 'hover:bg-gray-100'}`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Right Material Section */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl lg:text-5xl font-bold text-gray-800 italic leading-tight mb-8">
+                The right material for every content and every design
+              </h2>
+              <div className="space-y-5 text-gray-700 leading-relaxed">
+                <p>
+                  We rely on a carefully selected range of materials that have proven themselves in practice. Our materials have been specifically selected to meet the different requirements of food supplements.
+                </p>
+                <p>
+                  Whether it&apos;s packaging for sensitive vitamins, long-lasting minerals or high-quality herbal extracts, our materials offer optimal properties such as barrier functions against moisture, oxygen and other environmental influences. This keeps your food supplements fresh and effective at all times.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Right - Product Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex justify-center"
+            >
+              <div className="relative w-64 lg:w-80">
+                <svg viewBox="0 0 200 300" className="w-full h-auto drop-shadow-xl">
+                  <defs>
+                    <linearGradient id="transparentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="rgba(200,200,200,0.3)" />
+                      <stop offset="50%" stopColor="rgba(255,255,255,0.1)" />
+                      <stop offset="100%" stopColor="rgba(180,180,180,0.3)" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M40,25 L160,25 L160,30 L165,30 L165,45 L160,45 L160,270 Q160,285 100,290 Q40,285 40,270 L40,45 L35,45 L35,30 L40,30 Z" fill="url(#transparentGrad)" stroke="#ccc" strokeWidth="1" />
+                  <ellipse cx="100" cy="18" rx="15" ry="7" fill="#e8e8e8" stroke="#bbb" />
+                  <rect x="45" y="50" width="110" height="4" fill="#ddd" rx="2" />
+                  {/* Apricots inside */}
+                  {[
+                    { cx: 80, cy: 180, r: 18 },
+                    { cx: 120, cy: 175, r: 16 },
+                    { cx: 100, cy: 200, r: 17 },
+                    { cx: 70, cy: 210, r: 15 },
+                    { cx: 130, cy: 205, r: 16 },
+                    { cx: 90, cy: 230, r: 14 },
+                    { cx: 115, cy: 235, r: 15 },
+                    { cx: 100, cy: 150, r: 16 },
+                  ].map((apricot, i) => (
+                    <ellipse key={i} cx={apricot.cx} cy={apricot.cy} rx={apricot.r} ry={apricot.r * 0.8} fill="#f4a460" opacity="0.9" />
+                  ))}
+                </svg>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl lg:text-5xl font-bold text-gray-800 mb-12"
+          >
+            Still have questions? Here<br />are the answers!
+          </motion.h2>
+          
+          <div className="grid lg:grid-cols-4 gap-8">
+            <div className="lg:col-span-1">
+              <span className="text-xl font-semibold text-gray-900">FAQ</span>
+            </div>
+            <div className="lg:col-span-3 space-y-4">
+              {[
+                { q: 'How do the stand-up pouches protect my food supplements?', a: 'Our stand-up pouches provide a high barrier against moisture, oxygen and UV rays to preserve the freshness and effectiveness of your food supplements.', open: true },
+                { q: 'Are your stand-up pouches suitable for transport?', a: 'Yes, our pouches are designed to withstand shipping and handling while protecting your products.' },
+                { q: 'What are the special advantages of stand-up pouches for food supplements?', a: 'Stand-up pouches offer excellent barrier properties, are lightweight, and provide great shelf presence.' },
+                { q: 'Are the stand-up pouches food-safe?', a: 'All our pouches are made from food-grade materials and comply with relevant safety regulations.' },
+                { q: 'What sizes are available?', a: 'We offer a wide range of sizes to accommodate different product quantities and requirements.' },
+                { q: 'Can I order a sample pack?', a: 'Yes, you can order sample packs to evaluate our products before placing a larger order.' },
+              ].map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className={`border-b border-gray-200 ${faq.open ? 'bg-gray-100/50' : ''} -mx-4 px-4 py-4`}
+                >
+                  <button className="w-full flex items-center justify-between text-left">
+                    <span className="font-medium text-gray-900">{faq.q}</span>
+                    <div className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center flex-shrink-0 ml-4">
+                      <svg className={`w-4 h-4 text-gray-500 transition-transform ${faq.open ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </button>
+                  {faq.open && (
+                    <p className="mt-3 text-gray-600 leading-relaxed">{faq.a}</p>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Industries Carousel Section */}
+      <section className="py-20 lg:py-28 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl lg:text-5xl font-bold text-gray-800 italic"
+            >
+              Packaging Solution<br />For Every Industry
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-gray-700 leading-relaxed lg:pt-4"
+            >
+              Discover custom printed pouch solutions for every industry. Whether food, cosmetics, pet food or CBD and tobacco – at HongYi you will find the perfect packaging for your products. We focus on quality, sustainability and innovation.
+            </motion.p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {[
+              { name: 'Accessories', letters: 'ACC\nESS\nOIR\nES' },
+              { name: 'Small Items', letters: 'SM\nALL\nPAR\nTS' },
+              { name: 'Food Supplements', letters: 'S\nU\nP' },
+              { name: 'Coffee', letters: 'CO\nFF\nEE' },
+            ].map((industry, index) => (
+              <motion.div
+                key={industry.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group"
+              >
+                <div className="bg-[#d5e5d5] rounded-2xl aspect-square flex items-center justify-center p-6 group-hover:shadow-lg transition-shadow">
+                  <div className="w-32 h-48 bg-white rounded-lg shadow-md flex items-center justify-center relative overflow-hidden">
+                    <span className="text-2xl font-bold text-green-600/20 whitespace-pre-line text-center leading-tight">{industry.letters}</span>
+                  </div>
+                </div>
+                <p className="text-center mt-4 font-medium text-gray-800">{industry.name}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-center gap-4">
+            <button className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button className="bg-pink-200 hover:bg-pink-300 text-gray-800 px-6 py-3 rounded-full font-medium transition-colors">
+              See all industries
+            </button>
+            <button className="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-700 transition-colors">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Samples Section */}
+      <section className="py-16 lg:py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="bg-gray-50 rounded-3xl p-8 lg:p-12">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              {/* Left - Product Images */}
+              <div className="flex items-end justify-center gap-2">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div key={i} className={`bg-gradient-to-b from-gray-100 to-gray-200 rounded-lg shadow-md ${i === 2 || i === 3 ? 'w-20 h-40' : 'w-14 h-32'}`} />
+                ))}
+              </div>
+              {/* Right - Content */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                  Check out<br />our samples!
+                </h2>
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  Do you want to make sure that our pouches fit your food supplements perfectly? Order our sample pack now and receive a selection of high-quality stand-up pouches in various sizes and materials. Convince yourself of the quality and versatility of our packaging solutions.
+                </p>
+                <button className="bg-pink-200 hover:bg-pink-300 text-gray-800 px-8 py-3 rounded-full font-medium transition-colors">
+                  Order Now
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Environmental Section */}
+      <section className="py-8 lg:py-12 bg-white">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="bg-[#a3c9a8] rounded-3xl p-10 lg:p-16 text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl lg:text-4xl font-bold text-gray-800 italic mb-6 max-w-3xl mx-auto leading-tight"
+            >
+              Our environmental-friendly packaging solution for your food supplements
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-gray-700 leading-relaxed max-w-2xl mx-auto"
+            >
+              Sustainability is a decisive factor for the quality of our packaging for food supplements. With our packaging made from mono-material and the <span className="underline">&quot;Made for Recycling&quot;</span> seal, we are sending out a strong signal in favor of environmental protection and resource conservation.
+            </motion.p>
+          </div>
+        </div>
+      </section>
+
       {/* Product Grid */}
       <section id="products" className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
