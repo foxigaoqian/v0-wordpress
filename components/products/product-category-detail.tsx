@@ -894,7 +894,65 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
         </div>
       </section>
 
-      {/* Film Types Grid Section */}
+      {/* 1. Right Material Section */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl lg:text-5xl font-bold text-gray-800 italic leading-tight mb-8">
+                The right material for every content and every design
+              </h2>
+              <div className="space-y-5 text-gray-700 leading-relaxed">
+                <p>
+                  We rely on a carefully selected range of materials that have proven themselves in practice. Our materials have been specifically selected to meet the different requirements of food supplements.
+                </p>
+                <p>
+                  Whether it&apos;s packaging for sensitive vitamins, long-lasting minerals or high-quality herbal extracts, our materials offer optimal properties such as barrier functions against moisture, oxygen and other environmental influences. This keeps your food supplements fresh and effective at all times.
+                </p>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex justify-center"
+            >
+              <div className="relative w-64 lg:w-80">
+                <svg viewBox="0 0 200 300" className="w-full h-auto drop-shadow-xl">
+                  <defs>
+                    <linearGradient id="transparentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="rgba(200,200,200,0.3)" />
+                      <stop offset="50%" stopColor="rgba(255,255,255,0.1)" />
+                      <stop offset="100%" stopColor="rgba(180,180,180,0.3)" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M40,25 L160,25 L160,30 L165,30 L165,45 L160,45 L160,270 Q160,285 100,290 Q40,285 40,270 L40,45 L35,45 L35,30 L40,30 Z" fill="url(#transparentGrad)" stroke="#ccc" strokeWidth="1" />
+                  <ellipse cx="100" cy="18" rx="15" ry="7" fill="#e8e8e8" stroke="#bbb" />
+                  <rect x="45" y="50" width="110" height="4" fill="#ddd" rx="2" />
+                  {[
+                    { cx: 80, cy: 180, r: 18 },
+                    { cx: 120, cy: 175, r: 16 },
+                    { cx: 100, cy: 200, r: 17 },
+                    { cx: 70, cy: 210, r: 15 },
+                    { cx: 130, cy: 205, r: 16 },
+                    { cx: 90, cy: 230, r: 14 },
+                    { cx: 115, cy: 235, r: 15 },
+                    { cx: 100, cy: 150, r: 16 },
+                  ].map((apricot, i) => (
+                    <ellipse key={i} cx={apricot.cx} cy={apricot.cy} rx={apricot.r} ry={apricot.r * 0.8} fill="#f4a460" opacity="0.9" />
+                  ))}
+                </svg>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Film Types Grid Section */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -915,14 +973,12 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
                 className="text-center"
               >
                 <div className="relative h-52 mb-4 flex items-center justify-center">
-                  {/* Recycling badge */}
                   <div className="absolute top-0 right-8 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center z-10">
                     <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
                     </svg>
                     <span className="absolute text-white text-xs font-bold mt-1">100%</span>
                   </div>
-                  {/* Pouch illustration */}
                   <svg viewBox="0 0 120 180" className="h-full w-auto drop-shadow-lg">
                     <defs>
                       <linearGradient id={`filmGrad${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
@@ -950,7 +1006,7 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
         </div>
       </section>
 
-      {/* Optimum Packaging Steps Section */}
+      {/* 3. Optimum Packaging Steps Section */}
       <section className="py-20 lg:py-28 bg-[#d5e5d5]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
@@ -1077,120 +1133,7 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
         </div>
       </section>
 
-      {/* Right Material Section */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left - Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl lg:text-5xl font-bold text-gray-800 italic leading-tight mb-8">
-                The right material for every content and every design
-              </h2>
-              <div className="space-y-5 text-gray-700 leading-relaxed">
-                <p>
-                  We rely on a carefully selected range of materials that have proven themselves in practice. Our materials have been specifically selected to meet the different requirements of food supplements.
-                </p>
-                <p>
-                  Whether it&apos;s packaging for sensitive vitamins, long-lasting minerals or high-quality herbal extracts, our materials offer optimal properties such as barrier functions against moisture, oxygen and other environmental influences. This keeps your food supplements fresh and effective at all times.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Right - Product Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="flex justify-center"
-            >
-              <div className="relative w-64 lg:w-80">
-                <svg viewBox="0 0 200 300" className="w-full h-auto drop-shadow-xl">
-                  <defs>
-                    <linearGradient id="transparentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="rgba(200,200,200,0.3)" />
-                      <stop offset="50%" stopColor="rgba(255,255,255,0.1)" />
-                      <stop offset="100%" stopColor="rgba(180,180,180,0.3)" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M40,25 L160,25 L160,30 L165,30 L165,45 L160,45 L160,270 Q160,285 100,290 Q40,285 40,270 L40,45 L35,45 L35,30 L40,30 Z" fill="url(#transparentGrad)" stroke="#ccc" strokeWidth="1" />
-                  <ellipse cx="100" cy="18" rx="15" ry="7" fill="#e8e8e8" stroke="#bbb" />
-                  <rect x="45" y="50" width="110" height="4" fill="#ddd" rx="2" />
-                  {/* Apricots inside */}
-                  {[
-                    { cx: 80, cy: 180, r: 18 },
-                    { cx: 120, cy: 175, r: 16 },
-                    { cx: 100, cy: 200, r: 17 },
-                    { cx: 70, cy: 210, r: 15 },
-                    { cx: 130, cy: 205, r: 16 },
-                    { cx: 90, cy: 230, r: 14 },
-                    { cx: 115, cy: 235, r: 15 },
-                    { cx: 100, cy: 150, r: 16 },
-                  ].map((apricot, i) => (
-                    <ellipse key={i} cx={apricot.cx} cy={apricot.cy} rx={apricot.r} ry={apricot.r * 0.8} fill="#f4a460" opacity="0.9" />
-                  ))}
-                </svg>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl lg:text-5xl font-bold text-gray-800 mb-12"
-          >
-            Still have questions? Here<br />are the answers!
-          </motion.h2>
-          
-          <div className="grid lg:grid-cols-4 gap-8">
-            <div className="lg:col-span-1">
-              <span className="text-xl font-semibold text-gray-900">FAQ</span>
-            </div>
-            <div className="lg:col-span-3 space-y-4">
-              {[
-                { q: 'How do the stand-up pouches protect my food supplements?', a: 'Our stand-up pouches provide a high barrier against moisture, oxygen and UV rays to preserve the freshness and effectiveness of your food supplements.', open: true },
-                { q: 'Are your stand-up pouches suitable for transport?', a: 'Yes, our pouches are designed to withstand shipping and handling while protecting your products.' },
-                { q: 'What are the special advantages of stand-up pouches for food supplements?', a: 'Stand-up pouches offer excellent barrier properties, are lightweight, and provide great shelf presence.' },
-                { q: 'Are the stand-up pouches food-safe?', a: 'All our pouches are made from food-grade materials and comply with relevant safety regulations.' },
-                { q: 'What sizes are available?', a: 'We offer a wide range of sizes to accommodate different product quantities and requirements.' },
-                { q: 'Can I order a sample pack?', a: 'Yes, you can order sample packs to evaluate our products before placing a larger order.' },
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className={`border-b border-gray-200 ${faq.open ? 'bg-gray-100/50' : ''} -mx-4 px-4 py-4`}
-                >
-                  <button className="w-full flex items-center justify-between text-left">
-                    <span className="font-medium text-gray-900">{faq.q}</span>
-                    <div className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center flex-shrink-0 ml-4">
-                      <svg className={`w-4 h-4 text-gray-500 transition-transform ${faq.open ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
-                  </button>
-                  {faq.open && (
-                    <p className="mt-3 text-gray-600 leading-relaxed">{faq.a}</p>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries Carousel Section */}
+      {/* 5. Industries Carousel Section */}
       <section className="py-20 lg:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 mb-12">
@@ -1308,6 +1251,57 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
             >
               Sustainability is a decisive factor for the quality of our packaging for food supplements. With our packaging made from mono-material and the <span className="underline">&quot;Made for Recycling&quot;</span> seal, we are sending out a strong signal in favor of environmental protection and resource conservation.
             </motion.p>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FAQ Section */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl lg:text-5xl font-bold text-gray-800 mb-12"
+          >
+            Still have questions? Here<br />are the answers!
+          </motion.h2>
+          
+          <div className="grid lg:grid-cols-4 gap-8">
+            <div className="lg:col-span-1">
+              <span className="text-xl font-semibold text-gray-900">FAQ</span>
+            </div>
+            <div className="lg:col-span-3 space-y-4">
+              {[
+                { q: 'How do the stand-up pouches protect my food supplements?', a: 'Our stand-up pouches provide a high barrier against moisture, oxygen and UV rays to preserve the freshness and effectiveness of your food supplements.', open: true },
+                { q: 'Are your stand-up pouches suitable for transport?', a: 'Yes, our pouches are designed to withstand shipping and handling while protecting your products.' },
+                { q: 'What are the special advantages of stand-up pouches for food supplements?', a: 'Stand-up pouches offer excellent barrier properties, are lightweight, and provide great shelf presence.' },
+                { q: 'Are the stand-up pouches food-safe?', a: 'All our pouches are made from food-grade materials and comply with relevant safety regulations.' },
+                { q: 'What sizes are available?', a: 'We offer a wide range of sizes to accommodate different product quantities and requirements.' },
+                { q: 'Can I order a sample pack?', a: 'Yes, you can order sample packs to evaluate our products before placing a larger order.' },
+              ].map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className={`border-b border-gray-200 ${faq.open ? 'bg-gray-100/50' : ''} -mx-4 px-4 py-4`}
+                >
+                  <button className="w-full flex items-center justify-between text-left">
+                    <span className="font-medium text-gray-900">{faq.q}</span>
+                    <div className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center flex-shrink-0 ml-4">
+                      <svg className={`w-4 h-4 text-gray-500 transition-transform ${faq.open ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </button>
+                  {faq.open && (
+                    <p className="mt-3 text-gray-600 leading-relaxed">{faq.a}</p>
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
