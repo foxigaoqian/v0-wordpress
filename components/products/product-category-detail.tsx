@@ -391,6 +391,147 @@ export function ProductCategoryDetail({ slug, category }: ProductCategoryDetailP
         </div>
       </section>
 
+      {/* Partnership Section */}
+      <section className="relative py-20 lg:py-28 overflow-hidden">
+        {/* Background with wave transitions */}
+        <div className="absolute inset-0">
+          {/* Top wave from dark blue to purple */}
+          <svg className="absolute top-0 w-full h-24" viewBox="0 0 1440 96" preserveAspectRatio="none">
+            <path fill="#0a1628" d="M0,0 L1440,0 L1440,20 C1200,80 720,96 0,40 Z" />
+          </svg>
+          {/* Deep purple background */}
+          <div className="absolute top-20 bottom-20 w-full bg-[#1a0a3e]" />
+          {/* Bottom wave transition */}
+          <svg className="absolute bottom-0 w-full h-24" viewBox="0 0 1440 96" preserveAspectRatio="none">
+            <path fill="#1a0a3e" d="M0,96 L1440,96 L1440,56 C1200,16 720,0 0,76 Z" />
+            <path fill="#ffffff" d="M0,96 L1440,96 L1440,76 C1200,36 720,20 0,96 Z" />
+          </svg>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-2">
+                WE THINK YOU&apos;LL LIKE
+              </h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-[#00cfca] mb-8">
+                WORKING WITH US
+              </h2>
+              
+              <div className="space-y-5 text-gray-300 leading-relaxed">
+                <p>
+                  HongYi doesn&apos;t just have customers – we have partners. And as with every good partnership, we are invested in your success.
+                </p>
+                <p>
+                  This is why we offer turn-key packaging solutions with every element, from extruding the film to package design, pre-press file preparation, plate making, printing, lamination, slitting and converting – all taking place at our manufacturing facility. We control every aspect of production to make sure we perfectly match your specifications and meet your timelines.
+                </p>
+                <p>
+                  As your partner, we aim to be responsive and consistent. We will keep you updated on your projects from start to shipping and stay in touch between projects to ensure you are informed of trends, material or machinery developments and other industry news.
+                </p>
+              </div>
+
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 mt-8 bg-[#ff6b4a] hover:bg-[#ff5533] text-white px-8 py-4 rounded-full font-semibold transition-colors uppercase tracking-wide"
+              >
+                Let&apos;s Partner on a New Project
+              </Link>
+            </motion.div>
+
+            {/* Right - Handshake with Icons */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative flex items-center justify-center"
+            >
+              {/* Central Handshake Icon */}
+              <div className="relative w-64 h-64 lg:w-80 lg:h-80">
+                {/* Handshake SVG */}
+                <svg viewBox="0 0 200 200" className="w-full h-full">
+                  <g fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    {/* Left hand */}
+                    <path d="M30,100 L50,100 L70,80 L90,80 L100,90" />
+                    <path d="M50,100 L50,120 L70,140" />
+                    {/* Right hand */}
+                    <path d="M170,100 L150,100 L130,80 L110,80 L100,90" />
+                    <path d="M150,100 L150,120 L130,140" />
+                    {/* Handshake center */}
+                    <path d="M70,90 C80,85 90,85 100,90 C110,85 120,85 130,90" />
+                    <path d="M75,100 L85,95 L95,100 L105,95 L115,100 L125,95" />
+                    {/* Cuffs */}
+                    <rect x="25" y="95" width="30" height="15" rx="2" fill="white" />
+                    <rect x="145" y="95" width="30" height="15" rx="2" fill="white" />
+                  </g>
+                </svg>
+
+                {/* Surrounding Icons */}
+                {/* Top Left - Lightbulb */}
+                <div className="absolute -top-4 -left-8 lg:-left-12">
+                  <div className="w-12 h-12 lg:w-16 lg:h-16 text-green-400">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7zm2.9 11.1l-.9.6V16h-4v-2.3l-.9-.6C7.8 12.2 7 10.6 7 9c0-2.8 2.2-5 5-5s5 2.2 5 5c0 1.6-.8 3.2-2.1 4.1z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Top Right - Target */}
+                <div className="absolute -top-2 -right-4 lg:-right-8">
+                  <div className="w-12 h-12 lg:w-16 lg:h-16 text-pink-500">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm0-14c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 10c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Right - Stars/Badge */}
+                <div className="absolute top-1/4 -right-8 lg:-right-16">
+                  <div className="w-10 h-10 lg:w-14 lg:h-14 text-yellow-400">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Left - Gears */}
+                <div className="absolute top-1/3 -left-10 lg:-left-16">
+                  <div className="w-12 h-12 lg:w-16 lg:h-16 text-yellow-400">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Bottom Left - Chart */}
+                <div className="absolute bottom-8 -left-6 lg:-left-10">
+                  <div className="w-10 h-10 lg:w-14 lg:h-14 text-cyan-400">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3 13h2v8H3v-8zm4-6h2v14H7V7zm4-4h2v18h-2V3zm4 8h2v10h-2V11zm4-3h2v13h-2V8z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Bottom Right - Clipboard */}
+                <div className="absolute bottom-4 -right-4 lg:-right-10">
+                  <div className="w-10 h-10 lg:w-14 lg:h-14 text-pink-400">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Product Grid */}
       <section id="products" className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
