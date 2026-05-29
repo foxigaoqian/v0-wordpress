@@ -1,0 +1,80 @@
+/*
+Theme Name: Mewepak Packaging
+Theme URI: https://www.minwayprint.com
+Author: Mewepak / Minway Print
+Author URI: https://www.minwayprint.com
+Description: Custom WordPress theme for Mewepak — premium flexible packaging manufacturer. Ported from the Next.js design with Tailwind CSS, brand teal (#00cfca) and navy (#0a1628), Inter font, mega-menu navigation and a sustainability-focused homepage.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mewepak
+*/
+
+/*
+  Most styling is handled by Tailwind (loaded via functions.php).
+  Use this file only for small overrides that Tailwind utility classes
+  cannot express, or for WordPress-specific generated markup
+  (e.g. .wp-caption, .alignleft, comment lists, gallery, etc.).
+*/
+
+:root {
+  --brand-teal: #00cfca;
+  --brand-teal-dark: #00b8b3;
+  --brand-navy: #0a1628;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Scroll-reveal animation (replaces Framer Motion whileInView) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* WordPress core alignment helpers */
+.alignleft { float: left; margin: 0 1.5rem 1rem 0; }
+.alignright { float: right; margin: 0 0 1rem 1.5rem; }
+.aligncenter { display: block; margin: 0 auto 1rem; }
+.wp-caption { max-width: 100%; }
+.wp-caption-text { font-size: 0.85rem; color: #6b7280; margin-top: 0.5rem; }
+.screen-reader-text {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+/* Rich text content inside the_content() — mirrors the article body styles */
+.entry-content h2 { font-size: 1.875rem; font-weight: 700; color: #111827; margin: 2rem 0 1rem; }
+.entry-content h3 { font-size: 1.5rem; font-weight: 700; color: #111827; margin: 1.75rem 0 0.75rem; }
+.entry-content p { color: #374151; line-height: 1.75; margin-bottom: 1.25rem; }
+.entry-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; color: #374151; }
+.entry-content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.25rem; color: #374151; }
+.entry-content a { color: #00cfca; text-decoration: underline; }
+.entry-content img { border-radius: 0.75rem; }
+.entry-content blockquote {
+  border-left: 4px solid #00cfca;
+  padding-left: 1.25rem;
+  font-style: italic;
+  color: #4b5563;
+  margin: 1.5rem 0;
+}

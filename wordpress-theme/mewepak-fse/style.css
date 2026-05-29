@@ -1,0 +1,21 @@
+/*
+Theme Name: Mewepak FSE
+Theme URI: https://www.minwayprint.com
+Author: Mewepak
+Author URI: https://www.minwayprint.com
+Description: Mewepak — a premium, industrial block theme (Full Site Editing) for a B2B flexible-packaging manufacturer. Catalog + lead-generation focused, export-oriented, built on WordPress core blocks, theme.json, templates and patterns.
+Requires at least: 6.5
+Tested up to: 6.7
+Requires PHP: 7.4
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mewepak
+Tags: full-site-editing, block-patterns, business, custom-colors, custom-menu, editor-style, featured-images, threaded-comments, translation-ready
+*/
+
+/*
+ * This is a block theme. The bulk of styling lives in theme.json.
+ * Only a handful of presentational helpers that core blocks cannot yet
+ * express live in assets/css/custom.css (enqueued via functions.php).
+ */
