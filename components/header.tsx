@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Globe, ChevronDown, Menu, X, ArrowRight } from "lucide-react";
+import { Search, Globe, ChevronDown, Menu, X, ArrowRight, Phone, Mail, MessageCircle } from "lucide-react";
 import Link from "next/link";
 
 const navItems = [
@@ -217,6 +217,44 @@ export function Header() {
           scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-white"
         }`}
       >
+        {/* Utility bar - contact info */}
+        <div className="hidden md:block bg-[#0a1628] text-white">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="flex items-center justify-between h-9 text-xs">
+              <p className="font-medium tracking-wide text-white/90">
+                Customized Packaging Factory Since 2007.
+              </p>
+              <div className="flex items-center gap-5">
+                <a
+                  href="https://wa.me/8613537663353"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-white/80 hover:text-[#00cfca] transition-colors"
+                >
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  <span>WhatsApp: +86 13537663353</span>
+                </a>
+                <span className="w-px h-3.5 bg-white/20" />
+                <a
+                  href="tel:+8613423118038"
+                  className="flex items-center gap-1.5 text-white/80 hover:text-[#00cfca] transition-colors"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>Call Us: +86-13423118038</span>
+                </a>
+                <span className="w-px h-3.5 bg-white/20" />
+                <a
+                  href="mailto:sales@minwayprint.com"
+                  className="flex items-center gap-1.5 text-white/80 hover:text-[#00cfca] transition-colors"
+                >
+                  <Mail className="w-3.5 h-3.5" />
+                  <span>sales@minwayprint.com</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Top bar */}
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20 border-b border-gray-100">
