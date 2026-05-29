@@ -1,0 +1,179 @@
+/* =========================================================
+   Mewepak FSE — minimal custom CSS
+   Only effects that core blocks / theme.json cannot express.
+   Keep this file small; prefer theme.json wherever possible.
+   ========================================================= */
+
+/* ---- Utility-bar links (contact bar in header) ---- */
+.mewepak-utilitybar a {
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.mewepak-utilitybar a:hover {
+  color: var(--wp--preset--color--accent);
+}
+
+/* ---- Sticky header shadow on scroll (toggled by tiny JS) ---- */
+.wp-block-template-part.is-header,
+.mewepak-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--wp--preset--color--base);
+  transition: box-shadow 0.25s ease;
+}
+.mewepak-header.is-scrolled {
+  box-shadow: 0 8px 30px -18px rgba(15, 23, 42, 0.35);
+}
+
+/* ---- Mega-menu (CSS hover, progressive enhancement) ---- */
+.mewepak-nav__item {
+  position: relative;
+}
+.mewepak-nav__panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 640px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  background: var(--wp--preset--color--base);
+  border: 1px solid var(--wp--preset--color--line);
+  border-radius: 1rem;
+  box-shadow: 0 24px 60px -24px rgba(15, 23, 42, 0.35);
+  padding: 1.5rem;
+  z-index: 60;
+}
+.mewepak-nav__item:hover .mewepak-nav__panel,
+.mewepak-nav__item:focus-within .mewepak-nav__panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ---- Card hover lift (used by product / market / blog cards) ---- */
+.mewepak-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.mewepak-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--wp--preset--shadow--lift);
+  border-color: rgba(0, 207, 202, 0.4);
+}
+.mewepak-card img {
+  transition: transform 0.5s ease;
+}
+.mewepak-card:hover img {
+  transform: scale(1.05);
+}
+
+/* ---- Image cover ratios for cards (cover crop) ---- */
+.mewepak-ratio-4-3 img,
+.mewepak-ratio-4-3 .wp-block-image img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+}
+.mewepak-ratio-square img,
+.mewepak-ratio-square .wp-block-image img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ---- FAQ accordion via native <details> ---- */
+.mewepak-faq details {
+  border: 1px solid var(--wp--preset--color--line);
+  border-radius: 0.875rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--wp--preset--color--base);
+}
+.mewepak-faq details + details {
+  margin-top: 0.75rem;
+}
+.mewepak-faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--wp--preset--color--navy);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.mewepak-faq summary::-webkit-details-marker {
+  display: none;
+}
+.mewepak-faq summary::after {
+  content: "+";
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--wp--preset--color--accent);
+  transition: transform 0.2s ease;
+}
+.mewepak-faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+.mewepak-faq details > *:not(summary) {
+  margin-top: 0.85rem;
+  color: var(--wp--preset--color--muted);
+}
+
+/* ---- Scroll-reveal (replaces Framer Motion whileInView) ---- */
+.mewepak-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+.mewepak-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Eyebrow / section heading accent line ---- */
+.mewepak-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--wp--preset--color--accent);
+}
+.mewepak-eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: var(--wp--preset--color--accent);
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mewepak-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .mewepak-card,
+  .mewepak-card img {
+    transition: none;
+  }
+}
+
+/* ---- Mobile nav (toggled by JS) ---- */
+.mewepak-mobile-panel {
+  display: none;
+}
+.mewepak-mobile-panel.is-open {
+  display: block;
+}
+@media (min-width: 1024px) {
+  .mewepak-mobile-toggle {
+    display: none;
+  }
+}

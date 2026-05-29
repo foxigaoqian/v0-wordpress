@@ -1,0 +1,58 @@
+<!-- wp:template-part {"slug":"header","tagName":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+<main class="wp-block-group">
+
+	<!-- Hero -->
+	<!-- wp:pattern {"slug":"mewepak/hero"} /-->
+
+	<!-- Trust stats -->
+	<!-- wp:pattern {"slug":"mewepak/trust-stats"} /-->
+
+	<!-- Explore / category intro + product cards -->
+	<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--50)">
+		<!-- wp:pattern {"slug":"mewepak/section-heading"} /-->
+		<!-- wp:spacer {"height":"var:preset|spacing|50"} --><div style="height:var(--wp--preset--spacing--50)" aria-hidden="true" class="wp-block-spacer"></div><!-- /wp:spacer -->
+		<!-- wp:pattern {"slug":"mewepak/card-grid"} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- Industrial process -->
+	<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"surface","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group has-surface-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+		<!-- wp:pattern {"slug":"mewepak/process-steps"} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- Sustainability teaser -->
+	<!-- wp:pattern {"slug":"mewepak/sustainability-teaser"} /-->
+
+	<!-- Testimonials -->
+	<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--50)">
+		<!-- wp:heading {"textAlign":"center","level":2,"className":"mewepak-reveal"} --><h2 class="wp-block-heading has-text-align-center mewepak-reveal">Trusted by brands worldwide</h2><!-- /wp:heading -->
+		<!-- wp:spacer {"height":"var:preset|spacing|50"} --><div style="height:var(--wp--preset--spacing--50)" aria-hidden="true" class="wp-block-spacer"></div><!-- /wp:spacer -->
+		<!-- wp:pattern {"slug":"mewepak/testimonials"} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- Logo cloud -->
+	<!-- wp:pattern {"slug":"mewepak/logo-cloud"} /-->
+
+	<!-- Blog teaser -->
+	<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"surface","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group has-surface-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+		<!-- wp:heading {"textAlign":"center","level":2,"className":"mewepak-reveal"} --><h2 class="wp-block-heading has-text-align-center mewepak-reveal">From the blog</h2><!-- /wp:heading -->
+		<!-- wp:spacer {"height":"var:preset|spacing|50"} --><div style="height:var(--wp--preset--spacing--50)" aria-hidden="true" class="wp-block-spacer"></div><!-- /wp:spacer -->
+		<!-- wp:pattern {"slug":"mewepak/blog-cards"} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- Final CTA -->
+	<!-- wp:pattern {"slug":"mewepak/cta-quote"} /-->
+
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer","area":"footer"} /-->
