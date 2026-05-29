@@ -14,9 +14,14 @@ interface BlogPostProps {
 }
 
 const relatedPosts = [
-  { slug: "sustainable-packaging-trends", title: "5 Sustainable Packaging Trends to Watch", category: "Sustainability" },
-  { slug: "coffee-packaging-guide", title: "Coffee Packaging: Preserving Freshness & Flavor", category: "Industry News" },
-  { slug: "barrier-materials-explained", title: "Understanding Barrier Materials in Flexible Packaging", category: "Materials" },
+  { slug: "sustainable-packaging-trends", title: "5 Sustainable Packaging Trends to Watch", category: "Sustainability", image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop" },
+  { slug: "coffee-packaging-guide", title: "Coffee Packaging: Preserving Freshness & Flavor", category: "Industry News", image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&h=400&fit=crop" },
+  { slug: "barrier-materials-explained", title: "Understanding Barrier Materials in Flexible Packaging", category: "Materials", image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=600&h=400&fit=crop" },
+]
+
+const sidebarProducts = [
+  { slug: "stand-up-pouch", name: "Stand Up Pouch", image: "https://images.unsplash.com/photo-1606914501449-5a96b6ce24ca?w=200&h=200&fit=crop" },
+  { slug: "flat-bottom-pouch", name: "Flat Bottom Bag", image: "https://images.unsplash.com/photo-1607344645866-009c320c5ab8?w=200&h=200&fit=crop" },
 ]
 
 export function BlogPost({ slug, post }: BlogPostProps) {
@@ -168,31 +173,48 @@ export function BlogPost({ slug, post }: BlogPostProps) {
               <div className="sticky top-8 space-y-8">
                 {/* Inquiry Form */}
                 <div className="bg-[#00cfca]/5 rounded-2xl p-6">
-                  <h3 className="font-semibold text-gray-900 mb-4">Get a Free Quote</h3>
+                  <h3 className="font-semibold text-gray-900 mb-1">Get a Free Quote</h3>
+                  <p className="text-sm text-gray-500 mb-4">Fill in your details and we&apos;ll get back to you within 24 hours.</p>
                   <form className="space-y-4">
-                    <input
-                      type="text"
-                      placeholder="Full Name"
-                      className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00cfca]"
-                    />
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00cfca]"
-                    />
-                    <input
-                      type="tel"
-                      placeholder="Phone Number"
-                      className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00cfca]"
-                    />
-                    <textarea
-                      placeholder="Message"
-                      rows={4}
-                      className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00cfca] resize-none"
-                    />
+                    <div>
+                      <label htmlFor="quote-name" className="block text-sm font-medium text-gray-700 mb-1.5">Full Name</label>
+                      <input
+                        id="quote-name"
+                        type="text"
+                        placeholder="e.g. John Smith"
+                        className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00cfca] focus:border-transparent"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="quote-email" className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+                      <input
+                        id="quote-email"
+                        type="email"
+                        placeholder="e.g. john@company.com"
+                        className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00cfca] focus:border-transparent"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="quote-phone" className="block text-sm font-medium text-gray-700 mb-1.5">Phone Number</label>
+                      <input
+                        id="quote-phone"
+                        type="tel"
+                        placeholder="e.g. +1 555 000 1234"
+                        className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00cfca] focus:border-transparent"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="quote-message" className="block text-sm font-medium text-gray-700 mb-1.5">Message</label>
+                      <textarea
+                        id="quote-message"
+                        placeholder="Tell us about your packaging needs..."
+                        rows={4}
+                        className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00cfca] focus:border-transparent resize-none"
+                      />
+                    </div>
                     <button
                       type="submit"
-                      className="w-full py-2 bg-[#00cfca] text-white font-semibold rounded-lg hover:bg-[#00b8b3] transition-colors"
+                      className="w-full py-2.5 bg-[#00cfca] text-white font-semibold rounded-lg hover:bg-[#00b8b3] transition-colors"
                     >
                       Submit
                     </button>
@@ -202,15 +224,29 @@ export function BlogPost({ slug, post }: BlogPostProps) {
                 {/* Related Products */}
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-4">Related Products</h3>
-                  <div className="space-y-4">
-                    <Link href="/products/stand-up-pouch" className="block p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-                      <p className="font-medium text-gray-900">Stand Up Pouch</p>
-                      <p className="text-sm text-gray-500">View product details</p>
-                    </Link>
-                    <Link href="/products/flat-bottom-pouch" className="block p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-                      <p className="font-medium text-gray-900">Flat Bottom Bag</p>
-                      <p className="text-sm text-gray-500">View product details</p>
-                    </Link>
+                  <div className="space-y-3">
+                    {sidebarProducts.map((product) => (
+                      <Link
+                        key={product.slug}
+                        href={`/products/${product.slug}`}
+                        className="group flex items-center gap-4 p-3 bg-white border border-gray-100 rounded-xl hover:border-[#00cfca]/40 hover:shadow-md transition-all"
+                      >
+                        <div className="w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="font-medium text-gray-900 group-hover:text-[#00cfca] transition-colors truncate">{product.name}</p>
+                          <p className="text-sm text-gray-500 flex items-center gap-1">
+                            View details
+                            <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                          </p>
+                        </div>
+                      </Link>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -226,7 +262,13 @@ export function BlogPost({ slug, post }: BlogPostProps) {
           <div className="grid sm:grid-cols-3 gap-6">
             {relatedPosts.map((relatedPost) => (
               <Link key={relatedPost.slug} href={`/blog/${relatedPost.slug}`} className="group">
-                <div className="aspect-video bg-gradient-to-br from-gray-200 to-gray-100 rounded-xl mb-4" />
+                <div className="aspect-video rounded-xl mb-4 overflow-hidden bg-gray-100">
+                  <img
+                    src={relatedPost.image}
+                    alt={relatedPost.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
                 <span className="text-xs font-semibold text-[#00cfca]">{relatedPost.category}</span>
                 <h3 className="mt-1 font-semibold text-gray-900 group-hover:text-[#00cfca] transition-colors line-clamp-2">
                   {relatedPost.title}
