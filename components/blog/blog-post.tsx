@@ -172,18 +172,23 @@ export function BlogPost({ slug, post }: BlogPostProps) {
                   <form className="space-y-4">
                     <input
                       type="text"
-                      placeholder="Product Type"
-                      className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00cfca]"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Quantity"
+                      placeholder="Full Name"
                       className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00cfca]"
                     />
                     <input
                       type="email"
                       placeholder="Email"
                       className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00cfca]"
+                    />
+                    <input
+                      type="tel"
+                      placeholder="Phone Number"
+                      className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00cfca]"
+                    />
+                    <textarea
+                      placeholder="Message"
+                      rows={4}
+                      className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00cfca] resize-none"
                     />
                     <button
                       type="submit"
