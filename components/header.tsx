@@ -155,7 +155,7 @@ const navItems = [
             { label: "Sustainable Packaging", href: "/sustainability/sustainable-packaging" },
             { label: "Operations Sustainability", href: "/sustainability/operations" },
             { label: "Social Sustainability", href: "/sustainability/social" },
-            { label: "ProAmpac Impact Report", href: "/sustainability/impact-report" },
+            { label: "Mewepak Impact Report", href: "/sustainability/impact-report" },
             { label: "Life Cycle Analysis Tool", href: "/sustainability/lca-tool" },
           ],
         },
