@@ -20,8 +20,8 @@ const relatedPosts = [
 ]
 
 const sidebarProducts = [
-  { slug: "stand-up-pouch", name: "Stand Up Pouch", image: "https://images.unsplash.com/photo-1606914501449-5a96b6ce24ca?w=200&h=200&fit=crop" },
-  { slug: "flat-bottom-pouch", name: "Flat Bottom Bag", image: "https://images.unsplash.com/photo-1607344645866-009c320c5ab8?w=200&h=200&fit=crop" },
+  { slug: "stand-up-pouch", name: "Stand Up Pouch", description: "Versatile resealable pouches for retail shelves.", image: "https://images.unsplash.com/photo-1606914501449-5a96b6ce24ca?w=600&h=450&fit=crop" },
+  { slug: "flat-bottom-pouch", name: "Flat Bottom Bag", description: "Premium box-bottom bags for coffee & dry goods.", image: "https://images.unsplash.com/photo-1607344645866-009c320c5ab8?w=600&h=450&fit=crop" },
 ]
 
 export function BlogPost({ slug, post }: BlogPostProps) {
@@ -223,27 +223,28 @@ export function BlogPost({ slug, post }: BlogPostProps) {
 
                 {/* Related Products */}
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-4">Related Products</h3>
-                  <div className="space-y-3">
+                  <h3 className="text-xl font-bold text-gray-900 mb-5">Related Products</h3>
+                  <div className="grid grid-cols-1 gap-5">
                     {sidebarProducts.map((product) => (
                       <Link
                         key={product.slug}
                         href={`/products/${product.slug}`}
-                        className="group flex items-center gap-4 p-3 bg-white border border-gray-100 rounded-xl hover:border-[#00cfca]/40 hover:shadow-md transition-all"
+                        className="group block bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-xl hover:border-[#00cfca]/30 transition-all duration-300"
                       >
-                        <div className="w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
+                        <div className="aspect-[4/3] overflow-hidden bg-gray-100">
                           <img
                             src={product.image}
                             alt={product.name}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                         </div>
-                        <div className="min-w-0">
-                          <p className="font-medium text-gray-900 group-hover:text-[#00cfca] transition-colors truncate">{product.name}</p>
-                          <p className="text-sm text-gray-500 flex items-center gap-1">
-                            View details
-                            <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                          </p>
+                        <div className="p-5">
+                          <p className="text-lg font-bold text-gray-900 group-hover:text-[#00cfca] transition-colors">{product.name}</p>
+                          <p className="mt-1 text-sm text-gray-500">{product.description}</p>
+                          <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[#00cfca]">
+                            View product
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          </span>
                         </div>
                       </Link>
                     ))}
