@@ -17,7 +17,7 @@ export function SustainabilitySection() {
   return (
     <section id="sustainability" className="relative">
       {/* Dark section - Our unique proposition */}
-      <div className="bg-gradient-to-br from-[#0a1628] via-[#0d1d35] to-[#0a1628] py-40 relative overflow-hidden">
+      <div className="bg-gradient-to-br from-[#0a1628] via-[#0d1d35] to-[#0a1628] py-24 relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-96 h-96 bg-[#00cfca]/10 rounded-full blur-[100px] animate-pulse" />
@@ -34,22 +34,22 @@ export function SustainabilitySection() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12"
           >
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: 100 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="h-1 bg-gradient-to-r from-transparent via-[#00cfca] to-transparent mx-auto mb-10"
+              className="h-1 bg-gradient-to-r from-transparent via-[#00cfca] to-transparent mx-auto mb-6"
             />
-            <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight">
+            <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
               Our unique
             </h2>
-            <h2 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#00cfca] to-[#00e5df] bg-clip-text text-transparent tracking-tight">
+            <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#00cfca] to-[#00e5df] bg-clip-text text-transparent tracking-tight">
               proposition
             </h2>
-            <p className="mt-8 text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-6 text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
               Whatever your packaging sustainability challenge, Mewepak has the solution.
             </p>
           </motion.div>
@@ -59,9 +59,9 @@ export function SustainabilitySection() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative mb-24"
+            className="relative mb-14"
           >
-            <div className="h-20 bg-gradient-to-r from-[#00cfca]/80 via-[#00cfca] to-[#00e5df]/80 rounded-full flex items-center justify-center shadow-2xl shadow-[#00cfca]/30 relative overflow-hidden">
+            <div className="h-16 bg-gradient-to-r from-[#00cfca]/80 via-[#00cfca] to-[#00e5df]/80 rounded-full flex items-center justify-center shadow-2xl shadow-[#00cfca]/30 relative overflow-hidden">
               <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)] bg-[length:200%_200%] animate-shimmer" />
               <span className="text-white text-lg md:text-xl font-bold tracking-wide relative z-10">
                 The 7 Pillars of Mewepak Sustainable Flexible Packaging
@@ -92,14 +92,14 @@ export function SustainabilitySection() {
                 </motion.div>
                 
                 {/* Icon circle */}
-                <div className="relative mb-6">
-                  <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${pillar.color} p-[2px] mx-auto group-hover:scale-110 transition-transform duration-300`}>
+                <div className="relative mb-4">
+                  <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${pillar.color} p-[2px] mx-auto group-hover:scale-110 transition-transform duration-300`}>
                     <div className="w-full h-full rounded-full bg-[#0a1628] flex items-center justify-center">
-                      <pillar.icon className="w-10 h-10 text-[#00cfca]" />
+                      <pillar.icon className="w-9 h-9 text-[#00cfca]" />
                     </div>
                   </div>
                   {/* Glow effect */}
-                  <div className={`absolute inset-0 w-24 h-24 mx-auto rounded-full bg-gradient-to-br ${pillar.color} blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300`} />
+                  <div className={`absolute inset-0 w-20 h-20 mx-auto rounded-full bg-gradient-to-br ${pillar.color} blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300`} />
                 </div>
                 
                 <h3 className="text-[#00cfca] font-bold text-base mb-3">{pillar.title}</h3>
@@ -111,7 +111,7 @@ export function SustainabilitySection() {
       </div>
 
       {/* Teal section - Sustainable features */}
-      <div className="bg-[#00cfca] py-40 relative overflow-hidden">
+      <div className="bg-[#00cfca] py-24 relative overflow-hidden">
         {/* Wave pattern */}
         <div className="absolute inset-0 opacity-10">
           <svg className="absolute bottom-0 w-full h-32" viewBox="0 0 1440 120" fill="none">
@@ -124,10 +124,10 @@ export function SustainabilitySection() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12"
           >
-            <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight">Sustainable</h2>
-            <p className="mt-6 text-white/70 text-xl max-w-xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">Sustainable</h2>
+            <p className="mt-4 text-white/70 text-lg max-w-xl mx-auto">
               Whatever your sustainability objective, we have the solution:
             </p>
           </motion.div>
@@ -151,8 +151,8 @@ export function SustainabilitySection() {
                 whileHover={{ y: -8 }}
                 className="text-center group cursor-pointer"
               >
-                <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:shadow-2xl transition-shadow relative">
-                  <item.icon className="w-10 h-10 text-[#00cfca]" />
+                <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center mx-auto mb-4 shadow-xl group-hover:shadow-2xl transition-shadow relative">
+                  <item.icon className="w-9 h-9 text-[#00cfca]" />
                   <div className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full shadow-lg" />
                 </div>
                 <p className="text-white font-semibold text-sm">{item.label}</p>

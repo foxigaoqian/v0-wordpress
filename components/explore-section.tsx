@@ -31,7 +31,7 @@ const formats = [
 
 export function ExploreSection() {
   return (
-    <section className="py-40 bg-white relative overflow-hidden">
+    <section className="py-24 bg-white relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#00cfca]/5 to-transparent rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[#00cfca]/5 to-transparent rounded-full blur-3xl" />
@@ -91,12 +91,12 @@ export function ExploreSection() {
                   boxShadow: "0 25px 50px -12px rgba(0,207,202,0.25)",
                   borderColor: "#00cfca"
                 }}
-                className="group bg-white rounded-2xl p-4 border-2 border-gray-100 hover:border-[#00cfca] transition-all cursor-pointer relative overflow-hidden"
+                className="group bg-white rounded-2xl p-3 border-2 border-gray-100 hover:border-[#00cfca] transition-all cursor-pointer relative overflow-hidden"
               >
                 <Link href={`/markets/${market.slug}`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-[#00cfca]/0 to-[#00cfca]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden mb-4 mx-auto">
+                    <div className="w-full aspect-square rounded-xl overflow-hidden mb-3">
                       <img 
                         src={market.image} 
                         alt={market.label}
@@ -164,12 +164,12 @@ export function ExploreSection() {
                   boxShadow: "0 25px 50px -12px rgba(0,207,202,0.25)",
                   borderColor: "#00cfca"
                 }}
-                className="group bg-white rounded-2xl p-4 border-2 border-gray-100 hover:border-[#00cfca] transition-all cursor-pointer relative overflow-hidden"
+                className="group bg-white rounded-2xl p-3 border-2 border-gray-100 hover:border-[#00cfca] transition-all cursor-pointer relative overflow-hidden"
               >
                 <Link href={`/products/${format.slug}`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-[#00cfca]/0 to-[#00cfca]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden mb-4 mx-auto">
+                    <div className="w-full aspect-square rounded-xl overflow-hidden mb-3">
                       <img 
                         src={format.image} 
                         alt={format.label}
